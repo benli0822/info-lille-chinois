@@ -6,6 +6,8 @@ import java.util.ArrayList;
 /*(v[1] || !v[2] || v[4]) && (!v[1]  || v[3] || v[4]) && (!v[3] || !v[4] || v[2])*/
 public class AlgoVerfication {
 	public Formule TestFormule;
+	
+	private static ArrayList<Boolean> res;
 
 	public AlgoVerfication(Formule testFormule) {
 		this.TestFormule = testFormule;
@@ -13,11 +15,14 @@ public class AlgoVerfication {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		Litteral v1 = new Litteral(1, true);
-		Litteral v2 = new Litteral(2, false);
-		Litteral v3 = new Litteral(3, false);
-		Litteral v4 = new Litteral(4, false);
+		
+		AleatoireCertificats ac = new AleatoireCertificats(4);
+		res = ac.getResultat();
+		
+		Litteral v1 = new Litteral(1, res.get(0));
+		Litteral v2 = new Litteral(2, res.get(1));
+		Litteral v3 = new Litteral(3, res.get(2));
+		Litteral v4 = new Litteral(4, res.get(3));
 
 		Clause c1 = new Clause(v1, v2, v4, true, false, true);
 		Clause c2 = new Clause(v1, v3, v4, false, true, true);
