@@ -1,0 +1,1537 @@
+/*************************************************************************************************************************************************************************/
+/* Structure des pages Mon compte */ 
+/*************************************************************************************************************************************************************************/
+
+	/* #mon_compte
+	=========================================================================================== */
+
+	#mon_compte{width:888px;}
+
+		/* Barre d'identification (moncompte_page) */
+		#moncompte_id{width:100%;height:35px;overflow:hidden;border:1px solid #eee;border-width:0 0 1px 0;}
+			#moncompte_id_top, #moncompte_id_inter, #moncompte_id_bottom{width:100%;overflow:hidden;}
+			#moncompte_id_top{height:2px;background:url(../assets/mon_compte/structure/bg_mc_id_top.png) no-repeat 0 0;}
+			#moncompte_id_inter{height:30px;/*background:url(../assets/mon_compte/structure/bg_mc_id_inter.gif) repeat-x 0 0;*/}
+			#moncompte_id_bottom{height:3px;background:url(../assets/mon_compte/structure/bg_mc_id_bottom.png) no-repeat 0 0;}
+		
+			#moncompte_id_inter span.blocMT_bonjour, #moncompte_id_inter span.sep_id_compte, #moncompte_id_inter input.bt_moncompte, 
+			#moncompte_id_inter span.sep_compte_nl, #moncompte_id_inter input.bt_newsletter, #moncompte_id_inter .bt_revoir_infos{display:block;float:left;overflow:hidden;}
+			
+			#moncompte_id_inter span.blocMT_bonjour{width:388px;height:30px;padding:0 0 0 24px;background:url(../assets/mon_compte/structure/bg_mc_id_inter.gif) repeat-x 0 0;font:14px/30px arial, helvetica, sans-serif;color:#665e56;}
+			#moncompte_id_inter span.blocMT_bonjour .blocMT_identite_np{font-weight:bold;}
+			
+			#moncompte_id_inter span.sep_id_compte{width:30px;height:30px;background:url(../assets/mon_compte/structure/sep_id_compte.gif) no-repeat 0 0;}
+			#moncompte_id_inter span.sep_compte_nl{width:32px;height:29px;background:url(../assets/mon_compte/structure/sep_compte_nl.gif) no-repeat 0 0;}
+			
+			#moncompte_id_inter input.bt_moncompte, #moncompte_id_inter input.bt_newsletter{border:0;font-size:0;line-height:0;text-indent:-5000px;cursor:pointer;}
+			#moncompte_id_inter input.bt_moncompte{width:136px;height:30px;background:url(../assets/mon_compte/structure/bt_moncompte.gif) no-repeat 0 0;}
+			#moncompte_id_inter input.bt_newsletter{width:234px;height:29px;background:url(../assets/mon_compte/structure/bt_newsletter.gif) no-repeat 0 0;}
+			
+			#moncompte_id_inter .bt_revoir_infos{width:44px;height:33px;background:url(../assets/mon_compte/accueil/bouton_aide.png) no-repeat 0 0;text-indent:-5000px;}
+		
+			#moncompte_id_inter span.sep_compte_nl, #moncompte_id_inter input.bt_newsletter{margin:1px 0 0 0;}
+		
+		/* Barre de menu (moncompte_menu) */
+		#moncompte_menu{width:882px;padding:3px;height:94px;background:url(../assets/mon_compte/structure/bg_menu_ho.gif) repeat-x 0 0;}
+			#moncompte_menu ul{margin:0;}
+			#moncompte_menu ul li{display:block;float:left;margin:0 0 0 1px;width:125px;height:93px;background:#4a5555;}
+			#moncompte_menu ul li:first-child{margin:0;}
+			#moncompte_menu ul li a{display:block;width:125px;height:93px;margin:0;padding:0;font-size:0;line-height:0;text-indent:-5000px;text-decoration:none;background:url(../assets/mon_compte/structure/menuH_center.gif) no-repeat 0 0;}
+			#moncompte_menu ul li a.bt_accueil{background-position:0 0;}
+			#moncompte_menu ul li a.bt_accueil:hover, #moncompte_menu ul li.active a.bt_accueil{background-position:0 -93px;}
+			#moncompte_menu ul li a.bt_carte_passpass{background-position:-125px 0;}
+			#moncompte_menu ul li a.bt_carte_passpass:hover, #moncompte_menu ul li.active a.bt_carte_passpass{background-position:-125px -93px;}
+			#moncompte_menu ul li a.bt_suivi{background-position:-250px 0;}
+			#moncompte_menu ul li a.bt_suivi:hover, #moncompte_menu ul li.active a.bt_suivi{background-position:-250px -93px;}
+			#moncompte_menu ul li a.bt_infos_tpsreel{background-position:-375px 0;}
+			#moncompte_menu ul li a.bt_infos_tpsreel:hover, #moncompte_menu ul li.active a.bt_infos_tpsreel{background-position:-375px -93px;}
+			#moncompte_menu ul li a.bt_alertes{background-position:-500px 0;}
+			#moncompte_menu ul li a.bt_alertes:hover, #moncompte_menu ul li.active a.bt_alertes{background-position:-500px -93px;}
+			#moncompte_menu ul li a.bt_vls{background-position:-625px 0;}
+			#moncompte_menu ul li a.bt_vls:hover, #moncompte_menu ul li.active a.bt_vls{background-position:-625px -93px;}
+			#moncompte_menu ul li a.bt_vld{background-position:-750px 0;}
+			#moncompte_menu ul li a.bt_vld:hover, #moncompte_menu ul li.active a.bt_vld{background-position:-750px -93px;}		
+			
+		
+		/* Page (moncompte_structure) */
+		#moncompte_structure{width:888px;margin:0 0 18px 0;}
+		
+			/* Composition de la page (moncompte_page) */
+			#moncompte_page{}
+
+				/* Haut de page */
+				#page_top{height:27px;background:#aaa url(../assets/mon_compte/structure/bg_titre_plein.png) repeat-x 0 0;padding:0 24px;}
+				#page_top h2{font:bold 15px/27px arial, helvetica, sans-serif;color:#fff;text-transform:none;}
+				
+					/*Modification de la couleur de fond du titre*/
+					.p_accueil_compte #page_top{background-color:#cce12a;}
+					.p_achat_enligne #page_top{background-color:#1a957c;}
+					.p_recharger_carte #page_top{background-color:/*#5899aa*/#742181;}					
+					.p_suivi #page_top{background-color:/*#ce483d*/#498a9c;}
+					.p_infos_entpsreel #page_top{background-color:#689913;}
+					.p_alertes_sms #page_top{background-color:#e88d14;}
+					.p_gerer_vls #page_top{background-color:/*#5c0f57*/#e02b31;}
+					.p_gerer_vld #page_top{background-color:/*#870128*/#a30132;}
+					
+					
+					.p_moncompte #page_top{background-color:/*#cce12a*/#486e0b;}
+					.p_newsletter #page_top{background-color:/*#cce12a*//*#39f*/#a0c900;}
+					
+				/* Corps de page */
+				#page_inter{width:100%;/*border:1px solid #eee;border-width:1px 0 0 0;*/background:#eee url(../assets/mon_compte/structure/bg_page_compte.gif) repeat-x 0 0;min-height:274px;}
+				.simpleFooter #page_inter{min-height:382px;}
+					
+					/*Modification du fond de page en fonction du nombre de colonne*/
+					.page_2col #page_inter{background:url(../assets/mon_compte/structure/bg_page_2col.gif) repeat-y 0 0;}
+					
+				/* Pied de page */
+				#page_bottom{width:100%;}
+				.doubleFooter#page_bottom{width:100%;height:37px;}
+					
+					/*Modification du fond du pied de page en fonction du nombre de colonne*/
+					.page_1col #page_bottom{background:url(../assets/mon_compte/structure/bg_pied_page_1col.png) no-repeat 0 0;}
+					.page_2col #page_bottom{background:url(../assets/mon_compte/structure/bg_pied_page_2col.png) no-repeat 0 0;}
+					
+					.page_1col.simpleFooter #page_bottom{background:url(../assets/mon_compte/structure/bg_pied_page_simplefooter.png) no-repeat 0 0;}
+					.doubleFooter #page_bottom{background:url(../assets/mon_compte/structure/bg_pied_page_doublefooter.png) no-repeat 0 0;}
+
+					/*Hauteur Pied de page*/
+					.simpleFooter #page_bottom{height:37px;}
+					.doubleFooter #page_bottom{/*height:;*/}
+					
+					/*Double Pied de Page*/
+					#page_bottom #secondFooter{padding:37px 0 0 0;}
+					#secondFooter .contentActions{background:#eee url(../assets/mon_compte/structure/bg_secondfooter.gif) repeat-x 0 0;min-height:105px;}
+					#secondFooter #bottom_secondFooter{background:url(../assets/mon_compte/structure/secondfooter_bottom.png) no-repeat 0 0;height:3px;margin:0 0 18px 0;}
+					#secondFooter #bottom_secondFooter.nomargin{margin:0;}
+					
+					
+					/*contentInformations*/
+					.contentInformations{margin:30px 12px 18px 12px;/*padding:22px;*/padding:10px 0;background:url(../assets/mon_compte/structure/bg_content_informations.png) repeat 0 0;
+						 -moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior:url(../css/arrondis/PIE.htc);
+					}
+					.contentInformations p, .contentInformations p a{font:12px arial, helvetica, sans-serif;color:#495555;padding:0 10px 10px 10px;}
+					.contentInformations p{text-align:justify;}
+					.contentInformations p a{padding:0;}
+					
+					/*contentActions_secondaires*/
+					#blocInfos_footer{}
+					#blocInfos_footer #blocInfos_footer_content{padding:35px 26px 25px 26px;background:url(../assets/mon_compte/structure/bg_block_infos.png) repeat-x 0 0;}
+					#blocInfos_footer #blocInfos_footer_content strong{display:block;font:18px/22px Arial, helvetica, sans-serif;color:#fff;}
+					#blocInfos_footer #blocInfos_footer_content p{padding:0 0 0 20px;font:14px/18px Arial, helvetica, sans-serif;color:#fff;}
+					
+					#blocInfos_footer #blocInfos_footer_content p.block01, #blocInfos_footer #blocInfos_footer_content p.block02{float:left;}
+					#blocInfos_footer #blocInfos_footer_content p.block01{width:500px;background:url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 2px;}
+					#blocInfos_footer #blocInfos_footer_content p.block02{width:290px;}
+					#blocInfos_footer #blocInfos_footer_content p.block02 input.bt_commander_autres_carte{display:block;width:286px;height:64px;border:0;background:url(../assets/mon_compte/boutons/actions/bt_commander_autres_carte.png) no-repeat 0 0;font-size:0;line-height:0;text-indent:-5000px;cursor:pointer;}
+					
+					#blocInfos_footer.blockInfos_abonnepasspass{background-color:#5899aa;}
+					
+	/* Structure Corps de Page
+	=========================================================================================== */
+			
+		/* Positionnement sur une colonne */	
+		#page_inter_middle{}	
+		#page_inter_middle .page_content{padding:22px 16px 10px 16px;}	
+			
+			/*Sans Padding*/
+			#page_inter_middle .page_content.nopadding{padding:0;}	
+		
+		/* Positionnement sur deux colonnes */
+		#page_inter_left, #page_inter_right{float:left;}
+		
+		#page_inter_left{width:/*662px*/623px;}
+		#page_inter_right{width:/*226px*/265px;}
+		
+		#page_inter_left .page_content{padding:22px 6px 10px 16px;}
+		#page_inter_right .page_content{padding:22px 11px 10px 11px;}
+		
+		/*Colonne de contenu*/
+			#page_inter_right .page_content {padding:0;}
+			#page_inter_right .page_content .deg_colD{margin:1px;min-height:320px;background:url(../assets/mon_compte/structure/bg_deg_colD.png) repeat-x 0 0 !important;padding: 22px 11px 10px 11px;}
+			#page_inter_right .page_content h3{font:bold 15px/19px arial,helvetica,sans-serif !important;}
+
+			
+			.page_2col #page_inter_right .page_content  .lign_svd p {background-color:#fff;margin:0 0 2px 0 !important;}
+			#page_inter_right .page_content .lign_svd label.svd_label {background:/*#417f94*/#541261 !important;color:#fff;width:225px;}
+			.page_2col #page_inter_right  .page_content .lign_svd span.svd_result {width:225px;background:/*#e6f0f2*/#ede6f2;}
+		
+		
+		
+	/* Mise en Page par défaut
+	=========================================================================================== */
+	#moncompte_page .page_content h3{font:bold 15px/27px arial, helvetica, sans-serif;text-transform:uppercase;color:/*#5899aa*/#4a5555;margin:0 0 4px 0;}
+	#moncompte_page .page_content h4{font:bold 13px/25px arial, helvetica, sans-serif;text-transform:none;color:#fff;background:#b0b3b2 url(../assets/mon_compte/structure/bg_titre_plein.png) repeat-x 0 0;margin:-5px 0 0 0;padding:3px 13px;}
+	#moncompte_page .page_content .element_compte{margin:0 0 20px 0;}
+	
+		/*Modiification couleur H3*/
+		#moncompte_page.p_accueil_compte .page_content h3{color:#cce12a;}
+		#moncompte_page.p_achat_enligne .page_content h3{color:#1a957c;}
+		#moncompte_page.p_recharger_carte .page_content h3{color:/*#5899aa*/#742181;}		
+		#moncompte_page.p_suivi .page_content h3{color:/*#ce483d*/#498a9c;}
+		#moncompte_page.p_infos_entpsreel .page_content h3{color:#689913;}
+		#moncompte_page.p_alertes_sms .page_content h3{color:#e88d14;}
+		#moncompte_page.p_gerer_vls .page_content h3{color:/*#5c0f57*/#e02b31;}
+		#moncompte_page.p_gerer_vld .page_content h3{color:/*#870128*/#a30132;}		
+		
+		
+		#moncompte_page.p_moncompte  .page_content h3{color:#4a5555;}
+					
+	.lign_svd{/*background:#fff;*/font:14px/17px arial, helvetica, sans-serif;overflow:hidden;}
+
+		/* Modification des marges*/
+		.page_1col .lign_svd p{border:1px solid #fff;background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y 251px 0;margin:0 0 5px 0;}
+		.page_2col .lign_svd p{border:1px solid #fff;background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y 251px 0;margin:0 10px 5px 0;}
+		
+	.lign_svd label.svd_label, .lign_svd span.svd_result{display:block;float:left;overflow:hidden;padding:8px 8px;}
+	.lign_svd span.svd_label, .lign_svd span.svd_result{display:block;float:left;overflow:hidden;padding:8px 8px;}
+	.lign_svd label.svd_label, .lign_svd span.svd_label{/*min-*/width:270px;color:#655d55;/*background:url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;*/}
+	.lign_svd span.svd_result{color:#3d3d3d;}
+	
+		/*Modification de la taille du champs de résultat*/
+		.page_1col .lign_svd span.svd_result{width:552px;}
+		.page_2col .lign_svd span.svd_result{width:326px;}
+	
+	.lign_svd a{font:14px/17px arial, helvetica, sans-serif;color:/*#5899aa*/#f0147b;}
+	
+		.p_recharger_carte .lign_svd a{color:#f0147b;}
+	
+	.ligne_svd_message{display:block;float:none;padding:12px 20px;font:14px/19px arial, helvetica, sans-serif;color:#3d3d3d;text-align:justify;background:url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;overflow:hidden;}
+
+		/* Input, textarea & co */
+		.lign_svd input[type="text"], .lign_svd input[type="password"], .lign_svd textarea, .lign_svd select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+		.lign_svd input[type="text"], .lign_svd input[type="password"]{width:234px;}
+		.lign_svd textarea{width:234px;}
+		.lign_svd select{width:234px;}
+		.lign_svd select[disabled]{background:#ece9d8;}
+		
+		.page_1col .lign_svd .ligne_svd_message{background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;}	
+		.page_2col .lign_svd .ligne_svd_message{background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;}	
+		.lign_svd_content .svd_label  input[type="radio"]{margin:0 10px 0 0;}
+	
+	/*Mise en page du menu de droite
+	=========================================================================================== */
+	/*
+	#menu_droite{width:203px;margin:0 auto;}
+		.menu_top{height:134px;background:url(../assets/mon_compte/structure/menuD_top.png) no-repeat 0 0;}
+		.menu_top span{position:relative;display:block;width:87px;height:87px;background:url(../assets/mon_compte/pictos/pictos_menuD.png) no-repeat 0 0;margin:0 auto;top:22px;}
+
+			.menuD_recharger span{}
+		
+		.menu_inter{background:#fff;padding:4px 0;}
+			#moncompte_page .page_content .menu_inter h3.menuD_titre{font:bold 16px/16px arial, helvetica, sans-serif;color:#e89600;padding:2px 8px 4px 8px;text-transform:none;}
+				
+			.menu_inter ul.menuD{margin:0;padding:0;list-style:none;}
+			.menu_inter ul.menuD li{margin:0 0 6px 0;}
+			.menu_inter ul.menuD li a{display:block;background:#dbd9d7 url(../assets/mon_compte/puces/puce_menuD.png) no-repeat 3px 1px;min-height:13px;font:12px/12px arial, sans-serif;color:#57524c;text-decoration:none;padding:4px 8px 4px 26px;}
+			.menu_inter ul.menuD li:hover a{background-color:#fae6c3;}
+			
+			.menu_inter ul.menuD_svd{margin:0;padding:0;list-style:none;border:1px solid #dbd9d7;border-width:0 0 1px 0;}
+			.menu_inter ul.menuD_svd li{margin:0;}
+			.menu_inter ul.menuD_svd li a{display:block;background:url(../assets/mon_compte/puces/puce_menuD.png) no-repeat 3px 50%;min-height:13px;font:12px/12px arial, sans-serif;color:#57524c;border:1px solid #dbd9d7;border-width:1px 0 0 0;text-decoration:none;padding:6px 8px 6px 26px;}
+			.menu_inter ul.menuD_svd li:hover a{background-color:#fae6c3;}
+			
+		.menu_bottom{height:9px;background:url(../assets/mon_compte/structure/menuD_bottom.png) no-repeat 0 0;}
+	*/
+	
+	#menu_droite{/*width:601px;margin:0 auto;*/}	
+	#menu_droite ul.menuD{margin:10px 0 20px 0;padding:0;list-style:none;}	
+	#menu_droite ul.menuD li{display:block;float:left;width:/*240px*/225px;height:63px;padding:0 46px 0 0;margin:0 14px 14px 0;background:url(../assets/mon_compte/boutons/actions/btR_w271.png) no-repeat 0 0;/*background:url(../assets/mon_compte/boutons/actions/btR_w286.png) no-repeat 0 0;*/}	
+	#menu_droite ul.menuD li a{display:block;width:203px;height:60px;padding:0 18px;font:bold 14px/60px arial, sans-serif;color:#706961;text-decoration:none;}	
+	#menu_droite ul.menuD li a:hover{color:/*#57879e*/#742181;}	
+	#menu_droite ul.menuD li a span {width:198px;vertical-align:middle;display:inline-block;line-height:18px;text-align:left;}
+	
+	#menu_droite.menu_droite_large{/*width:601px;*/width:100%;margin:0 auto;}	
+	#menu_droite.menu_droite_large ul.menuD{margin:10px 0 0 0;padding:0;list-style:none;}	
+	#menu_droite.menu_droite_large ul.menuD li{display:block;float:left;width:/*536px*/799px;height:66px;padding:0 57px 0 0;margin:0 /*8px*/0 0 0;background:url(../assets/mon_compte/boutons/menu/bg_bouton.gif) repeat-x 0 0;/*background:url(../assets/mon_compte/boutons/actions/btR_w286.png) no-repeat 0 0;*/}	
+	#menu_droite.menu_droite_large ul.menuD li a{display:block;width:/*516px*/779px;height:63px;padding:0 59px 0 18px;font:bold 14px/63px arial, sans-serif;color:#706961;text-decoration:none;background:url(../assets/mon_compte/boutons/menu/bt_puce.gif) no-repeat right 0;}	
+	#menu_droite.menu_droite_large ul.menuD li a:hover{color:/*#57879e*/#742181;}	
+	#menu_droite.menu_droite_large ul.menuD li a span {width:510px;vertical-align:middle;display:inline-block;line-height:18px;text-align:left;}
+	
+	/*
+		.menu_top{height:9px;background:url(../assets/mon_compte/structure/menuD_top2.png) no-repeat 0 0;}
+		.menu_inter{background:#fff;padding:4px 0;}
+			.menu_inter h3.menuD_titre{font:bold 16px/16px arial, helvetica, sans-serif;color:#e89600;padding:2px 8px 4px 8px;text-transform:none;}
+		
+		.menu_bottom{height:9px;background:url(../assets/mon_compte/structure/menuD_bottom.png) no-repeat 0 0;}
+	*/
+	
+	/*Boutons
+	=========================================================================================== */
+	
+	/*Boutons d'Actions*/	
+	.contentActions .boutons {padding:21px 19px;}
+	.contentActions .boutons p {padding:0;}
+	.contentActions input.bt_actions {display:block;border:0;cursor:pointer;/*font:bold 15px arial, helvetica, sans-serif;color:#57869e;*/}
+	
+		/*Accueil pass pass*/
+		.contentActions_passpass{background:url(../assets/mon_compte/structure/infos_temps_reel/bg_ligne_bouton.gif) repeat-x 0 0;border-top:1px solid #fefefe;}
+		.contentActions_passpass .boutons {padding:0 19px;}
+		.contentActions_passpass .boutons p{padding:10px 0;}
+		
+		/*Tailles*/
+		.btL_w86{width:86px;background:url(../assets/mon_compte/boutons/actions/btL_w86.png) no-repeat 0 0;}
+		.btR_w286{width:286px;background:url(../assets/mon_compte/boutons/actions/btR_w286.png) no-repeat 0 0;}
+		.bt_w286_63{width:286px;height:63px;text-indent:-5000px;font-size:0;line-height:0;}
+		
+		/*Particularités*/
+		.bt_retour{width:86px;height:37px;background:url(../assets/mon_compte/boutons/actions/bt_retour.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;margin:13px 0;}
+		.bt_annuler{width:94px;height:37px;background:url(../assets/mon_compte/boutons/actions/bt_annuler.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;margin:13px 0;}
+		.bt_valider{background:url(../assets/mon_compte/boutons/actions/bt_valider.png) no-repeat 0 0;}
+		.bt_envoyer_pieces{background:url(../assets/mon_compte/boutons/actions/bt_envoyer.png) no-repeat 0 0;}
+		.bt_enregistrer_favoris{background:url(../assets/mon_compte/boutons/actions/bt_enregistrer_favoris.png) no-repeat 0 0;margin-left:168px !important;}
+		.bt_etape_suivante{background:url(../assets/mon_compte/boutons/actions/bt_etape_suivante.png) no-repeat 0 0;}
+		.bt_inscription{background:url(../assets/mon_compte/boutons/actions/bt_inscription.png) no-repeat 0 0;}
+		.bt_finaliser_association{background:url(../assets/mon_compte/boutons/actions/bt_finaliser.png) no-repeat 0 0;}
+		.bt_continuer{background:url(../assets/mon_compte/boutons/actions/bt_continuer.png) no-repeat 0 0;}
+		.bt_payer_pv{background:url(../assets/mon_compte/boutons/actions/bt_payer_pv.png) no-repeat 0 0;}
+		.bt_visualiser{background:url(../assets/mon_compte/boutons/actions/bt_visualiser.png) no-repeat 0 0;}
+		.bt_voir_favoris{width:169px;height:37px;background:url(../assets/mon_compte/boutons/actions/bt_voir_favoris.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;margin:13px 0;}
+		.bt_modifier_informations{width:169px;height:37px;background:url(../assets/mon_compte/boutons/actions/bt_modifier_informations.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;margin:13px 0;}
+		.bt_envoyer_adresse{display:block;width:286px;height:63px;background:url(../assets/mon_compte/boutons/actions/bt_envoyer_adresse.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;}
+		
+		.bt_commander_autres_carte{display:block;border:0;width:169px;height:37px;background:url(../assets/mon_compte/boutons/actions/bt_commander_autres_carte_v3.png) no-repeat 0 0;font-size:0;line-height:0;text-indent:-5000px;cursor:pointer;margin:13px 0;}
+		
+					
+		.bt_imprimer{width:104px;height:37px;background:url(../assets/mon_compte/boutons/actions/bt_imprimer.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;margin:13px 0;}
+		
+		/*Alignement*/
+		.contentActions .bt_left{float:left;}
+		.contentActions .bt_right{float:right;}
+		.contentActions .bt_center{float:left;margin-left:198px;}
+		.contentActions .bt_centerSolo{float:left;margin-left:265px;}
+		
+		/*Boutons d'action centrer*/
+		.contentActions .boutons_centre p {text-align:center;}
+		.contentActions .boutons_centre p a{display:inline-block;width:272px;height:63px;margin:0 8px 10px 0;line-height:60px;background:url(../assets/mon_compte/boutons/actions/btR_w272.png) no-repeat 0 0;text-decoration:none;text-align:left;}
+		.contentActions .boutons_centre p a span{width:205px;padding:0 8px;display:inline-block;vertical-align:middle;font:bold 15px/18px arial, helvetica, sans-serif;color:/*#57869e*/#4a5555;text-align:center;}
+		
+		.contentActions .boutons_centre p input{display:block;float:left;width:286px;height:63px;margin:0 8px 10px 0;border:0;font-size:0;line-height:0;text-indent:-5000px;cursor:pointer;}
+		.contentActions .boutons_centre p input.bt_left_center{margin-left:135px;}
+		.contentActions .boutons_centre p input.bt_centerSolo{margin-left:265px;}
+		.contentActions .boutons_centre p input.bt_ajouter_personne_compte{background:url(../assets/mon_compte/boutons/actions/bt_ajouter_personne_compte.png) no-repeat 0 0;}
+		.contentActions .boutons_centre p input.bt_commander_carte_passpass{background:url(../assets/mon_compte/boutons/actions/bt_commander_carte_passpass.png) no-repeat 0 0;}
+		.contentActions .boutons_suivi p input.bt_commander_carte_passpass{margin-left:260px;}
+			
+		.contentActions .boutons_centre p input.bt_associer_autre_carte_t2{width:366px;background:url(../assets/mon_compte/boutons/actions/bt_associer_autre_carte_t2.png) no-repeat 0 0;margin-left:54px;}
+		.contentActions .boutons_centre p input.bt_associer_autre_carte_t2:hover{background-position:0 -63px;}
+		.contentActions .boutons_centre p input.bt_commander_carte_passpass_t2{width:366px;background:url(../assets/mon_compte/boutons/actions/bt_commander_carte_passpass_t2.png) no-repeat 0 0;}
+		.contentActions .boutons_centre p input.bt_commander_carte_passpass_t2:hover{background-position:0 -63px;}
+		
+		/*Bouton de suppression de comopte*/
+		/*.bouton_supprimer_compte{display:block;float:right;width:204px;height:37px;margin:13px 0;border:0;background:url(../assets/mon_compte/boutons/actions/bt_suppression_compte.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;overflow:hidden;cursor:pointer;}*/
+		.bouton_supprimer_compte{display:block;float:right;width:104px;height:37px;margin:13px 0;border:0;background:url(../assets/mon_compte/boutons/actions/bt_suppression_compte2.png) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;overflow:hidden;cursor:pointer;}
+		
+		
+	/*Erreurs Formulaires SVD
+	=========================================================================================== */
+	.svd_chp_erreur{border:1px solid /*#5899aa*/#f0147b !important;background:#d5e2e5 !important;}	
+	.svd_erreur{display:inline-block;width:300px;padding:0 5px;color:/*#5899aa*/#f0147b !important;font:12px/14px arial, sans-serif;}	
+	
+/*************************************************************************************************************************************************************************/
+/* Particularité de mise en page des templates SVD */ 
+/*************************************************************************************************************************************************************************/
+
+	/*Mise en page : Visualisation du contenu d'une carte : svd_abonnements_divers
+	=========================================================================================== */
+	#svd_abonnements_divers .lign_svd{border:0;overflow:hidden;background:;}
+	#svd_abonnements_divers .lign_svd p.lign_svd_content{border:1px solid #fff;background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y 251px 0;}
+	#svd_abonnements_divers p.svd_small {margin:0 0 5px 0;text-indent:0 !important;}
+	#svd_abonnements_divers p.svd_invisible {height:0;margin:0;padding:0;visibility: hidden;overflow:hidden;border:0 !important;}		
+	
+	#svd_abonnements_divers .lign_svd label.svd_label, #svd_abonnements_divers .lign_svd span.svd_label{width:270px;background:none;}
+	#svd_abonnements_divers .lign_svd span.svd_result{width:546px;}
+	
+	.ligne_carte{margin:0 0 10px 0;padding:0 0 12px 0;background:url(../assets/mon_compte/structure/bg_ligne_carte.png) repeat-x 0 bottom;}
+	.content_ligne_carte{border-left:5px solid /*#5899aa*/#742181;border-right:1px solid #982ba9;}
+	.ligne_carte p.svd_small{margin:0 !important;border-bottom:1px solid #dfe3e2 !important;text-indent:0;}
+	.ligne_carte p.svd_small span.svd_result {width:546px;text-indent:0 !important;}
+	
+	/*Mise en page : Liste des titres : svd_selection_titre
+	============================================================================================ */
+	#svd_selection_titre .lign_svd p{background-position:28px 0;}
+	#svd_selection_titre .lign_svd label.svd_label, #svd_selection_titre .lign_svd span.svd_label{width:46px !important;}
+	#svd_selection_titre .lign_svd span.svd_result{width:776px !important;}	
+	
+	/*Mise en page : Liste des titres : svd_selectionner_carte
+	============================================================================================ */
+	#svd_selectionner_carte .lign_svd p{/*background-position:21px 0;*/}
+	#svd_selectionner_carte .lign_svd label.svd_label, #svd_selectionner_carte .lign_svd span.svd_label{/*width:40px !important;*/width:270px !important;}
+	#svd_selectionner_carte .lign_svd span.svd_result{width:782px !important;}	
+	
+	#svd_selectionner_carte .lign_svd span.svd_result_carte{width:782px !important;padding:0;}	
+	#svd_selectionner_carte .lign_svd span.svd_result_carte span{display:block;float:left;padding:8px;/*border:1px solid #eee;border-width:0 0 0 6px;*/}	
+	#svd_selectionner_carte .lign_svd span.svd_result_carte span:first-child{border-width:0;}	
+	#svd_selectionner_carte .lign_svd span.svd_result_carte span.spacer{padding:0;border:0;}	
+	
+	/*.svd_result_carte span.nom_prenom{width:200px;}*/
+	.svd_result_carte span.type_support{/*width:160px;*/width:320px;}
+	.svd_result_carte span.lien_selection_carte{/*width:160px;*/border:1px solid #eee;border-width:0 0 0 1px;width:214px;text-align:center;}
+	.svd_result_carte span.lien_selection_carte a{text-align:center;}
+	/*.svd_result_carte span.type_carte{width:106px;}
+	.svd_result_carte span.ville_emetrice{width:122px;}
+	.svd_result_carte span.numero_serie{width:90px;}*/
+
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page des Pages */ 
+/*************************************************************************************************************************************************************************/
+
+	/*Mise en page de la page d'Accueil Mon Transpole
+	=========================================================================================== */
+	.blocAccueil{position:relative;display:block;float:left;width:203px;height:318px;margin:0 0 15px 12px;}
+	.blocAccueil:first-child{margin:0;}
+	.blocMsg{background:#fefefe;width:408px;height:306px;padding:6px;margin-left:0;}
+	.blocPassPass{background:/*#5899aa*/#742181;}
+	.blocSuivi{background:/*#ce483d*/#498a9c;}
+	.blocInfosTpsReel{width:204px;background:#689913 url(../assets/mon_compte/accueil/bg_blocinfos.gif) no-repeat 1px bottom;margin:0 0 15px 0;}
+	.blocAlertesSMS{width:204px;background:#e88d14;}
+	.blocVLS{background:/*#5c0f57*/#e02b31;}
+	.blocVLD{background:/*#870128*/#a30132;}
+	
+	.blocMenu{padding:6px 0;height:266px;}
+	
+	.blocMenu h2{font:bold 18px arial, helvetica, sans-serif;color:#fff;margin:0 6px 8px 6px;}
+	.blocPassPass h2, .blocSuivi h2{height:34px;padding:108px 0 0 8px;}
+	.blocInfosTpsReel h2, .blocAlertesSMS h2, .blocVLS h2, .blocVLD h2{height:44px;padding:108px 0 0 8px;}
+	.blocPassPass h2{background:url(../assets/mon_compte/pictos/picto_passpass.png) no-repeat 50% 8px;}
+	.blocSuivi h2{background:url(../assets/mon_compte/pictos/picto_suivi.png) no-repeat 50% 8px;}
+	.blocInfosTpsReel h2{background:url(../assets/mon_compte/pictos/picto_infos.png) no-repeat 50% 8px;}
+	.blocAlertesSMS h2{background:url(../assets/mon_compte/pictos/picto_trafic.png) no-repeat 50% 8px;}
+	.blocVLS h2, .blocVLD h2{background:url(../assets/mon_compte/pictos/picto_vlille.png) no-repeat 50% 8px;}
+	
+	.blocMsg h2{width:408px;height:120px;margin:16px 0 0 0;background:url(../assets/mon_compte/accueil/titre_accueil.gif) no-repeat 0 0;text-indent:-5000px;}
+	
+	.blocMenu h2 .preTitre{display:block;font-size:14px;}
+	.blocMenu h2 .uppercase{text-transform:uppercase;}
+	
+	.blocMenu p{font:13px arial, helvetica, sans-serif;color:#fff;padding:0 8px 0 8px;margin:0 6px;}
+	.blocMsg p{font:14px/21px arial, helvetica, sans-serif;color:#596666;padding:30px 30px 0 32px;}
+	
+	.blocMenu ul{margin:0;list-style:none;}
+	.blocMenu ul li{padding:2px 14px;margin:0 0 6px 0;background:url(../assets/mon_compte/puces/puce_menuD.png) no-repeat 14px 2px;}
+	.blocMenu ul li span{display:block;padding:0 0 0 24px;text-decoration:none;color:#fff;font:12px/14px arial, helvetica, sans-serif;}
+	/*.blocMenu ul li span:hover{text-shadow: 0.1em 0.1em #fff;}*/
+	
+		/*Fond des li selon bloc*/
+		/*.blocPassPass .blocMenu ul li{background-color:#641971;}*/
+		/*.blocPassPass .blocMenu ul li span:hover{text-shadow: 0.1em 0.1em #982ba9;}*/
+		/*.blocSuivi .blocMenu ul li{background-color:#357183;}*/
+		/*.blocSuivi .blocMenu ul li span:hover{text-shadow: 0.1em 0.1em #4e93a6;}*/
+		
+			
+	.blocLien{height:40px;}
+	.blocLien a{display:block;width:100%;height:100%;background:url(../assets/mon_compte/puces/puce_accueil.png) no-repeat 171px 50%;font:bold 13px/40px arial, helvetica, sans-serif;text-align:center;color:#fff;text-decoration:none;}
+	
+		/*Couleur du BlocLien*/
+		.blocPassPass .blocLien{background:/*#1e5c71*/#541261;}
+		.blocSuivi .blocLien{background:/*#a6120d*/#184b5e;}
+		.blocInfosTpsReel .blocLien{background:#285901;}
+		.blocAlertesSMS .blocLien{background:#d34e02;}
+		.blocVLS .blocLien{background:/*#4a0b46*/#c01e25;}
+		.blocVLD .blocLien{background:/*#6d011a*/#8b0122;}
+	
+		/*Mise en place des coins inversés*/
+		.coins_inverses .coinHG_inv, .coins_inverses .coinHD_inv, .coins_inverses .coinBG_inv, .coins_inverses .coinBD_inv{position:absolute;display:block;width:6px;height:6px;z-index:10;}
+		.coins_inverses .coinHG_inv{top:0;left:0;background:url(../assets/mon_compte/coins/coinHG_inv.png) no-repeat 0 0;}
+		.coins_inverses .coinHD_inv{top:0;right:0;background:url(../assets/mon_compte/coins/coinHD_inv.png) no-repeat 0 0;}
+		.coins_inverses .coinBG_inv{bottom:0;left:0;background:url(../assets/mon_compte/coins/coinBG_inv.png) no-repeat 0 0;}
+		.coins_inverses .coinBD_inv{bottom:0;right:0;background:url(../assets/mon_compte/coins/coinBD_inv.png) no-repeat 0 0;}
+
+		/*sans coins pour ie6*/
+		* html .coins_inverses .coinHG_inv, * html .coins_inverses .coinHD_inv, * html .coins_inverses .coinBG_inv, * html .coins_inverses .coinBD_inv{display:none;}
+		* html .blocLien a{background-image:url(../assets/mon_compte/ie6/puce_accueil.gif);}
+		* html .blocPassPass h2{background-image:url(../assets/mon_compte/ie6/picto_passpass.gif);}
+		* html .blocSuivi h2{background-image:url(../assets/mon_compte/ie6/picto_suivi.gif);}
+		* html .blocInfosTpsReel h2{background-image:url(../assets/mon_compte/ie6/picto_infos.gif);}
+		* html .blocAlertesSMS h2{background-image:url(../assets/mon_compte/ie6/picto_trafic.gif);}
+		* html .blocVLS h2{background-image:url(../assets/mon_compte/ie6/picto_vlille_vls.gif);}
+		* html .blocVLD h2{background-image:url(../assets/mon_compte/ie6/picto_vlille_vld.gif);}
+
+
+	/* Mise en page de la page Suivi
+	=========================================================================================== */
+		
+		/*Tableau Suivi*/
+		table.table_suivi{width:100%;margin:30px 0 10px 0;}
+			table.table_suivi tr.tr_head{background:#bbb7b2;}
+			table.table_suivi tr.tr_item, table.table_suivi tr.tr_itemCT, table.table_suivi tr.tr_itemCB{background:#fff;}
+			table.table_suivi tr.tr_recap td.trrecap_nom, table.table_suivi tr.tr_recap td.trrecap_donnees{background:#fff;}
+			table.table_suivi tr .ligneform_Inter{background:none;}
+			table.table_suivi tr .ligneform_Inter p{font:14px/16px Arial, helvetica, sans-serif;}
+			table.table_suivi tr .ligneform_Inter p.td_libelle{color:#fff;font-weight:bold;margin:0;padding:12px 0;}
+			table.table_suivi tr .ligneform_Inter p.td_ligne_item{font:14px/16px Arial, helvetica, sans-serif;color:#665e56;margin:0;padding:10px;}
+			table.table_suivi tr .ligneform_Inter p.td_ligne_item_refus{font:14px/16px Arial, helvetica, sans-serif;color:#665e56;margin:0;padding:10px;background:#ff3300;}
+			table.table_suivi tr .ligneform_Inter p.td_ligne_item_centre{margin:0;text-align:center;padding:0;}
+			table.table_suivi tr .ligneform_Inter p.td_ligne_item_prix{font:14px/16px Arial, helvetica, sans-serif;font-weight:bold;color:/*#ce483d*/#498a9c;}
+			table.table_suivi tr .ligneform_Inter p.td_ligne_item_port{color:#CE483D;}
+			table.table_suivi tr .ligneform_Inter p.td_ligne_recap{margin:0;padding:12px 12px 10px 0;}
+				
+			table.table_suivi tr td{border:4px solid #eee;}
+			table.table_suivi tr.tr_head td{border-top:1px solid #95928e;}
+			table.table_suivi tr.tr_itemCT td, table.table_suivi tr.tr_item td{}
+			table.table_suivi tr.tr_itemCB td{}
+			table.table_suivi tr.tr_recap td{}
+			table.table_suivi td.tableSuivi_col1{width:220px;}
+			table.table_suivi td.tableSuivi_col2{width:200px;}
+			table.table_suivi td.tableSuivi_col3{width:230px;}
+			table.table_suivi td.tableSuivi_col4{width:128px;}
+			table.table_suivi td.tableSuivi_col5{width:90px;}
+			
+			table.table_suivi tr.tr_footer td{height:20px;background:url(../assets/mon_compte/structure/bg_separation.png) repeat-x 0 0;}
+			
+			table.table_suivi tr.tr_item td a.bt_modifier_suivi{display:block;float:right;width:22px;height:22px;margin:0 0 0 8px;overflow:hidden;font-size:0;line-height:0;text-indent:-5000px;background:url(../assets/mon_compte/boutons/tableau/bt_modifier_suivi_bleu.gif) no-repeat 0 0;}
+			table.table_suivi tr.tr_item td a.bt_modifier_suivi:hover{background-position:0 -22px;}
+			
+			table.table_suivi tr.tr_item td a.bt_imprimer_suivi{display:block;float:right;width:22px;height:22px;margin:0 0 0 8px;overflow:hidden;font-size:0;line-height:0;text-indent:-5000px;background:url(../assets/mon_compte/boutons/tableau/btn_print.png) no-repeat 0 0;}
+			
+			table.table_suivi tr.tr_item td a.bt_recommencer_suivi{display:block;float:right;width:22px;height:22px;margin:0 0 0 8px;overflow:hidden;font-size:0;line-height:0;text-indent:-5000px;background:url(../assets/mon_compte/boutons/tableau/picto_recommencer.gif) no-repeat 0 0;}
+			/*table.table_suivi tr.tr_item td a.bt_imprimer_suivi:hover{background-position:0 -22px;}*/
+		
+		/*Modification des informations d'une personne*/
+		#ligne_information.element_compte p{margin:0;}		
+
+	
+	/*Mise en page de la page d'Gérer mes infos en temps réel
+	=========================================================================================== */
+	.p_infos_entpsreel #page_bottom #secondFooter,  .p_newsletter #page_bottom #secondFooter{padding:0;border:1px solid #eee;border-width:1px 0 0 0;}
+	
+	.moncompte_infosTpsReel{float:left;width:443px;min-height:430px;padding:0 0 10px 0;}
+	.moncompte_passagesBus{border:1px solid #b5b5b5;border-width:0 1px 0 0;}
+	.moncompte_stationsVlille{border:1px solid #fefefe;border-width:0 0 0 1px;}
+	
+	#moncompte_page .page_content .moncompte_infosTpsReel h3{display:block;height:61px;padding:1px 1px 1px 0;background:url(../assets/mon_compte/structure/infos_temps_reel/bg_titre.gif) no-repeat 0 0;}
+	#moncompte_page .page_content .moncompte_infosTpsReel h3 span{display:block;padding:0 0 0 80px;background:url(../assets/mon_compte/structure/infos_temps_reel/pictos_titres.png) no-repeat 0 0;font:bold 16px/61px arial, helvetica, sans-serif;text-transform:none;}
+	#moncompte_page .page_content .moncompte_infosTpsReel h3.infosBus{color:#78a000;}
+	#moncompte_page .page_content .moncompte_infosTpsReel h3.infosBus span{background-position:0 0;}
+	#moncompte_page .page_content .moncompte_infosTpsReel h3.infosVelo{color:#e4232f;}
+	#moncompte_page .page_content .moncompte_infosTpsReel h3.infosVelo span{background-position:0 -63px;}
+	
+	#moncompte_page .page_content .colonne{padding:5px 10px;}
+	
+	#moncompte_page .page_content table{border-collapse:collapse;/*margin:24px 0;*/}
+	
+	#moncompte_page .page_content  #ctl00_Contenu_DivUpload table{margin:24px 0;}
+
+	table.tableMT_propassages{margin:5px 0 0px 0;}
+	table.tableMT_propassages:first-child{margin:0;}
+		table.tableMT_propassages tr.tableMT_PP_lignepcl{height:88px;margin:0;padding:0;}
+			table.tableMT_propassages tr td.tPP_col1, table.tableMT_propassages tr td.tPP_col2, table.tableMT_propassages tr td.tPP_col3{border:1px solid #fff;}
+			table.tableMT_propassages tr td.tPP_col1{width:110px;background:#78a000;color:#fff;font-weight:bold;font-size:/*1.2em*/1em;line-height:1.3em;text-align:left;padding:0 10px;}
+			table.tableMT_propassages tr td.tPP_col2{width:90px;/*width:90px;*/background:#b0b5b5;color:#4a5555;font-weight:bold;font-size:1.2em;line-height:1.3em;text-align:center;}
+			table.tableMT_propassages tr td.tPP_col3{width:199px;background:#fff;}
+			
+			table.tableMT_propassages tr td.tPP_col3 table{width:199px;height:100%;min-height:87px;}
+			
+			table.tableMT_propassages tr td.tPP_col3 td.tPP_col3_ligne1, table.tableMT_propassages tr td.tPP_col3 td.tPP_col3_ligne2{height:39px;padding:0 7px;background: url(../assets/mon_compte/structure/infos_temps_reel/bg_celTable.gif) repeat-x 0 0;}
+			table.tableMT_propassages tr td.tPP_col3 td.tPP_col3_ligne1, table.tableMT_propassages tr td.tPP_col3 td.tPP_col3_ligne2{color:#655d55;font:12px Arial, Helvetica, sans-serif;}
+			table.tableMT_propassages tr td.tPP_col3 td.tPP_btsuppr{width:26px;padding:0;text-align:center;background:#77abc4;}
+			
+			table.tableMT_propassages tr td.tPP_col3 table tr td a.bt_suppresion{display:block;width:14px;height:14px;margin:0 auto;background:url(../assets/mon_compte/structure/infos_temps_reel/picto_croix.gif) no-repeat 0 0;}
+			
+	table.tableMT_stationsVlille{margin:5px 0 0 0;}
+	table.tableMT_stationsVlille:first-child{margin:0;}
+		table.tableMT_stationsVlille tr{height:48px;margin:0;padding:0;}
+			table.tableMT_stationsVlille tr td.tSVL_col1, table.tableMT_stationsVlille tr td.tSVL_col2, table.tableMT_stationsVlille tr td.tSVL_col3{border:1px solid #fff;}
+			table.tableMT_stationsVlille tr td.tSVL_col1{width:158px;padding:0 10px;background-color:#e4232f;color:#fff;font-weight:bold;font-size:1.1em;line-height:1.3em;text-align:left;}
+			table.tableMT_stationsVlille tr td.tSVL_col2{width:201px;padding:0 7px;background: url(../assets/mon_compte/structure/infos_temps_reel/bg_celTable.gif) repeat-x 0 0;color:#333;font-size:0.9em;line-height:1.1em;text-align:right;}
+			table.tableMT_stationsVlille tr td.tSVL_col3{width:26px;padding:0;text-align:center;background:#77abc4;}
+				table.tableMT_stationsVlille tr td.tSVL_col3 a.bt_suppresion_rouge{display:block;width:14px;height:14px;margin:0 auto;background:url(../assets/mon_compte/structure/infos_temps_reel/picto_croix.gif) no-repeat 0 0;}
+	
+	
+	.MessageReseau, .MessageReseau_secondaire{margin:0 0 20px 0;}
+	.MessageReseau p{border:1px solid #fff;border-width:1px 1px 1px 0;padding:12px 20px;color:#3d3d3d;font:14px/19px arial, sans-serif;text-align:justify;background:url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;}
+	.MessageReseau p span, .MessageReseau_secondaire p span{color:#3d3d3d;}
+	.MessageReseau p span.titre, .MessageReseau_secondaire p span.titre{display:block;font-weight:;}
+
+	.MessageReseau_secondaire{margin:0 0 10px 0;background:#fefccc url(../assets/mon_compte/pictos/pictos_alertes_fleche.png) no-repeat 132px 1px;}
+	.MessageReseau_secondaire p{border:1px solid #fff;padding:16px 20px 12px 20px;color:#3d3d3d;font:14px/19px arial, sans-serif;text-align:justify;background:url(../assets/mon_compte/structure/bg_label_msgReseau.gif) repeat-y right 0;}
+	
+		/*Couleur Message Erreur*/
+		.MessageReseau.MessageReseauRouge{border-left:8px solid #cf202b;background:#fff url(../assets/mon_compte/pictos/fleche_rouge.gif) no-repeat 0 16px;}
+		.MessageReseau.MessageReseauVert{border-left:8px solid #78a000;background:#fff url(../assets/mon_compte/pictos/fleche_verte.gif) no-repeat 0 16px;}
+		.MessageReseau.MessageReseauVertF{border-left:8px solid #005e37;background:#fff url(../assets/mon_compte/pictos/fleche_verte_foncee.gif) no-repeat 0 16px;}
+		.MessageReseau.MessageReseauGris{border-left:8px solid #4a5555;background:#fff url(../assets/mon_compte/pictos/fleche_grise.gif) no-repeat 0 16px;}
+		.MessageReseau.MessageReseauBleu{border-left:8px solid #77abc4;background:#fff url(../assets/mon_compte/pictos/fleche_bleu.gif) no-repeat 0 16px;}
+		
+		.MessageReseau_secondaire.MessageReseauOrange{background-color:#feebcc;}
+		.MessageReseau_secondaire.MessageReseauOrange p{background:url(../assets/mon_compte/structure/bg_label_msgReseau_orange.gif) repeat-y right 0;}
+		
+		.MessageReseauRouge span.titre{color:#cf202b;}		
+		.MessageReseauVert span.titre{color:#78a000;}		
+		.MessageReseauVertF span.titre{color:#005e37;}		
+		.MessageReseauGris span.titre{color:#4a5555;}		
+		.MessageReseauBleu span.titre{color:#77abc4;}		
+		.MessageReseauOrange span.titre{color:#f29500;}		
+		
+	.moncompte_infosTpsReel_boutons{float:left;width:443px;height:83px;background:url(../assets/mon_compte/structure/infos_temps_reel/bg_ligne_bouton.gif) repeat-x 0 0;}
+	.moncompte_infosTpsReel_boutons p{text-align:center;}
+	.moncompte_infosTpsReel_boutons p a{display:block;width:286px;height:63px;margin:10px auto;background:url(../assets/mon_compte/boutons/actions/btR_w286.png) no-repeat 0 0;text-decoration:none;}
+	.moncompte_infosTpsReel_boutons p a span{display:block;width:240px;text-align:center;font:bold 15px arial, sans-serif;float:left;}
+	.moncompte_infosTpsReel_boutons.moncompte_passagesBus p a span{color:#789f00;padding:21px 0;cursor:pointer;}
+	.moncompte_infosTpsReel_boutons.moncompte_stationsVlille p a span{color:#e4222e;padding:12px 0;cursor:pointer;}
+
+	/* Mise en Page de l'ajout d'un passage de Bus
+	=========================================================================================== */
+	.ajt_passageBus{width:856px;margin:30px 0 0px 0 !important;}
+	.ajt_passageBus .ajt_passageBus_modeA, .ajt_passageBus .ajt_passageBus_ou, .ajt_passageBus .ajt_passageBus_modeB{display:block;float:left;overflow:hidden;}
+	.ajt_passageBus .ajt_passageBus_modeA, .ajt_passageBus .ajt_passageBus_modeB{width:400px;}
+	.ajt_passageBus .ajt_passageBus_ou{width:56px;}
+
+	.ajt_passageBus .lign_searchBus{font:14px/17px arial,helvetica,sans-serif;overflow:hidden;}
+	
+	.ajt_passageBus .lign_searchBus .lign_searchBus_content{background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;border:1px solid #fff;margin: 0 0 5px;}
+	.ajt_passageBus .lign_searchBus .lign_searchBus_content h5{color:#3d3d3d;display:block;float:none;font:bold 14px/19px arial,helvetica,sans-serif;overflow:hidden;padding:12px 20px;text-align:justify;}
+	
+	.ajt_passageBus  table{margin:5px 10px 10px 10px;height:22px;}
+	
+	.ligne_searchBus_demibloc table tr td.rcbInputCell input.rcbInput {width:260px !important;}
+	.ligne_searchBus_demibloc table tr td.tabHligne_col2 .RadComboBox {width:306px !important;*width:296px !important;}
+	.ligne_searchBus_demibloc table tr td.tabHligne_col2 .RadComboBox table{*width:296px !important;}
+	.ligne_searchBus_demibloc table tr td.tabHarret_col2 .RadComboBox {width:306px !important;*width:296px !important;}
+	.ligne_searchBus_demibloc table tr td.tabHarret_col2 .RadComboBox table{*width:296px !important;}
+		
+	.ligne_searchBus_demibloc table tr td.tabH3_col1 .RadComboBox {width:306px !important;*width:296px !important;}
+	.ligne_searchBus_demibloc table tr td.tabH3_col1 .RadComboBox table{*width:296px !important;}
+	.ligne_searchBus_demibloc table tr td.tabH3_col1 .RadComboBox {width:306px !important;*width:296px !important;}
+	.ligne_searchBus_demibloc table tr td.tabH3_col1 .RadComboBox table{*width:296px !important;}
+		
+		
+	.ligne_searchBus_demibloc table tr td input.bt_search_ok {border:0;cursor:pointer;display:block;height:37px;margin-bottom:0;width:57px;background:url(../assets/mon_compte/boutons/actions/bt_ok.png) no-repeat 0 0;color:#fff;font-weight:bold;text-indent:-500px;font-size:0;line-height:0;}
+	
+	.ajt_passageBus_ou p{text-align:center;padding:57px 0 0 0;}
+	
+	.ajt_passageBus .lign_searchBus .tab_recherchepassagebus tr td{padding:6px 0;}
+	
+	.ajt_passageBus  table.tab_tempspassages .texteorange{color:red;}
+	
+	/*Mise en Page de l'ajout d'un arrêt V'lille
+	=========================================================================================== */
+	
+	#page_inter_middle .page_content.page_carteVelo {padding:20px 0;}
+	#page_inter_middle .page_content.page_carteVelo .pageView{background:#fff;}
+	#page_inter_middle .page_content.page_carteVelo .pageView p.ligne_para_form{padding:10px 20px;}
+	.page_carteVelo .RadTabStrip{width:869px;}
+	.page_carteVelo .liste_stations th {background-color:#99cc00;color:#fff;padding: 9px 12px;text-align: center;}
+	
+	
+	/* Mise en Page des lignes d'abonnés
+	=========================================================================================== */
+	.lign_abonne{background:#fff;height:80px;font:14px/17px arial, helvetica, sans-serif;overflow:hidden;}
+	.lign_abonne_pp{margin:0 0 6px 0 !important;}
+
+		/* Modification des marges*/
+		.page_1col .lign_abonne_content{height:80px;background:#fff;margin:0 0 5px 0;overflow:hidden;}
+		.page_2col .lign_abonne_content{height:80px;background:#fff;margin:0 10px 5px 0;overflow:hidden;}
+		
+	.lign_abonne .picto, .lign_abonne_content h5, .lign_abonne_content .abonne_information, .lign_abonne_content ul{display:block;float:left;overflow:hidden;}
+	.lign_abonne_content .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 0;}
+	.lign_abonne_content .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 0;}
+	.lign_abonne_content .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 0;}
+	.lign_abonne_content h5{width:160px;height:78px;line-height:80px;padding:0;background-color:#4a5555;border:1px solid #fff;border-width:1px 0;}
+	.lign_abonne_content h5 span.abo_nomprenom{width:140px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#fff;}
+	.lign_abonne_content h5 span.abo_prenom{text-transform:capitalize;}
+	.lign_abonne_content h5 span.abo_nom{font-weight:bold;text-transform:uppercase;}
+	.lign_abonne_content p{}
+	
+	.lign_abonne_content ul.boutons_action{width:118px;margin:0;padding:0;list-style:none;}
+	.lign_abonne_content ul.boutons_action li{display:block;float:left;margin:0;list-style:0;width:118px;height:40px;line-height:10px;border:1px solid #fff;border-width:1px 0 0 0;}
+	.lign_abonne_content ul.boutons_action li:first-child{border-width:0;}
+
+	.abonne_information_content{display:block;width:490px;border:1px solid #fff;border-width:1px 0;height:78px;line-height:78px;}
+	.abonne_information ul, .abonne_information p{}
+	.abonne_information_content p{width:388px;padding:0 10px 0 4px;font:14px/18px arial, helvetica, sans-serif;color:#655d55;vertical-align:middle;display:inline-block;text-align:left;}
+	.abonne_information_content p a{font:14px/18px arial, helvetica, sans-serif;color:#655d55;}
+	.abonne_information_content.type_reabonnement {width:412px;background:url(../assets/mon_compte/abonne/picto_reabonnement.gif) no-repeat 0 0;padding:0 0 0 78px;}
+	
+	.bt_aboModifier{}
+	.bt_aboSupprimer{display:block;width:118px;height:40px;border:0;background:url(../assets/mon_compte/abonne/bt_supprimer.gif) no-repeat 0 0;font-size:0;line-height:0;text-indent:0;}
+	
+		/*Modification couleurs boutons*/
+		.p_gerer_vls .bt_aboSupprimer{background:url(../assets/mon_compte/abonne/vls/bt_supprimer.gif) no-repeat 0 0;}
+		.p_gerer_vld .bt_aboSupprimer{background:url(../assets/mon_compte/abonne/vld/bt_supprimer.gif) no-repeat 0 0;}
+		.p_alertes_sms .bt_aboSupprimer{background:url(../assets/mon_compte/abonne/alertes_sms/bt_supprimer.gif) no-repeat 0 0;}
+		
+		/*Modification de la couleur de l'abonne*/
+		.p_accueil_compte .lign_abonne_content h5{background-color:#cce12a;}
+		.p_achat_enligne .lign_abonne_content h5{background-color:#1a957c;}
+		.p_recharger_carte .lign_abonne_content h5{background-color:/*#5899aa*/#742181;}		
+		.p_recharger_carte .lign_abonne_cp2 h5{background-color:/*#5899aa*/#742181;}		
+		.p_suivi .lign_abonne_content h5{background-color:/*#ce483d*/#498a9c;}
+		.p_infos_entpsreel .lign_abonne_content h5{background-color:#689913;}
+		.p_alertes_sms .lign_abonne_content h5{background-color:#e88d14;}
+		.p_gerer_vls .lign_abonne_content h5{background-color:/*#5c0f57*/#e02b31;}
+		.p_gerer_vld .lign_abonne_content h5{background-color:/*#870128*/#a30132;}
+		
+
+	/*Mise en page d'une sous ligne*/
+	.ligne_secondaire{margin:0 0 10px 0;padding:0 0 12px 0;background:url(../assets/mon_compte/structure/bg_ligne_carte.png) repeat-x 0 bottom;}
+	.content_ligne_secondaire{border-left:5px solid #b0b3b2;}
+	.ligne_secondaire p.svd_small{margin:0 !important;border-bottom:1px solid #dfe3e2 !important;background-position:247px 0;text-indent:0;}		
+
+	.ligne_secondaire label.svd_label,  .ligne_secondaire span.svd_label{width:265px;}
+
+	/*Iformations compte VLS sur abonne*/
+	.lign_abonne_informations{background:#e9e6e3 url(../assets/mon_compte/structure/bg_ligne_carte.png) repeat-x 0 top;padding:20px;}
+	.lign_abonne_informations_content{margin:0;overflow: hidden;}
+	.lign_abonne_informations_content p{color:#4A5555;font: 14px/18px arial,helvetica,sans-serif;text-align:left;}
+	
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page des pages PASS PASS */ 
+/*************************************************************************************************************************************************************************/
+	
+	/* Mise en page Carte PASS PASS
+	=========================================================================================== */
+
+		/*Modification des marges*/
+		#page_inter_middle .page_cartepp_abonne{padding:8px 8px 0 8px;}		
+		#moncompte_page .page_cartepp_abonne .element_compte{margin:0;}
+	
+		.lign_abonne_demi{background:#fff;float:left;width:100%;margin:0 0 6px 0;height:80px;font:14px/17px arial, helvetica, sans-serif;overflow:hidden;}
+
+		/* Ligne Abonnés carte pass pass*/
+		.page_1col .lign_abonne_cp{height:80px;background:#fff;overflow:hidden;}
+		
+		
+		.lign_abonne_demi .element_suppression, .lign_abonne_demi .picto, .lign_abonne_cp h5, .lign_abonne_cp .abonne_information, .lign_abonne_cp ul{display:block;float:left;overflow:hidden;}
+		.lign_abonne_cp .element_suppression{display:block;width:25px;height:80px;}
+		.lign_abonne_cp .element_suppression a{display:block;width:25px;height:80px;background:url(../assets/mon_compte/abonne/bg_supprimer_rouge.gif) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;}
+		.lign_abonne_cp .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 0;}
+		.lign_abonne_cp .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 0;}
+		.lign_abonne_cp .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 0;}
+		.lign_abonne_cp h5{width:641px;height:80px;line-height:80px;padding:0;background-color:#fff;}
+		.lign_abonne_cp h5 span.abo_nomprenom{width:205px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#655d55;}
+		.lign_abonne_cp h5 span.abo_prenom{text-transform:capitalize;}
+		.lign_abonne_cp h5 span.abo_nom{font-weight:bold;text-transform:uppercase;}
+		
+		
+		
+		.lign_abonne_demi .element_suppression, .lign_abonne_demi .picto, .lign_abonne_cp h5, .lign_abonne_cp .abonne_information, .lign_abonne_cp ul{display:block;float:left;overflow:hidden;}
+		.lign_abonne_cp .element_suppression{display:block;width:25px;height:80px;}
+		.lign_abonne_cp .element_suppression a{display:block;width:25px;height:80px;background:url(../assets/mon_compte/abonne/bg_supprimer_rouge.gif) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;}
+		.lign_abonne_cp .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 0;}
+		.lign_abonne_cp .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 0;}
+		.lign_abonne_cp .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 0;}
+		.lign_abonne_cp h5{width:641px;height:80px;line-height:80px;padding:0;background-color:#fff;}
+		.lign_abonne_cp h5 span.abo_nomprenom{width:205px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#655d55;}
+		.lign_abonne_cp h5 span.abo_prenom{text-transform:capitalize;}
+		.lign_abonne_cp h5 span.abo_nom{font-weight:bold;text-transform:uppercase;}
+		
+		
+		.lign_abonne .picto, .lign_abonne_cp2 h5, .lign_abonne_cp2 .abo_selectionner, .lign_abonne_cp2 ul{display:block;float:left;overflow:hidden;}
+		.lign_abonne_cp2 .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 0;}
+		.lign_abonne_cp2 .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 0;}
+		.lign_abonne_cp2 .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 0;}
+		.lign_abonne_cp2 h5{width:160px;height:78px;line-height:80px;padding:0;background-color:#4a5555;border:1px solid #fff;border-width:1px 0;}
+		.lign_abonne_cp2 h5 span.abo_nomprenom{width:140px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#fff;}
+		.lign_abonne_cp2 h5 span.abo_prenom{text-transform:capitalize;}
+		.lign_abonne_cp2 h5 span.abo_nom{font-weight:bold;text-transform:uppercase;}
+		.lign_abonne_cp2 p{}
+		
+		.lign_abonne_cp2 ul.boutons_action{width:118px;margin:0;padding:0;list-style:none;}
+		.lign_abonne_cp2 ul.boutons_action li{display:block;float:left;margin:0;list-style:0;width:118px;height:40px;line-height:10px;border:1px solid #fff;border-width:1px 0 0 0;}
+		.lign_abonne_cp2 ul.boutons_action li:first-child{border-width:0;}
+
+		.abo_selectionner_content{display:block;width:490px;border:1px solid #fff;border-width:1px 0;height:78px;line-height:78px;}
+		.abo_selectionner ul, .abo_selectionner p{}
+		.abo_selectionner_content p{width:388px;padding:0 10px 0 4px;font:14px/18px arial, helvetica, sans-serif;color:#655d55;vertical-align:middle;display:inline-block;text-align:left;}
+		.abo_selectionner_content p a{font:17px/21px arial, helvetica, sans-serif;color:#655d55;}
+		.abo_selectionner_content.type_reabonnement {width:428px;background:url(../assets/mon_compte/abonne/picto_reabonnement.gif) no-repeat 0 0;padding:0 0 0 78px;}
+		
+		.bt_aboModifier{}
+		.bt_aboSupprimer{display:block;width:118px;height:40px;border:0;background:url(../assets/mon_compte/abonne/bt_supprimer.gif) no-repeat 0 0;font-size:0;line-height:0;text-indent:0;}
+		
+		.abo_selectionner_content table tr td{height:78px !important;}
+		.abo_selectionner_content table tr td p{display:block;padding:0 10px;}
+		
+		.abonne_information_content table tr td{height:78px !important;}
+		.abonne_information_content table tr td p{display:block;padding:0 10px;}
+		
+		/*
+		.lign_abonne_cp ul.boutons_action{width:118px;margin:0;padding:0;list-style:none;}
+		.lign_abonne_cp ul.boutons_action li{display:block;float:left;margin:0;list-style:0;width:118px;height:80px;}
+		.lign_abonne_cp ul.boutons_action li:first-child{}
+		*/
+		
+		.lign_abonne_cp2 ul.boutons_action{width:118px;margin:0;padding:0;list-style:none;}
+		.lign_abonne_cp2 ul.boutons_action li{display:block;float:left;margin:0;list-style:0;width:118px;height:40px;/}
+		.lign_abonne_cp2 ul.boutons_action li:first-child{}
+		
+		.lign_abonne_cp2 ul.boutons_action li input{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_bleu.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:32px 20px 32px 14px;border:0;}
+		.lign_abonne_cp2 ul.boutons_action li.texte_2l input{padding:24px 20px 24px 14px;}
+		
+		/*Ligne suivi carte pass pass*/
+		.page_1col .lign_suivi_cp{height:80px;background:#fff;overflow:hidden;}
+		
+		.lign_suivi .element_suppression, .lign_suivi .picto, .lign_suivi_cp h5, .lign_suivi_cp .abonne_information, .lign_suivi_cp ul{display:block;float:left;overflow:hidden;}
+		.lign_suivi_cp .element_suppression{display:block;width:25px;height:80px;}
+		.lign_suivi_cp .element_suppression a{display:block;width:25px;height:80px;background:url(../assets/mon_compte/abonne/bg_supprimer_rouge.gif) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;}
+		.lign_suivi_cp .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 0;}
+		.lign_suivi_cp .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 0;}
+		.lign_suivi_cp .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 0;}
+		.lign_suivi_cp h5{width:754px;height:80px;line-height:80px;padding:0;background-color:#fff;}
+		.lign_suivi_cp h5 span.abo_nomprenom{width:605px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#655d55;}
+		.lign_suivi_cp h5 span.abo_prenom{text-transform:capitalize;}
+		.lign_suivi_cp h5 span.abo_nom{font-weight:bold;text-transform:uppercase;}
+		
+		.lign_suivi_cp ul.boutons_action{width:118px;margin:0;padding:0;list-style:none;}
+		.lign_suivi_cp ul.boutons_action li{display:block;float:left;margin:0;list-style:0;width:118px;height:80px;/*line-height:80px;*/}
+		.lign_suivi_cp ul.boutons_action li:first-child{}
+		
+		.lign_suivi_cp ul.boutons_action li input{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_bleu.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:32px 20px 32px 14px;border:0;}
+		.lign_suivi_cp ul.boutons_action li.texte_2l input{padding:24px 20px 24px 14px;}
+		
+	    .lign_suivi ul.boutons_action li a{display:block;width:84px;background:url(../assets/mon_compte/passpass/bleu/bt_bleu.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:32px 20px 32px 14px;text-decoration:none;}
+	    .lign_suivi ul.boutons_action li.texte_2l a{padding:24px 20px 24px 14px;}
+	
+		/*Ligne abonné finalisation*/
+		.lign_abonne_finalisation.picto, .lign_abonne_finalisation h5, .lign_abonne_finalisation .informations_profil, .lign_abonne_finalisation p.content_bt_selection_profil, .lign_abonne_finalisation ul.content_bt_selection_profil, .lign_abonne_finalisation p.content_bt_annuler_profil{display:block;float:left;overflow:hidden;}
+		.lign_abonne_finalisation h5{width:250px;background: url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0 #fff;}
+		.lign_abonne_finalisation .informations_profil{width:/*524px*/506px;}
+		.lign_abonne_finalisation table{height:80px;}
+		.lign_abonne_finalisation ol{margin:0;list-style:none;}
+		.lign_abonne_finalisation .informations_profil ol li{font:13px/15px arial, helvetica, sans-serif;color:#665e56;padding:0 18px;}
+		.lign_abonne_finalisation .informations_profil span{display:block;font:13px/15px arial, helvetica, sans-serif !important;color:#665e56 !important;padding:0 18px;}
+		.lign_abonne_finalisation .informations_profil p{font:13px/15px arial, helvetica, sans-serif !important;color:#665e56 !important;padding:0 18px;}
+			
+		.lign_abonne_finalisation .picto{padding:0 0 0 25px !important;background-position:25px 0;}	
+		
+		/*ligne titre transport*/
+		.page_1col .lign_titre_transport{width:872px;height:80px;background:#fff;overflow:hidden;margin:0 0 6px 0;}
+		.lign_titre_transport .picto, .lign_titre h5, .lign_titre .abonne_information, .lign_titre ul{display:block;float:left;overflow:hidden;}
+		
+		.lign_titre .element_suppression{display:block;width:25px;height:80px;}
+		.lign_titre .element_suppression a{display:block;width:25px;height:80px;background:url(../assets/mon_compte/abonne/bg_supprimer_rouge.gif) no-repeat 0 0;text-indent:-5000px;font-size:0;line-height:0;}
+		.lign_titre .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 0;}
+		.lign_titre .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 0;}
+		.lign_titre .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 0;}
+		.lign_titre h5{width:666px;height:80px;line-height:80px;padding:0;background-color:#fff;}
+		.lign_titre h5 span.abo_nomprenom{width:205px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#655d55;}
+		.lign_titre h5 span.abo_prenom{text-transform:capitalize;}
+		.lign_titre h5 span.abo_nom{font-weight:bold;text-transform:uppercase;}
+		
+		.lign_titre ul.boutons_action{width:118px;margin:0;padding:0;list-style:none;}
+		.lign_titre ul.boutons_action li{display:block;float:left;margin:0;list-style:0;width:118px;height:80px;/*line-height:80px;*/}
+		.lign_titre ul.boutons_action li:first-child{}
+		
+		.lign_titre ul.boutons_action li input{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_bleu.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:32px 20px 32px 14px;border:0;}
+		.lign_titre ul.boutons_action li.texte_2l input{padding:24px 20px 24px 14px;}
+	
+		.page_achat_titre .lign_titre .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/pictos/picto_titre.gif) no-repeat 0 0;}
+		.page_achat_titre .lign_titre h5 span.desc_titre{width:620px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#655d55;}
+		
+		.lign_titre ul.boutons_action li a{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_bleu.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:32px 20px 32px 14px;text-decoration:none;}
+		.lign_titre ul.boutons_action li.texte_2l a{padding:24px 20px 24px 14px;}
+	
+		
+	/* Mise en page des pages formulaires Carte Pass Pass
+	=========================================================================================== */
+
+		/*Ligne Simple*/	
+		.lign_cp{background:#fff;font:14px/20px arial, helvetica, sans-serif;margin:5px 0 0 0;padding:2px 0;overflow:hidden;}
+		
+		.lign_cp label.cp_label, .lign_cp span.cp_result{display:block;float:left;overflow:hidden;padding:8px;}
+		.lign_cp label.cp_label, .lign_cp span.cp_label{width:206px;color:#655d55;}
+		.lign_cp span.cp_result{color:#3d3d3d;}
+
+		.bloc_separation{display:block;width:100%;height:13px;margin:1px 0 0 0;padding:0;background:url(../assets/mon_compte/structure/bg_separation.png) repeat-x 0 0;}
+
+			/* Input, textarea & co */
+			.lign_cp input[type="text"], .lign_cp input[type="password"], .lign_cp textarea, .lign_cp select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+			.lign_cp input[type="text"], .lign_cp input[type="password"]{width:234px;height:19px;line-height:19px;padding:0 5px;}
+			.lign_cp select{width:246px;height:21px;line-height:21px;padding:0 0 0 5px;}
+			.lign_cp select[disabled]{background:#ece9d8;}	
+		
+		.lign_cp_postcode input, .lign_cp_postcode span.chargement, .lign_cp_postcode span.cp_erreur{display:block;float:left;}
+		
+		/*Ligne Code postal*/	
+		.lign_cp_content_postcode{}
+		.lign_cp_content_postcode label, .lign_cp_content_postcode .contentTable {display:block;float:left;overflow:hidden;}
+		.lign_cp_content_postcode .contentTable {padding:8px;}
+			
+			table #ctl00_Contenu_ListeCommunes{width:246px !important;}
+			table #ctl00_Contenu_ListeVoies{width:246px !important;}
+			table #ctl00_Contenu_ListeNumeros{width:246px !important;}
+			
+		/*Lignes complément*/
+		.complement_adr {position:relative;width:100%;margin:10px 0 0 0;background:#fff;}
+			.complement_adr h3 {padding:5px 10px;color:#92867b !important;font:bold 14px/27px arial,helvetica,sans-serif;margin:0 !important;}
+			.complement_adr a.bt_affichage_cplmt {display:block;position:absolute;top:8px;right:503px;width:123px;height:22px;text-decoration:none;font-size:0;text-indent:-5000px;}
+			
+			/*Couleur bouton afficher/masquer*/
+			.p_recharger_carte .complement_adr a.bt_affichage_cplmt {background:url(../assets/mon_compte/boutons/actions/bt_afficher_masquer.gif) no-repeat 0 0;}
+		
+		.complement_adr #DivComplementAdresse, .complement_adr #DivReserveEntreprise{padding:25px 4px 5px 4px;background:#fff url(../assets/mon_compte/structure/bg_block_infos.png) repeat-x 0 -14px;}
+		
+		.lign_cp_cplmt{background:/*#fff*/#f3f3f3;font:14px/20px arial, helvetica, sans-serif;width:278px;float:left;margin:4px 6px 0 0;padding:2px 0;overflow:hidden;}
+		.lign_cp_cplmt.nomargin{margin-right:0;}
+		
+		.lign_cp_cplmt label.cp_label, .lign_cp_cplmt span.cp_result{display:block;float:left;overflow:hidden;padding:8px 8px;}
+		.lign_cp_cplmt label.cp_label{width:135px;color:#655d55;padding:8px 0 8px 8px;}
+		.lign_cp_cplmt span.cp_result{width:127px;color:#3d3d3d;padding:8px 8px 8px 0;}
+			
+			/* Input, textarea & co */
+			.lign_cp_cplmt input[type="text"], .lign_cp_cplmt input[type="password"], .lign_cp_cplmt select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+			.lign_cp_cplmt input[type="text"], .lign_cp_cplmt input[type="password"]{width:125px;height:20px;}
+			.lign_cp_cplmt select{width:125px;}
+
+			/*Info Bulle*/
+			a.bulle_info {font-size:11px;text-decoration:none;}
+			a.bulle_info2{font-size:11px;text-decoration:none;}
+			.bulle_info span{display:none;}
+			.bulle_info2 span{display:none;}
+			
+			a.bulle_info:hover span {display:block;z-index:160;width:276px;padding:5px;background:#fff;position:absolute;border:1px solid #d93f3f;margin:0;}
+			a.bulle_info2:hover span {display:block;z-index:160;width:276px;padding:5px;background:#fff;position:absolute;border:1px solid #78a000;margin:0;}
+			
+			a.bulle_info:hover span {width:180px !ie;}
+
+			.color_infoBulle {color:#d93f3f !important;}	
+			
+			/*Réservé aux entreprises*/
+			.complement_adr #DivReserveEntreprise .msgReserveEntreprise{padding:8px;font:14px/20px arial,helvetica,sans-serif;/*color:#5899aa;background:#deebee;*/color:#92867b;background:#e4e0db;}
+	
+		/*Lignes Informations Personnels*/
+		.cp_lign_civilite, .cp_lign_autresinfos{display:block;float:left;overflow:hidden;}
+		.cp_lign_civilite{width:129px;margin:0 1px 0 0;}
+		.cp_lign_autresinfos{width:726px;}
+		.cp_lign_autresinfos .bloc_separation{margin:1px 0 0 0 !important;width:726px !important;}
+		
+		.cp_lign_civilite .lign_cp{background:/*#deebee*/#ecdeee;border:1px solid #fff;min-height:39px;}
+		.cp_lign_civilite .lign_cp label.cp_label, .cp_lign_civilite .lign_cp span.cp_result{display:block;float:left;overflow:hidden;}
+		.cp_lign_civilite .lign_cp label.cp_label{width:52px;color:#655d55;padding:8px 0 8px 8px;}
+		.cp_lign_civilite .lign_cp span.cp_result{width:59px;color:#3d3d3d;padding:8px 8px 8px 0;}
+			
+			/* Input, textarea & co */
+			.cp_lign_civilite .lign_cp input[type="text"], .cp_lign_civilite .lign_cp select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+			.cp_lign_civilite .lign_cp input[type="text"]{width:234px;height:19px;line-height:19px;padding:0 5px;}
+			.cp_lign_civilite .lign_cp select{width:60px;height:21px;line-height:21px;padding:0 0 0 5px;}
+		
+		.cp_lign_nom, .cp_lign_nomjeunefille{display:block;float:left;overflow:hidden;width:363px;}
+		.cp_lign_prenom, .cp_lign_datenaissance{display:block;float:left;overflow:hidden;width:363px;}
+		
+		.cp_lign_autres .lign_cp{background:#fff;border:1px solid #fff;min-height:39px;}
+		.cp_lign_autres .lign_cp label.cp_label, .cp_lign_autres  .lign_cp span.cp_result{display:block;float:left;overflow:hidden;}
+		
+		.cp_lign_nom .lign_cp label.cp_label, .cp_lign_prenom .lign_cp label.cp_label{width:73px;color:#655d55;padding:8px;}
+		.cp_lign_nom .lign_cp span.cp_result, .cp_lign_prenom .lign_cp span.cp_result{width:256px;color:#3d3d3d;padding:8px;}
+		
+		.cp_lign_nomjeunefille .lign_cp label.cp_label, .cp_lign_datenaissance .lign_cp label.cp_label{width:140px;color:#655d55;padding:8px;}
+		.cp_lign_nomjeunefille .lign_cp span.cp_result, .cp_lign_datenaissance .lign_cp span.cp_result{width:189px;color:#3d3d3d;padding:8px;}
+			
+		.cp_lign_nom .lign_cp, .cp_lign_prenom .lign_cp{background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;}
+			
+			/* Input, textarea & co */
+			.cp_lign_nom .lign_cp input[type="text"], .cp_lign_nom .lign_cp select, .cp_lign_prenom .lign_cp input[type="text"], .cp_lign_prenom .lign_cp select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+			.cp_lign_nom .lign_cp input[type="text"], .cp_lign_prenom .lign_cp input[type="text"]{width:244px;height:19px;line-height:19px;padding:0 5px;}
+
+			.cp_lign_nomjeunefille .lign_cp input[type="text"], .cp_lign_nomjeunefille .lign_cp select, .cp_lign_datenaissance .lign_cp input[type="text"], .cp_lign_datenaissance .lign_cp select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+			.cp_lign_nomjeunefille .lign_cp input[type="text"], .cp_lign_datenaissance .lign_cp input[type="text"]{width:177px;height:19px;line-height:19px;padding:0 5px;}
+
+			
+		/* Votre Panier */
+		.ban_panier{display:none;width:886px;height:147px;padding:1px;background: url(../assets/mon_compte/passpass/ban_paiement.jpg) no-repeat 1px 0;margin:0 auto;}
+		.page_content .TABLE_Panier_1 {padding:3px 7px;}
+		
+		table.table_panier{width:100%;margin:0 0 10px 0;}
+			table.table_panier tr.tr_head{background:#99cc00;}
+			table.table_panier tr.tr_item, table.table_panier tr.tr_itemCT, table.table_panier tr.tr_itemCB{background:#fff;}
+			table.table_panier tr.tr_recap td.trrecap_nom, table.table_panier tr.tr_recap td.trrecap_donnees{background:#fff;}
+			table.table_panier tr .ligneform_Inter{background:none;}
+			table.table_panier tr .ligneform_Inter p{font:14px/16px Arial, helvetica, sans-serif;}
+			table.table_panier tr .ligneform_Inter p.td_libelle{color:#fff;font-weight:bold;margin:0;padding:12px 0;}
+			table.table_panier tr .ligneform_Inter p.td_ligne_item{font:14px/16px Arial, helvetica, sans-serif;color:#665e56;margin:0;padding:12px 0 12px 10px;}
+			table.table_panier tr .ligneform_Inter p.td_ligne_item_centre{margin:0;text-align:center;padding:0;}
+			table.table_panier tr .ligneform_Inter p.td_ligne_item_prix{font:14px/16px Arial, helvetica, sans-serif;font-weight:bold;color:/*#5899aa*/#742181;}
+			table.table_panier tr .ligneform_Inter p.td_ligne_item_port{color:/*#5899aa*/#742181;}
+			table.table_panier tr .ligneform_Inter p.td_ligne_recap{margin:0;padding:12px 12px 10px 0;}
+				
+			table.table_panier tr td{border:4px solid #eee;}
+			table.table_panier tr.tr_head td{/*border:1px solid #f8f8f8;border-width:0 2px 4px 0;*/}
+			table.table_panier tr.tr_itemCT td, table.table_panier tr.tr_item td{/*border:1px solid #f8f8f8;border-width:0 2px 0 0;*/}
+			table.table_panier tr.tr_itemCB td{/*border:1px solid #f8f8f8;border-width:0 2px 4px 0;*/}
+			table.table_panier tr.tr_recap td{/*border:1px solid #f8f8f8;border-width:0 2px 4px 0;*/}
+			table.table_panier td.tablePanier_col1{width:80px;}
+			table.table_panier td.tablePanier_col2{width:260px;}
+			table.table_panier td.tablePanier_col3{width:280px;}
+			table.table_panier td.tablePanier_col4{width:89px;}
+			table.table_panier td.tablePanier_col5{width:110px;/*border-width:0 0 5px 0;*/}
+		
+		.page_content .TABLE_Panier_1 .txt_cgv{padding:10px 20px;}
+		.page_content .TABLE_Panier_1 .txt_cgv p{font:14px/17px arial, helvetica, sans-serif;color:#665e56;}
+		.page_content .TABLE_Panier_1 .txt_cgv p a{font:14px/17px arial, helvetica, sans-serif;color:#665e56;}
+		.page_content .TABLE_Panier_1 .txt_cgv p span.content_caseacocher, .page_content .TABLE_Panier_1 .txt_cgv p span.phrase_checkbox{display:block;float:left;padding:0 10px 0 0;}
+		.page_content .TABLE_Panier_1 .txt_cgv p span.content_caseacocher{margin:2px 0 0 0;width:20px;}
+		.page_content .TABLE_Panier_1 .txt_cgv p span.phrase_checkbox{width:790px;}
+		
+		/*Paiement*/
+		
+		.contenu_1{padding:10px 20px 10px 20px;font-family: Arial, Helvetica, sans-serif;color:#666;font-size:11px;text-align:center;}
+
+		.contenu_1 #ltCb{display:none;border:1px solid red;height:200px;}
+
+		.TD_Btn a{display: block;float: left;margin-right: 1px;}
+
+		/* .contenu_1 input{background:url(/assets/transpole/mon-transpole/cb.jpg) 0px 0px no-repeat;width:456px;height:88px;border-width:0px;} */
+		.contenu_1 input{width:150px;height:88px;border-width:0px;}
+		p.ligne_para_paiementsecu {padding:5px 26px;margin:10px 0 0 185px;font-family:Arial, Helvetica, sans-serif;color:#666;font-size:1em;background:url(/assets/mon_transpole/paiement_securise.png) no-repeat 0 3px;}
+		.contenu_2 img{display: inline;}
+		
+		
+	/* Mise en page Etapes Carte Pass Pass
+	=========================================================================================== */
+	#etapes_passpass{background:#eee;padding:4px 0;}
+	#etapes_passpass_content{width:880px;height:80px;margin:0 auto;}
+		#etapes_passpass ul{margin:0;padding:0;list-style:none;height:80px;}
+
+			#etapes_passpass ul li{float:left;height:80px;}
+			#etapes_passpass ul li a{font:bold 14px/80px arial, helvetica, sans-serif;color:#742181;text-decoration:none;display:block;cursor:default;text-indent:-5000px;}
+			#etapes_passpass ul li a span{display:block;height:80px;line-height:80px;padding:0;}
+			
+			#etapes_passpass ul li a span.etape01{width:158px;}
+			#etapes_passpass ul li a span.etape02{width:146px;}
+			#etapes_passpass ul li a span.etape03{width:146px;}
+			#etapes_passpass ul li a span.etape04{width:146px;}
+			#etapes_passpass ul li a span.etape05{width:147px;}
+			#etapes_passpass ul li a span.etape06{width:137px;}
+			
+		#etapes_passpass ul.menu_etapes{background:url(../assets/mon_compte/passpass/etapes_passpass.gif) no-repeat 0 0;}			
+		#etapes_passpass ul.bg_etape01{background-position:0 0;}			
+		#etapes_passpass ul.bg_etape02{background-position:0 -80px;}
+		#etapes_passpass ul.bg_etape03{background-position:0 -160px;}
+		#etapes_passpass ul.bg_etape04{background-position:0 -240px;}
+		#etapes_passpass ul.bg_etape05{background-position:0 -320px;}
+		#etapes_passpass ul.bg_etape06{background-position:0 -400px;}
+			
+	/* Mise en page Etapes Carte Pass Pass
+	=========================================================================================== */
+	
+	.etape_chargementphoto{}
+	.choix_multimedia{margin:20px 0;}
+		.choix_multimedia_content{position:relative;display:block;float:left;width:422px;height:318px;margin:0;padding:0;}
+		.choix_multi_ordi, .choix_multi_webcam{width:422px;height:305px;}
+		.choix_multi_ordi{background:url(../assets/mon_compte/passpass/bg_parordi.jpg) no-repeat 0 0;left:0;margin:0;}
+		.choix_multi_webcam{background:url(../assets/mon_compte/passpass/bg_parwebcam.jpg) no-repeat 0 0;left:0;margin:0 0 0 12px;}
+		.choix_multi_ordi p, .choix_multi_webcam p{font:14px/17px Arial, helvetica, sans-serif;color:#665e56;padding:10px 20px 10px 62px;}
+		span.color_f0147b{color:#f0147b;}
+		strong.color_f0147b{color:#f0147b;}
+		.color_57879e{color:#57879e;}
+		.color_ce483d{color:#ce483d;}
+		.color_f0147b{color:#f0147b;}
+		.color_773385{color:#773385;}
+		
+		.choix_multimedia_content .bloc_separation{width:422px;margin:0 0 0 12px;}
+		.choix_multimedia_content01 .bloc_separation{margin:0;}
+		
+		input.bt_par_ordi, input.bt_par_webcam, input.bt_validerselection, input.bt_retourchoixphoto, input.bt_validerphoto, input.bt_validerparticipation{display:block;width:286px;height:63px;border:0;padding:0;color:#fff;text-indent:-5000px;line-height:0;font-size:0;cursor:pointer;}
+		input.bt_validerselection{position:relative;width:240px;height:50px;display:block;float:left;margin:10px 0 0 0 !important;left:0 !important;clear:both;background:url(../assets/passpass/bt_validerselection.gif) no-repeat 0 0;margin:10px 0 0 0;}
+		input.bt_par_ordi{background:url(../assets/mon_compte/passpass/bt_parordi.png) no-repeat 0 0;margin:194px 0 0 79px;}
+		input.bt_par_webcam{background:url(../assets/mon_compte/passpass/bt_parwebcam.png) no-repeat 0 0;margin:194px 0 0 79px;}
+	
+	.choix_papier{display:block;background:#fff;}
+	/*.choix_papier_content{background:url(../assets/mon_compte/passpass/bg_bloc_choix.gif) no-repeat 0 0;height:52px;}*/
+	.choix_papier_content label.mc_label, .choix_papier_content span.mc_result{display:block;float:left;padding:8px;}
+	.choix_papier_content label.mc_label{width:598px;margin:0 0 0 10px;line-height:37px;font:14px/17px Arial, helvetica, sans-serif;color:#665e56;padding:20px 10px 10px 10px;}
+	.choix_papier_content span.mc_result{width:128px;}
+	.choix_papier_content span.mc_result a.bt_par_courier{display:block;width:127px;height:37px;border:0;background:url(../assets/mon_compte/passpass/bt_parcourrier.gif) no-repeat 0 0;cursor:pointer;text-indent:-5000px;font-size:0;line-height:0;}
+	
+	.etapes_photos .ligneform_texte{background:#fff;padding:10px;}
+	.etapes_photos #ctl00_Contenu_divErreur p.ligne_para_form br{display:none;}
+	.etapes_photos #ctl00_Contenu_divErreur p.ligne_para_form b{color:#f00;}
+	
+	.txt_informations p{font:18px/22px Arial, helvetica, sans-serif;color:#665e56;padding:0 0 8px 0;}	
+	.txt_informations2 p{font:16px/20px Arial, helvetica, sans-serif;color:#665e56;padding:0 0 8px 0;}	
+	.txt_informations2 ul{margin:5px 0 5px 14px;padding:0;}	
+	.txt_informations2 ul li{font:16px/20px Arial, helvetica, sans-serif;color:#665e56;}	
+	
+	.lign_photo_selection{background:#fff;font:14px/20px arial, helvetica, sans-serif;margin:5px 0 0 0;overflow:hidden;}
+	.lign_photo_selection .lign_photo_selection_content{border:1px solid #fff;background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y 231px 0;height:45px;}
+
+	.lign_photo_selection .photo_label, .lign_photo_selection .photo_result, .lign_photo_selection .bt_valider{display:block;float:left;overflow:hidden;padding:8px;}
+	.lign_photo_selection .bt_valider{float:right;padding:0;}
+	.lign_photo_selection .photo_label{width:250px;color:#655d55;padding:13px 8px;}
+	.lign_photo_selection .photo_result{width:434px;color:#3d3d3d;padding:13px 8px 0 8px;}
+	.lign_photo_selection .bt_valider{width:118px;height:45px;}
+	.lign_photo_selection .bt_valider input.bouton_enregistrer {display:block;width:118px;height:45px;color:#3d3d3d;background:url(../assets/mon_compte/passpass/bt_valider_selection.gif) no-repeat 0 0 !important;border:0;line-height:0;text-indent:-5000px;font-size:0;cursor:pointer;}
+	
+	.etape_rogage{width:422px;min-height:318px;margin:20px auto 0 auto;}
+	.etape_rogage .bloc_parametre_valider{width:422px;min-height:305px;background:url(../assets/mon_compte/passpass/bg_bloc_parametre_fd.gif) repeat-y 0 0;padding:0 0 20px 0;}
+	.etape_rogage .bloc_parametre{width:422px;min-height:305px;background:url(../assets/mon_compte/passpass/bg_bloc_parametre_haut.gif) no-repeat 0 0;}
+	.bloc_parametre p{font:14px/17px Arial, helvetica, sans-serif;color:#665e56;padding:10px 20px 10px 62px;}
+	.bloc_parametre .action_rogner{position:relative;width:240px;/*margin:5px 0 0 112px;*/margin:5px 0 0 0;left:112px;}
+	
+	.etape_validation{width:422px;height:530px;margin:20px auto 0 auto;}
+	.etape_validation .bloc_parametre{width:422px;height:517px;background:url(../assets/mon_compte/passpass/bg_bloc_parametre_haut.gif) no-repeat 0 0;}
+	.etape_validation .bloc_parametre input.bt_validerphoto {width:240px;height:50px;margin:10px 0;}
+
+	.bloc_parametre p{font:14px/17px Arial, helvetica, sans-serif;color:#665e56;padding:10px 20px 10px 62px;}
+	.bloc_parametre .action_qualite{position:relative;width:240px;/*margin:5px  0 0 112px;*/margin:5px 0 0 0;left:112px;}
+		
+	.cadre_points_top, .cadre_points_bottom{width:240px;height:17px;}
+	.cadre_points_top{background:url(../assets/mon_compte/passpass/pointillet_top.png) no-repeat 0 0;} 
+	.cadre_points_bottom{height:23px;background:url(../assets/mon_compte/passpass/pointillet_bottom.png) no-repeat 0 0;}
+	.cadre_points_inter{width:190px;background:url(../assets/mon_compte/passpass/pointillet_inter.gif) repeat-y 0 0;padding:0 25px;}
+	.cadre_points_inter2{width:240px;background:url(../assets/mon_compte/passpass/pointillet_inter.gif) repeat-y 0 0;padding:0;}
+	
+	
+	.imgrecadre {padding:0 21px;}
+	
+	/* Mise en page Profils
+	=========================================================================================== */
+
+		/*Modification des marges*/
+		#page_inter_middle .page_passpass_profils{padding:0 2px;}		
+		#moncompte_page .page_passpass_profils .element_compte{margin:0;}
+		
+		#blocInfos_header{}
+		#blocInfos_header #blocInfos_header_content{padding:35px 26px 35px 26px;background:url(../assets/mon_compte/structure/bg_block_infos.png) repeat-x 0 0;}
+		#blocInfos_header #blocInfos_header_content strong{display:block;font:18px/22px Arial, helvetica, sans-serif;color:#fff;}
+		#blocInfos_header #blocInfos_header_content p{padding:0 0 0 20px;font:14px/18px Arial, helvetica, sans-serif;color:#fff;background:url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 2px;}
+		
+		.p_recharger_carte #blocInfos_header.blockInfos_abonnepasspass{background-color:#773385;}
+		
+		/*
+		.p_recharger_carte #blocInfos_header_03.blockInfos_abonnepasspass{background-color:#773385;}
+		.p_recharger_carte #blocInfos_header_04.blockInfos_abonnepasspass{background-color:#773385;}
+		*/
+		
+			/*SVD Template : Sélection profl , pièces justificatives*/
+			.page_passpass_profils_svd .blockInfos_ligneHeader{padding:20px 0 0 0;}
+			.blockInfos_ligneHeader .blockInfos_profilpasspass{background-color:#7bb33b;margin:0 7px 0 7px;border:1px solid #fff;}
+
+				/*Sous étape VLS*/
+				.abonement_velo_etape{background-color:#742181;height:35px;padding:0 24px;margin:0;}
+				.abonement_velo_etape h3{color:#fff !important;font:normal 17px/35px arial,helvetica,sans-serif !important;font-weight:normal !important;text-transform:none !important;}
+				
+					/*Titres*/
+					
+					.vls_header{background:url(../assets/mon_compte/structure/vls/vlille_bg_badeau.gif) repeat-x 0 0;}
+					.vls_header .vls_header_content{padding:35px 26px 35px 26px;;background:url(../assets/mon_compte/structure/vls/vlille_bandeau.gif) no-repeat right 0;}
+					
+					.blockVls_ligneOuiNon_fd{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right bottom;margin:0 0 3px 0;min-height:110px;}
+					.blockVls_ligneOuiNon_fd .vls_header_content .question_vls p{background:url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 45px !important;color:#fff;font: 21px/25px Arial,helvetica,sans-serif;padding: 42px 20px !important;}
+					.blockVls_ligneOuiNon{min-height:128px;}
+					.blockVls_ligneOuiNon_min{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right 0;margin:0 0 3px 0;}
+					.blockVls_ligneOuiNon_min2{background:#e43039;margin:0 0 3px 0;}
+					
+					.blockVls_ligneOuiNon_min .vls_header_content{padding:0 26px;height:55px;}
+					.blockVls_ligneOuiNon_min .vls_header_content h4{font:24px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+					.blockVls_ligneOuiNon_min2 .vls_header_content{padding:0 26px;height:55px;}
+					.blockVls_ligneOuiNon_min2 .vls_header_content p{font:21px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+					.blockVls_ligneOuiNon .blockVls_ligneOuiNon_content{padding:0 26px 0 26px;}
+					.blockVls_ligneOuiNon .vls_header_content .question_vls p{padding:38px 20px 10px 20px;font:21px/25px Arial, helvetica, sans-serif;color:#4a5555;background:url(../assets/mon_compte/structure/vls/puce_noire.png) no-repeat 0 43px;}
+					.blockVls_ligneOuiNon .vls_header_content .question_vls p .color_e43039{color:#e43039;}
+					
+					#blocInfos_header_03{margin:2px 0;}
+					#blocInfos_header_03.blockVls_ligneOuiNon{min-height:41px;}
+					#blocInfos_header_03.blockVls_ligneOuiNon_min .vls_header_content {height:41px;}
+					#blocInfos_header_03.vls_header .vls_header_content{background:none;}
+					#blocInfos_header_03.blockVls_ligneOuiNon_min .vls_header_content h4 {font:24px/41px Arial,Helvetica,sans-serif;}
+					
+					#blocInfos_header_04{margin:2px 0;}
+					#blocInfos_header_04.blockVls_ligneOuiNon_min2{background:url(../assets/mon_compte/structure/vls/vlille_bg_badeau.gif) repeat-x 0 0;}
+					#blocInfos_header_04.blockVls_ligneOuiNon{min-height:54px;}
+					#blocInfos_header_04.blockVls_ligneOuiNon_min .vls_header_content {height:54px;}
+					#blocInfos_header_04.vls_header .vls_header_content{background:none;}
+					#blocInfos_header_04.blockVls_ligneOuiNon_min2 .vls_header_content p{padding:14px 20px 8px 20px;font:19px/25px Arial, helvetica, sans-serif;color:#4a5555;background:url(../assets/mon_compte/structure/vls/puce_noire.png) no-repeat 0 19px;}
+					#blocInfos_header_04.blockVls_ligneOuiNon_min2 .vls_header_content p .color_e43039{color:#e43039;}			
+					
+				.p_recharger_carte #blocInfos_header.blockVls_ligneOuiNon {background-color: #e43039;}
+				/*
+				.p_recharger_carte #blocInfos_header_03.blockVls_ligneOuiNon {background-color: #e43039;}
+				.p_recharger_carte #blocInfos_header_04.blockVls_ligneOuiNon {background-color: #e43039;}
+				*/
+				#blocInfos_header.blockVls_ligneOuiNon #blocInfos_header_content{background:none;}
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon #blocInfos_header_content_03{background:none;}
+				#blocInfos_header_04.blockVls_ligneOuiNon #blocInfos_header_content_04{background:none;}
+				*/
+					/*Modification des marges*/
+					#page_inter_middle .page_passpass_profils_svd{padding:0 2px;}		
+					#moncompte_page .page_passpass_profils .element_compte_svd{margin:0;}
+				
+				.p_recharger_carte #blocInfos_header.blockVls_ligneOuiNon_fd{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right bottom;margin:0 0 3px 0;min-height:110px;}
+				/*
+				.p_recharger_carte #blocInfos_header_03.blockVls_ligneOuiNon_fd{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right bottom;margin:0 0 3px 0;min-height:110px;}
+				.p_recharger_carte #blocInfos_header_04.blockVls_ligneOuiNon_fd{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right bottom;margin:0 0 3px 0;min-height:110px;}
+				*/
+				
+				#blocInfos_header.blockVls_ligneOuiNon_fd #blocInfos_header_content .question_vls p {background: url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 45px !important;color:#fff;font: 21px/25px Arial,helvetica,sans-serif;padding: 42px 20px !important;}
+				
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon_fd #blocInfos_header_content_03 .question_vls p {background: url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 45px !important;color:#fff;font: 21px/25px Arial,helvetica,sans-serif;padding: 42px 20px !important;}
+				#blocInfos_header_04.blockVls_ligneOuiNon_fd #blocInfos_header_content_04 .question_vls p {background: url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 45px !important;color:#fff;font: 21px/25px Arial,helvetica,sans-serif;padding: 42px 20px !important;}
+				*/
+				
+				.p_recharger_carte #blocInfos_header.blockVls_ligneOuiNon_min{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right 0;margin:0 0 3px 0;}
+				/*
+				.p_recharger_carte #blocInfos_header_03.blockVls_ligneOuiNon_min{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right 0;margin:0 0 3px 0;min-height:41px;}
+				.p_recharger_carte #blocInfos_header_04.blockVls_ligneOuiNon_min{background:#e43039 url(../assets/mon_compte/structure/vls/bg_abonnes_vls_min.gif) no-repeat right 0;margin:0 0 3px 0;min-height:41px;}
+				*/
+				.p_recharger_carte #blocInfos_header.blockVls_ligneOuiNon_min2{background:#e43039;margin:0 0 3px 0;}
+				
+				/*
+				.p_recharger_carte #blocInfos_header_03.blockVls_ligneOuiNon_min2{background:#e43039;margin:0 0 3px 0;}
+				.p_recharger_carte #blocInfos_header_04.blockVls_ligneOuiNon_min2{background:#e43039;margin:0 0 3px 0;}
+				*/
+				
+				#blocInfos_header.blockVls_ligneOuiNon_min #blocInfos_header_content{padding:0 26px;height:55px;}
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon_min #blocInfos_header_content_03{padding:0 26px;height:55px;}
+				#blocInfos_header_04.blockVls_ligneOuiNon_min #blocInfos_header_content_04{padding:0 26px;height:55px;}
+				*/
+				
+				#blocInfos_header.blockVls_ligneOuiNon_min #blocInfos_header_content h4{font:24px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon_min #blocInfos_header_content_03 h4{font:24px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+				#blocInfos_header_04.blockVls_ligneOuiNon_min #blocInfos_header_content_04 h4{font:24px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+				*/
+				
+				#blocInfos_header.blockVls_ligneOuiNon_min2 #blocInfos_header_content{padding:0 26px;height:55px;}
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon_min2 #blocInfos_header_content_03{padding:0 26px;height:55px;}
+				#blocInfos_header_04.blockVls_ligneOuiNon_min2 #blocInfos_header_content_04{padding:0 26px;height:55px;}
+				*/
+				
+				#blocInfos_header.blockVls_ligneOuiNon_min2 #blocInfos_header_content p{font:21px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon_min2 #blocInfos_header_content_03 p{font:21px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+				#blocInfos_header_04.blockVls_ligneOuiNon_min2 #blocInfos_header_content_04 p{font:21px/55px Arial, Helvetica, sans-serif;color:#fff;text-transform:none;background:none;margin:0;padding:0;}
+				*/
+				
+				.blockVls_ligneOuiNon{}
+				#blocInfos_header.blockVls_ligneOuiNon #blocInfos_header_content.blockVls_ligneOuiNon_content{padding:0 26px 0 26px;}
+				/*
+				#blocInfos_header_03.blockVls_ligneOuiNon #blocInfos_header_content_03.blockVls_ligneOuiNon_content{padding:0 26px 0 26px;}
+				#blocInfos_header_04.blockVls_ligneOuiNon #blocInfos_header_content_04.blockVls_ligneOuiNon_content{padding:0 26px 0 26px;}
+				*/
+				
+				.blockVls_ligneOuiNon .question_vls, .blockVls_ligneOuiNon .reponses_vls{display:block;float:left;overflow:hidden;}
+				.blockVls_ligneOuiNon .question_vls{width:509px;}
+					#blocInfos_header.blockVls_ligneOuiNon #blocInfos_header_content .question_vls p{padding:30px 20px;font:21px/25px Arial, helvetica, sans-serif;color:#fff;background:url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 33px;}
+					/*
+					#blocInfos_header_03.blockVls_ligneOuiNon #blocInfos_header_content_03 .question_vls p{padding:30px 20px;font:21px/25px Arial, helvetica, sans-serif;color:#fff;background:url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 33px;}
+					#blocInfos_header_04.blockVls_ligneOuiNon #blocInfos_header_content_04 .question_vls p{padding:30px 20px;font:21px/25px Arial, helvetica, sans-serif;color:#fff;background:url(../assets/mon_compte/puces/puce_fleche_arrondie.png) no-repeat 0 33px;}
+					*/
+					
+				.blockVls_ligneOuiNon .reponses_vls{width:323px;}
+				
+				.blockVls_ligneOuiNon .bt_oui_vls, .blockVls_ligneOuiNon .bt_non_vls{display:block;float:left;width:63px;height:37px;margin:42px 10px 0 16px;text-indent:-5000px;border:0;cursor:pointer;font-size:0;}
+				.blockVls_ligneOuiNon .bt_oui_vls{background:url(../assets/mon_compte/structure/vls/bt_oui.png) no-repeat 0 0;}
+				.blockVls_ligneOuiNon .bt_non_vls{background:url(../assets/mon_compte/structure/vls/bt_non.png) no-repeat 0 0;margin:42px 10px 0 0;}			
+				
+				/*
+				.txt_informations_vls{background:url(../assets/mon_compte/structure/vls/illus_vlille_passpass.png) no-repeat right 0;margin:10px 0 0 0;}
+				.txt_informations_vls_content{padding:35px 55px;}
+				.txt_informations_vls_content p{font:15px/18px arial, helvetica, sans-serif;color:#4a5454;}
+				.txt_informations_vls_content p.color_742181{color:#742181;}
+					
+				.txt_informations_vls_content ul.liste_points_fort{margin:18px 0 18px 0;list-style:none;}
+				.txt_informations_vls_content ul.liste_points_fort li{font:15px/28px arial, helvetica, sans-serif;color:#4a5454;padding:0 0 0 38px;margin:7px 0;}
+				.txt_informations_vls_content ul.liste_points_fort li.point_01{background:url(../assets/mon_compte/puces/puce_01.png) no-repeat 0 0;}
+				.txt_informations_vls_content ul.liste_points_fort li.point_02{background:url(../assets/mon_compte/puces/puce_02.png) no-repeat 0 0;}
+				.txt_informations_vls_content ul.liste_points_fort li.point_03{background:url(../assets/mon_compte/puces/puce_03.png) no-repeat 0 0;}	
+				.txt_informations_vls_content ul.liste_points_fort li.point_04{background:url(../assets/mon_compte/puces/puce_04.png) no-repeat 0 0;}	
+				.txt_informations_vls_content ul.liste_points_fort li.point_05{background:url(../assets/mon_compte/puces/puce_05.png) no-repeat 0 0;}	
+				*/
+	
+				.txt_informations_vls{width:673px;margin:-10px 0 0 36px;}
+				
+				.txt_informations_vls_top{width:100%;height:82px;background:url(../assets/mon_compte/structure/vls/infos_top.png) no-repeat 0 0;}
+				.txt_informations_vls_bottom{width:100%;height:12px;background:url(../assets/mon_compte/structure/vls/infos_bottom.gif) no-repeat 0 0;}
+				.txt_informations_vls_middle{width:669px;background:#f5fbf9;border:4px solid #e4e6e5;border-width:0 4px 0 0;}
+				
+				.txt_informations_vls_content{padding:0 0;}
+				.txt_informations_vls_content p{font:16px/18px arial, helvetica, sans-serif;color:#4a5454;padding:4px 20px 10px 20px;}
+				.txt_informations_vls_content p.color_742181{color:#742181;}
+	
+				.txt_informations_vls_content ul.liste_points_fort{margin:0;list-style:none;}
+				.txt_informations_vls_content ul.liste_points_fort li{font:15px/32px arial, helvetica, sans-serif;color:#4a5454;padding:0 38px;margin:0;background:url(../assets/mon_compte/structure/vls/puce_mauve.png) no-repeat 20px 50%;border:2px solid #eee;border-width:2px 0 0 0;}
+				.txt_informations_vls_content ul.liste_points_fort li:first-child{border-width:0;}
+	
+		/* Ligne Profils */
+		.page_1col .lign_abonne_profil{height:90px;background:#fff url(../assets/mon_compte/passpass/bg_ligne_profil.gif) repeat-y 0 0;overflow:hidden;margin:8px 7px 0 7px;}
+		
+		.lign_abonne_profil .picto, .lign_abonne_profil h5, .lign_abonne_profil .informations_profil, .lign_abonne_profil .content_bt_selection_profil, .lign_abonne_profil .content_bt_annuler_profil{display:block;float:left;overflow:hidden;}
+		.lign_abonne_profil .picto{display:block;width:88px;height:90px;background:url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 50%;}
+		 .lign_abonne_profil .content_bt_selection_profil{float:right;}
+		 .lign_abonne_profil .content_bt_annuler_profil{float:right;}
+		.lign_abonne_profil .photo_titre{display:block;width:86px;height:88px;border:1px solid #fff;border-width:1px;background:url(../assets/mon_compte/abonne/picto_abonne.gif) no-repeat 0 50%;}
+		.lign_abonne_profil .picto_homme{background:#fff url(../assets/mon_compte/pictos/picto_homme.gif) no-repeat 0 50%;}
+		.lign_abonne_profil .picto_femme{background:#fff url(../assets/mon_compte/pictos/picto_femme.gif) no-repeat 0 50%;}
+		.lign_abonne_profil h5{width:160px;height:88px;line-height:88px;padding:0;background:#7bb33b;border:1px solid #fff;border-width:1px 0;}
+		.lign_abonne_profil h5 span.profil_intitule{width:140px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;text-align:center;font:bold 14px/17px arial, helvetica, sans-serif;color:#fff;text-transform:uppercase;}
+		
+		.lign_abonne_profil .informations_profil{width:484px;}
+		.lign_abonne_profil table{height:90px;}
+		.lign_abonne_profil ol{margin:0;list-style:none;}
+		.lign_abonne_profil .informations_profil ol li{font:13px/15px arial, helvetica, sans-serif;color:#665e56;padding:0 18px;}
+		.lign_abonne_profil .informations_profil span{display:block;font:13px/15px arial, helvetica, sans-serif !important;color:#665e56 !important;padding:0 18px;}
+		.lign_abonne_profil .informations_profil p{font:13px/15px arial, helvetica, sans-serif !important;color:#665e56 !important;padding:0 18px;}
+					
+		.lign_abonne_profil .content_bt_selection_profil, .lign_abonne_profil .content_bt_annuler_profil{width:118px;height:90px;}
+		.lign_abonne_profil .content_bt_selection_profil a, .lign_abonne_profil .content_bt_annuler_profil a{display:block;width:100%;height:100%;padding:0;margin:0;font-size:0;line-height:0;text-decoration:none;text-indent:-5000px;}
+		.lign_abonne_profil .content_bt_selection_profil a, .lign_abonne_profil .content_bt_annuler_profil a{background:url(../assets/mon_compte/passpass/bt_selectionner_h90.gif) no-repeat 0 0;}
+		.lign_abonne_profil .content_bt_annuler_profil a{background:url(../assets/mon_compte/passpass/bt_annuler_h90.gif) no-repeat 0 0;}
+
+		/*	
+		.lign_abonne_profil ul.content_bt_selection_profil{width:118px;margin:0;padding:0;list-style:none;}
+		.lign_abonne_profil ul.content_bt_selection_profil li{display:block;float:left;margin:0;list-style:0;width:118px;height:80px;}
+		.lign_abonne_profil ul.content_bt_selection_profil li:first-child{}
+
+	    .lign_abonne_profil ul.content_bt_selection_profil li a{display:block;width:84px;background:url(../assets/mon_compte/passpass/bleu/bt_selectionner_h90.gif) no-repeat 0 0;color:#fff;font:0;text-decoration:none;}
+		*/
+		
+			/*Page Récapitulatif*/
+			#fsProfil{margin:0 0 20px 0;}
+			#fsProfil .lign_abonne_profil_recap{background:#fff;}
+			#fsProfil .lign_abonne_profil .informations_profil{width:574px;background:#fff;}
+			#fsProfil .bloc_separation{margin:1px 0 0 7px;width:842px;}
+			#fsInfosPersonnelles .cp_lign_nom{width:726px;}
+			
+			#fsAdresse .lign_cp{background:#fff;font:14px/20px arial, helvetica, sans-serif;margin:5px 0 0 0;padding:2px 0;overflow:hidden;}
+			#fsAdresse .lign_cp label.cp_label, #fsAdresse .lign_cp span.cp_result{display:block;float:left;overflow:hidden;padding:8px;}
+			#fsAdresse .lign_cp label.cp_label, #fsContact .lign_cp label.cp_label{width:206px;color:#655d55;background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;}
+			#fsAdresse .lign_cp span.cp_result{color:#3d3d3d;}
+					
+		
+		/*Pièces justificatives*/
+		.pieces_justificative_profil{background:#fff url(../assets/mon_compte/passpass/bg_piecesjustificatievs.gif) repeat-x 0 0;margin:0 7px;border:1px solid #fff;border-width:0 1px 1px 1px;padding:26px 10px 10px 10px;}
+		.pieces_justificative_profil h4{background:transparent url(../assets/mon_compte/puces/puce_fleche_arrondie_rose.png) no-repeat 0 2px !important;font:18px/22px arial, helvetica, sans-serif !important;color:/*#5899aa*/#f0147b !important;padding:0 22px !important;}
+
+		.pieces_justificative_lignes .piece{background:#eee;margin:5px 0 0 0;height:78px;border:1px solid #fff;border-width:1px 0;}
+		.piece .piece_numero, .piece .piece_intitule, .piece .block_upload{display:block;float:left;overflow:hidden;height:78px;}
+		.piece .block_upload{float:right;}
+		.piece .piece_numero{width:82px;background:url(../assets/mon_compte/passpass/bg_numero_piece.gif) no-repeat 0 0;color:#fff;font:bold 22px/80px arial, helvetica, sans-serif;text-align:center;}
+		.piece .piece_intitule{width:360px;}
+		.piece .block_upload{width:386px;height:78px;}
+		.piece .block_upload .field{position:relative;width:100%;height:100%;background:url(../assets/mon_compte/pictos/picto_upload.gif) no-repeat 173px 0;}
+		
+		span.erreur_upload{position:absolute;top:56px;left:0;width:172px;font:10px arial;}
+		span.erreur_manque_piece{top:36px;}
+		
+		.piece .piece_intitule{width:360px;height:78px;line-height:78px;padding:0;}
+		.piece .piece_intitule span{width:334px;padding:0 10px;vertical-align:middle;display:inline-block;text-align:left;font:13px/15px arial, helvetica, sans-serif;color:#665e56;}
+		
+		.ligne_svd_message .phrase_checkbox{font-size:13px;padding:0 0 0 5px;}
+		
+/*************************************************************************************************************************************************************************/
+/* Ajout Carte */ 
+/*************************************************************************************************************************************************************************/
+
+	a.bt_interro{background: url(../assets/mon_transpole/bt_interro.png) no-repeat 0 0;display: block;float:right;right:242px;width:26px;height:24px;margin:0 0 0 10px;position: relative;padding:0;text-decoration: none !important;z-index:150;}
+	a.bt_interro:hover {z-index:151;}
+	a.bt_interro span {display:none;text-decoration:none !important;}
+	a.bt_interro:hover span {position:absolute;z-index:160;display: block;float: left;width:270px;top:-28px;left:28px;padding:5px;color: #333;text-align:left;font-weight: normal;text-decoration:none !important;background:#fff;border: 1px solid #e4232f;}
+										
+	.lign_addcard{font:14px/17px arial, helvetica, sans-serif;}
+	.lign_addcard p{border:1px solid #fff;background:#fff url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y 281px 0;margin:5px 0 0 0;}
+		
+	.lign_addcard label.svd_label, .lign_addcard span.svd_result{display:block;float:left;padding:8px 8px;}
+	.lign_addcard label.svd_label, .lign_addcard span.svd_label{width:300px;color:#655d55;}
+	.lign_addcard span.svd_result{width:522px;color:#3d3d3d;}
+	
+	
+	.lign_addcard a{font:14px/17px arial, helvetica, sans-serif;color:/*#5899aa*/#f0147b;}
+	
+		/* Input, textarea & co */
+		.lign_addcard input[type="text"], .lign_addcard input[type="password"], .lign_addcard select{border:1px solid #ccc;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:inline-block;vertical-align:top;}
+		.lign_addcard input[type="text"], .lign_addcard input[type="password"]{width:234px;height:20px;line-height:20px;padding:0 5px;}
+		.lign_addcard select{width:246px;height:21px;line-height:21px;padding:0 0 0 5px;}
+		.lign_addcard select[disabled]{background:#ece9d8;}
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page des alertes SMS */ 
+/*************************************************************************************************************************************************************************/
+
+	.sms_choisir_ligne {margin:20px 0 0 0;}
+	.sms_choisir_ligne  .lign_svd label.svd_label, .sms_choisir_ligne  .lign_svd label.svd_result, .sms_choisir_ligne  .lign_svd span.svd_button{display:block;float:left;overflow:hidden;padding:8px 8px;}
+	.sms_choisir_ligne .lign_svd label.svd_label{width:270px !important;}
+	.sms_choisir_ligne .lign_svd span.svd_result{width:446px !important;}
+	.sms_choisir_ligne .lign_svd span.svd_button{width:90px !important;padding:4px 8px;}
+	.sms_choisir_ligne .lign_svd span.svd_button input{display:block;width:90px;height:28px;background:url(../assets/mon_compte/boutons/tableau/bt_supprimer_ligne_sms.png) no-repeat 0 0;border:0;text-indent:-5000px;font-size:0;line-height:0;cursor:pointer;}
+	.sms_choisir_ligne .lign_svd span.svd_button input.bt_valider{background:url(../assets/mon_compte/boutons/tableau/bt_valider_min.png) no-repeat 0 0;}
+	
+	#sms_recevoir_informations .lign_svd p{background-position:28px 0;}
+	#sms_recevoir_informations .lign_svd label.svd_label, #sms_recevoir_informations .lign_svd span.svd_label{width:46px !important;}
+	#sms_recevoir_informations .lign_svd span.svd_result{width:776px !important;}	
+	
+	#choix_ligne_1 .lign_svd p{background-position:28px 0;}
+	#choix_ligne_1 .lign_svd label.svd_label, #sms_recevoir_informations .lign_svd span.svd_label{width:46px !important;}
+	#choix_ligne_1 .lign_svd span.svd_result{width:776px !important;}
+	
+	#choix_ligne_2 .lign_svd p{background-position:28px 0;}
+	#choix_ligne_2 .lign_svd label.svd_label, #sms_recevoir_informations .lign_svd span.svd_label{width:46px !important;}
+	#choix_ligne_2 .lign_svd span.svd_result{width:776px !important;}
+	
+	#choix_tramway .lign_svd p{background-position:28px 0;}
+	#choix_tramway .lign_svd label.svd_label, #sms_recevoir_informations .lign_svd span.svd_label{width:46px !important;}
+	#choix_tramway .lign_svd span.svd_result{width:776px !important;}
+
+	
+	/*Tableaux*/
+	table.table_ligne_sms{margin:20px 0 40px 0;width:100%;border-collapse:collapse;}
+	table.table_ligne_sms tr td{border:4px solid #eee;}
+	table.table_ligne_sms tr td p{padding:6px 12px;}
+	
+	table.table_ligne_sms tr.tr_head td.tableLigne_col02, table.table_ligne_sms tr.tr_head td.tableLigne_col03, table.table_ligne_sms tr.tr_head td.tableLigne_col04, table.table_ligne_sms tr.tr_head td.tableLigne_col05{background:#bbb7b2;border-top:1px solid #95928e;}
+	table.table_ligne_sms tr.tr_head td.tableLigne_col02 p, table.table_ligne_sms tr.tr_head td.tableLigne_col03 p, table.table_ligne_sms tr.tr_head td.tableLigne_col04 p, table.table_ligne_sms tr.tr_head td.tableLigne_col05 p{font:bold 14px/16px arial, helvetica, sans-serif;color:#fff;text-align:center;}
+	table.table_ligne_sms tr.tr_inter td{background:#fff;}
+	table.table_ligne_sms tr.tr_inter td.tableLigne_col01 p{font:14px/16px arial, helvetica, sans-serif;background:#bbb7b2;color:#fff;}
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page VLS */ 
+/*************************************************************************************************************************************************************************/
+	
+	.infos_vls_passpass{background:#fff;border:1px solid #eee;border-width:0 1px;}
+	.infos_vls_passpass_image, .infos_vls_passpass_content{display:block;float:left;overflow:hidden;min-height:194px;}
+	.infos_vls_passpass_image{width:274px;background:url(../assets/mon_compte/structure/vls/vls-passpass.jpg) no-repeat 0 0;}
+	.infos_vls_passpass_content{width:592px;padding:20px 20px 0 0;}
+	.infos_vls_passpass_content p{font:13px/17px arial, helvetica, sans-serif;color:#4a5555;padding:0 0 10px 0;}
+	.infos_vls_passpass_content p .color_732181{color:#732181;}
+	.infos_vls_passpass_content p a{font:13px/17px arial, helvetica, sans-serif;color:#732181;}
+	.infos_vls_passpass_content p.para_vls_02{font:bold 17px/20px arial, helvetica, sans-serif;color:#4a5555;}
+	
+	#vls_conditions {}
+	#vls_conditions .lign_svd p{background-position:28px 0;}
+	#vls_conditions .lign_svd label.svd_label, #vls_conditions .lign_svd span.svd_label{width:46px !important;}
+	#vls_conditions .lign_svd span.svd_result{width:776px !important;}	
+	
+	/*iframe*/
+	#DivIframe iframe{width:787px;background:#fff;padding:20px;}
+	
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page Newsletter */ 
+/*************************************************************************************************************************************************************************/
+
+	.moncompte_infosNewsletters{float:left;width:100%;min-height:/*217px*/372px;padding:0 0 10px 0;}
+	.moncompte_newsletterTranspole{border-width:0;}
+	/*.moncompte_newsletterVlille{border:1px solid #fefefe;border-width:0 0 0 1px;}*/
+	
+	#moncompte_page .page_content .moncompte_infosNewsletters h3{display:block;height:61px;padding:1px 1px 1px 0;background:url(../assets/mon_compte/structure/infos_temps_reel/bg_titre_nlT.gif) repeat-x 0 0;}
+	#moncompte_page .page_content .moncompte_infosNewsletters h3 span{display:block;padding:0 0 0 80px;background:url(../assets/mon_compte/structure/infos_temps_reel/pictos_titres.png) no-repeat 0 0;font:bold 16px/61px arial, helvetica, sans-serif;text-transform:none;}
+	#moncompte_page .page_content .moncompte_infosNewsletters h3.infosTranspole{color:#78a000;}
+	#moncompte_page .page_content .moncompte_infosNewsletters h3.infosTranspole span{background-position:0 0;}
+	#moncompte_page .page_content .moncompte_infosNewsletters h3.infosVlille{color:#e4232f;}
+	#moncompte_page .page_content .moncompte_infosNewsletters h3.infosVlille span{background-position:0 -63px;}
+	
+	#moncompte_page .page_content .colonne{padding:5px 10px;}
+		
+	.moncompte_infosNewsletters_boutons{float:left;width:443px;height:83px;background:url(../assets/mon_compte/structure/infos_temps_reel/bg_ligne_bouton.gif) repeat-x 0 0;}
+	.moncompte_infosNewsletters_boutons p{text-align:center;}
+	.moncompte_infosNewsletters_boutons p a{display:block;width:286px;height:63px;margin:10px auto;background:url(../assets/mon_compte/boutons/actions/btR_w286.png) no-repeat 0 0;text-decoration:none;}
+	.moncompte_infosNewsletters_boutons p a span{display:block;width:240px;text-align:center;font:bold 15px arial, sans-serif;}
+	.moncompte_infosNewsletters_boutons.moncompte_newsletterTranspole p a span{color:#789f00;padding:21px 0;}
+	.moncompte_infosNewsletters_boutons.moncompte_newsletterVlille p a span{color:#e4222e;padding:12px 0;}
+
+	.moncompte_infosNewsletters .champ_newsletter {padding:20px 0;}
+	.moncompte_infosNewsletters .champ_newsletter input {display:block;float:left;}
+	.moncompte_infosNewsletters .champ_newsletter input[type="text"] {width:284px;height:24px;padding:5px;border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:0 10px 0 /*26px*/0;}
+	.moncompte_infosNewsletters .champ_newsletter input[type="submit"] {width:57px;height:37px;border:0;background:url(../assets/mon_compte/boutons/actions/bt_ok.png) no-repeat 0 0;font-size:0;line-height:0;text-indent:-5000px;cursor:pointer;}
+
+	/*Messages en bloc*/
+	.MessageNewsletter{margin:0 0 20px 0;}
+	.MessageNewsletter.txt_dejainscrit{min-height:40px;background:url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;}
+	.MessageNewsletter p{border:1px solid #fff;border-width:1px 1px 1px 0;padding:12px 20px;color:#3d3d3d;font:14px/19px arial, sans-serif;text-align:justify;}
+	.MessageNewsletter p span{color:#3d3d3d;}
+	.MessageNewsletter p span.titre{display:block;font-weight:;}
+
+		/*Couleur Message Erreur*/
+		.MessageNewsletter.MessageReseauRouge{border-left:8px solid #cf202b;background:#fff url(../assets/mon_compte/pictos/fleche_rouge.gif) no-repeat 0 16px;}
+		.MessageNewsletter.MessageReseauVert{border-left:8px solid #78a000;background:#fff url(../assets/mon_compte/pictos/fleche_verte.gif) no-repeat 0 16px;}
+		.MessageNewsletter.MessageReseauVertF{border-left:8px solid #005e37;background:#fff url(../assets/mon_compte/pictos/fleche_verte_foncee.gif) no-repeat 0 16px;}
+		.MessageNewsletter.MessageReseauGris{border-left:8px solid #4a5555;background:#fff url(../assets/mon_compte/pictos/fleche_grise.gif) no-repeat 0 16px;}
+		.MessageNewsletter.MessageReseauBleu{border-left:8px solid #77abc4;background:#fff url(../assets/mon_compte/pictos/fleche_bleu.gif) no-repeat 0 16px;}
+		
+		.MessageReseauRouge span.titre{color:#cf202b;}		
+		.MessageReseauVert span.titre{color:#78a000;}		
+		.MessageReseauVertF span.titre{color:#005e37;}		
+		.MessageReseauGris span.titre{color:#4a5555;}		
+		.MessageReseauBleu span.titre{color:#77abc4;}		
+
+		
+/*************************************************************************************************************************************************************************/
+/* Mise en page Achat Ttire SVD */ 
+/*************************************************************************************************************************************************************************/
+	
+	#page_inter_middle .page_achat_titre{padding:8px 0 0 8px;}	
+	#moncompte_page .page_achat_titre .element_compte{margin:0;}
+	
+	.page_achat_titre .lign_abonne_cp .picto{display:block;width:88px;height:80px;background:#fff url(../assets/mon_compte/pictos/picto_titre.gif) no-repeat 0 0;}
+	.page_achat_titre .lign_abonne_cp h5 span.desc_titre{width:205px;padding:0 6px 0 10px;vertical-align:middle;display:inline-block;line-height:1.2;text-align:left;font:14px arial, helvetica, sans-serif;color:#655d55;}
+	
+	/*
+	.lign_abonne_cp ul.boutons_action li a{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_bleu.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:32px 20px 32px 14px;text-decoration:none;}
+	.lign_abonne_cp ul.boutons_action li.texte_2l a{padding:24px 20px 24px 14px;}
+	*/
+	
+	.lign_abonne_cp ul.boutons_action li a{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_mauve_h40.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:12px 20px 11px 14px;text-decoration:none;}
+	.lign_abonne_cp ul.boutons_action li.texte_2l a{padding:24px 20px 24px 14px;}
+	
+	.lign_abonne_cp2 ul.boutons_action li a{display:block;width:84px;background:url(../assets/mon_compte/passpass/bt_mauve_h40.gif) no-repeat 0 0;color:#fff;font:14px arial, helvetica, sans-serif;padding:12px 20px 11px 14px;text-decoration:none;}
+	.lign_abonne_cp2 ul.boutons_action li.texte_2l a{padding:24px 20px 24px 14px;}
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page Carte PASS PASS */ 
+/*************************************************************************************************************************************************************************/
+
+	.navigation_interne{width:100%;}
+	.nombre_page, .navigation_page{width:50%;}
+	.nombre_page{text-align:right;}
+	.navigation_page{text-align:left;}
+
+	.nav_debut, .nav_fin, .nav_left, .nav_right{display:block;float:left;height:28px;border:0;text-indent:-5000px;font-size:0;line-height:0;margin:0 8px 0 0;cursor:pointer;}
+	.nav_debut, .nav_fin{width:29px;}
+	.nav_left, .nav_right{width:18px;}
+	.nav_debut{background:url(../assets/mon_compte/boutons/navigation/bt_debut.png) no-repeat 0 0;}
+	.nav_left{background:url(../assets/mon_compte/boutons/navigation/bt_left.png) no-repeat 0 0;}
+	.nav_right{background:url(../assets/mon_compte/boutons/navigation/bt_right.png) no-repeat 0 0;}
+	.nav_fin{background:url(../assets/mon_compte/boutons/navigation/bt_fin.png) no-repeat 0 0;}
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page de l'impression de justification (colorbox) */ 
+/*************************************************************************************************************************************************************************/
+	.fancy_justificatif{}
+	.fancy_justificatif_entete, .fancy_justificatif_content, .fancy_justificatif_footer{margin:8px 0;background:#fafaf8;padding:10px;}
+	.fancy_justificatif_footer p input{display:block;width:200px;height:32px;margin:0 auto;background:#005E37;color:#fff;font:bold 14px/32px arial, helvetica, sans-serif;border:0;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;cursor:pointer;}
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page des Erreurs VLS/VLD */ 
+/*************************************************************************************************************************************************************************/
+	
+	/*VLS*/
+	#colorbox #liste_abo_vls .MessageErr a{display:block;min-height:20px;color:#4a5555;text-decoration:none;background:url(../assets/mon_compte/pictos/fleche_carre_min.png) no-repeat 0 3px;padding:3px 0 3px 28px;margin:0 0 10px 0;}
+	#colorbox #liste_abo_vls .MessageErr a:hover{color:#76aac2;}
+	#colorbox #liste_abo_vls .MessageErr br{display:none;}
+	
+	/*VLS*/
+	#colorbox #liste_abo_vld .MessageErr a{display:block;min-height:20px;color:#4a5555;text-decoration:none;background:url(../assets/mon_compte/pictos/fleche_carre_min.png) no-repeat 0 3px;padding:3px 0 3px 28px;margin:0 0 10px 0;}
+	#colorbox #liste_abo_vld .MessageErr a:hover{color:#76aac2;}
+	#colorbox #liste_abo_vld .MessageErr br{display:none;}
+	
+/*************************************************************************************************************************************************************************/
+/* Colorbox */ 
+/*************************************************************************************************************************************************************************/
+#cboxClose{border:0;}
+	
+/*************************************************************************************************************************************************************************/
+/* Mise en page des Erreurs */ 
+/*************************************************************************************************************************************************************************/
+
+	.lign_mandatory{overflow:hidden;padding:0 0 12px 0;background:#fff url(../assets/mon_compte/structure/bg_ligne_carte.png) repeat-x 0 bottom;margin:0 0 10px 0;}
+	.lign_mandatory p span{border:1px solid #fff;background:#fff;margin:0;font:14px/17px arial, helvetica, sans-serif;display:block;float:none;padding:12px 20px;font:14px/19px arial, helvetica, sans-serif;color:#cc0000;text-align:justify;background:url(../assets/mon_compte/structure/bg_label_svd.gif) repeat-y right 0;overflow:hidden;}
+
+	p.msg_mandatory{padding:5px 2px;font:11px/12px Arial, sans-serif;}
+	p.msg_mandatory_info{padding:12px 20px;color:#C00;}
+
+	span.etoile{font-weight:bold;color:#cc0000;}
+	
+
+/*************************************************************************************************************************************************************************/
+/* Puces text VLS - VLD Aucun client */ 
+/*************************************************************************************************************************************************************************/	
+	
+	.puce_ligne_aucun_client{display:block;float:left;margin:0 8px 2px 0;width:20px;height:21px;background:#fff url(../assets/mon_compte/puces/puce_menuD.png) no-repeat 0 0;} 
+	.espace_ligne{display:block;margin:0 0 4px 0;}

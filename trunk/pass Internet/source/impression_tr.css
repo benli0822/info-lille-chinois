@@ -1,0 +1,339 @@
+/*************************************************************************************************************************************************************************/
+/* Redefinitions des balises HTML */ 
+/*************************************************************************************************************************************************************************/
+*{margin:0;padding:0;background:none !important;}
+
+body, h1, h2, h3, h4, h5, h6, a, .input_text, select, textarea{font:0.8em Arial, Helvetica, Sans-serif;font-weight:normal;color:#000;}
+
+img{border:0}
+
+a{text-decoration:underline;outline:none;}
+a:hover{text-decoration:none;}
+
+ul{margin:0 0 0 0;}
+ol{margin:0 0 0 0;}
+
+dd{margin:0 0 0 20px;}
+
+select option{padding:0 3px;}
+
+hr{display:none;}
+
+fieldset{border:none;}
+fieldset legend{display:none;}
+
+/* Bloc contenant des floats */
+.block_float:after, .spacer{content:".";display:block;visibility:hidden;clear:both;font-size:0;line-height:0px;height:0px;width:100%;margin:0;padding:0;}
+
+/*************************************************************************************************************************************************************************/
+
+*{color:#000;}
+img{margin:6px;}
+
+/* Modifications : la couleur de fond de page - la police - l'unité utilisée pour la taille de la police  */
+body {background-color:#fff;font-family:arial !important;font-size:12px;}
+
+/*Accueil - Elements à ne pas afficher*/
+#top_services{display:none;}
+body .animation_accueil{display:none;}
+
+/*Actus page acceuil*/
+#middle_content .blocs_actu{width:100% !important;float:none;margin:0 0 20px 0 !important;font-size:14pt;}
+#middle_content .blocs_actu br{display:none !important;}
+#middle_content .gba_99cc00, #middle_content .gba_e52d87, #middle_content .gba_00b6e8, #middle_content .gba_ffcc00, #middle_content .gba_e2003b {width:100% !important;}
+
+#middle_content .blocs_actu h2 span{padding:0 !important;width:100% !important;}
+#middle_content .blocs_actu p{padding:0 0 10px 0 !important;font-size:14pt;}
+#middle_content .blocs_actu p a span{padding:0 !important;background:none;}
+#middle_content .blocs_actu p.actu_img{margin:0 10px 0 0 !important;}
+
+#middle_content #middle_middle {margin:0 0 20px 0 !important;font-size:14pt;}
+
+/* Modifications : suppression de la bordure - marges */
+#middle #content_principal, #middle #content_principal_sp {width:100%;margin:0 /*5%*/;padding:0;border:0;float:none !important;}
+
+/* Modifications : suppression de la bordure - marges */
+#middle #content_principal  p, #middle #content_principal  h2, #middle #content_principal  h3 , #middle #content_principal  h4{margin:0;padding:0 0 10px 0;}
+#middle #content_principal_sp  p, #middle #content_principal_sp  h2, #middle #content_principal_sp  h3 , #middle #content_principal_sp  h4{margin:0;padding:8px 0 10px 0;}
+h1, h2, h3, h4, h5, h6{text-transform:capitalize;margin-left:0;}
+h1{font-size:26px;font-weight:bold;}
+h2{font-size:20pt;font-weight:normal;}
+h3{font-size:18px;font-weight:normal;color:#333;}
+h4{font-size:14px;font-weight:normal;color:#c0c0c0;}
+
+
+#middle #content_principal  h4 span, #middle #content_principal_sp  h4 span{margin:0;padding:0 0 0 0;}
+
+#middle #content_principal  ul, #middle #content_principal ol, #middle #content_principal_sp  ul, #middle #content_principal_sp ol{margin:0 0 0 18px;}
+
+#middle #content_principal  table/*, #middle #content_principal_sp  table*/{width:100%;margin:0;}
+#middle #content_principal  table.table_sansfond tr td/*, #middle #content_principal_sp  table.table_sansfond tr td*/{border:none;}
+#middle #content_principal  table tr td/*, #middle #content_principal_sp  table tr td*/{/*width:100%;*/border:1px #c1c1c1 solid;}
+
+#middle #content_principal  table tr td.table3col_lignetitre, #middle #content_principal_sp  table tr td.table3col_lignetitre{font-weight:bold;color:#333;}
+
+/* Remise en état des listes à puces */
+#middle #content_principal  ul, #middle #content_principal_sp  ul{list-style:square;margin:0 0 0 20px;}
+
+/* Les éléments qui ne seront pas affichés  */
+#langues_top, #top, .menu_BAO_slim, #content_totemD, #bottom, .coins_top, .coins_bottom {display:none;}
+
+h2, h3, #contenu h3, #contenu a, a { /* Modification de la couleur des titres et liens */color :#333;}
+h3, #contenu h3{color:#99cc00;}
+
+h3.soustitre_fleche_upcs_small {color:#5A4941;margin:20px 0 0 0 !important;font-size:16px !important;}
+h3.soustitre_fleche_upcs_small:before {content:"> ";}
+
+h3.soustitre_fleche_upcs_small span.txt_carte_valide {color:#5D6976;font-size:15px;}
+#ctl00_Contenu_achat1_rptCarte_ctl04_rptCheckBox_ctl00_spanTexte i{color:#DEE6EF;padding:4px 0 0 0;}
+#ctl00_Contenu_achat1_rptCarte_ctl04_rptCheckBox_ctl00_spanTexte i:before{content:"(";}
+#ctl00_Contenu_achat1_rptCarte_ctl04_rptCheckBox_ctl00_spanTexte i:after{content:")";}
+#middle{border-top:1px solid #9f9f9f;width:auto;padding:20px 0 6px 0;}
+
+/********************************************************************************************
+								READCRUMB
+********************************************************************************************/
+
+#breadcrumb .breadcrumb-text {color:#fff;font-size:1em;line-height:32px;padding:0;font-weight:normal;width:100%;}
+	#breadcrumb .breadcrumb-text ol{list-style:none;padding:0;margin:0;}
+		#breadcrumb .breadcrumb-text li{display:inline;}
+			#breadcrumb .breadcrumb-text a {font-size:1em;color:#fff;text-decoration:none;font-weight:bold;/*padding-right:6px;*/}
+				#breadcrumb .breadcrumb-text span{padding-left:6px;padding-right:6px;border-right:1px solid #ddd;}
+				#breadcrumb .breadcrumb-text a span{background: url(../assets/breadcrumb_sep.gif) scroll no-repeat right 50%;padding-right: 11px;padding-left:0;}
+				#breadcrumb .breadcrumb-text span.sanslien{background: url(../assets/breadcrumb_sep.gif) scroll no-repeat right 50%;padding-right:10px;padding-left:5px;/*font-weight:normal;*/}
+					
+				body #breadcrumb .breadcrumb-text a, body #breadcrumb .breadcrumb-text span, body #breadcrumb .breadcrumb-text span.sanslien {color:#9f9f9f !important;font-size:10pt !important;font-weight:normal !important;}
+
+/********************************************************************************************
+								PAGES & ELEMENTS
+********************************************************************************************/
+				
+	/*Iframe*/
+	iframe.FramePageExterne {min-height:950px !important;width:100% !important;}
+	* img {vertical-align: bottom;}
+
+	.blocMT_content_iframe .fond_titre_ombre{padding:0;}
+
+	/*Horaires & co*/
+
+	.blocMT_content h3, .blocMT_content p, .blocMT_content h2{margin:0 0 10px 0;padding:0;border:0;}
+	.bloc_gestionMT .titre_premier_upcs {padding:0;margin:0;text-transform:uppercase;color:#005e37;}
+
+	.content_elementsMT .blocMT_content .sblocMT_content{width:100%;}
+	#content_principal_sp .content_elementsMT {margin:0;width:100%;}
+	.content_elementsMT .blocMT_content .sblocMT_content {width: 100%;}
+	.sbloc_pagesoutils .bloc_favoris {border:none;margin:10px 0;padding:0;width:100%;}
+	.sbloc_pagesoutils .bloc_favoris .blocFavoris_ligne_content {margin:0;width:100%;}
+
+	.sbloc_pagesoutils h3{font-weight:bold;border:1px solid #E1E1E1;border-width:0 0 1px 0;}
+	.sbloc_pagesoutils .blocFavoris_txtbrut{color:#484848;font-size:13px;font-weight:bold;margin:0 0 8px 0;}
+	
+	.sbloc_pagesoutils{font-size:12px;}
+	
+		/*Tableaux Horaires*/
+		.sblocMT_form table.tab_pagehoraires_2col{margin:10px 0;}
+	
+		.tabH2col_col1, .tabH2col_col3{width:393px;}
+		.tabH2col_col2{width:34px;}
+		input, textarea{border:1px solid #ccc;}
+		.sblocMT_form .tab_pagehoraires_2col table tr td.rcbInputCell input.rcbInput {width: 280px !important;border:1px solid #ccc !important;}
+
+		/*Mes favoris*/
+		#DivPassages .blocFavoris_ligne, #DivAlertes .blocFavoris_ligne, #DivStations .blocFavoris_ligne{border:1px dotted #e1e1e1;margin:0 0 8px 0 !important;padding:10px 10px 0 10px;}
+		.bloc_favoris a.bt_gerer_favoris{display:none;}
+		
+		.blocFavoris_ligneVelo table.tab_favVelos{width:530px !important;margin:8px 0 !important;}
+		.blocFavoris_ligneVelo table.tab_favVelos td{border:1px solid #ccc;padding:2px 5px;}
+		.blocFavoris_ligneVelo table.tab_favVelos td.favVelo_col1{width:80px !important;font-weight:bold;}
+		.blocFavoris_ligneVelo table.tab_favVelos td.favVelo_col2{width:250px !important;border-right:0;}
+		.blocFavoris_ligneVelo table.tab_favVelos td.favVelo_col3{width:80px !important;border-right:0;}
+		.blocFavoris_ligneVelo table.tab_favVelos td.favVelo_col4{width:80px !important;}
+		
+		.blocFavoris_ligneVelo table.tab_favVelos span.color_e4232f{color:#e4232f;}
+		
+		/*Achat*/
+		.bt_achat_creecompte{display:none;}
+		.bt_achat_connexion{display:none;}
+		
+		/*Rénovation de ascenseurs*/
+
+		#renovation_ascenceurs  h4{font:bold 14px arial, sans-serif;margin:20px 0 0 0 !important;color:#5A4941 !important;}
+		#renovation_ascenceurs  h4 span{color:#5A4941 !important;}
+		#renovation_ascenceurs  h4:before{content:"> ";}
+
+		#renovation_ascenceurs  table{width:650px !important;margin:0;border:0;border:1px #c1c1c1 solid;border-width:0 1px 1px 0;}
+		#renovation_ascenceurs  table table {width:100% !important;border:0;}
+		#renovation_ascenceurs  table table{border:0 !important;border-width:0 !important;}
+		#renovation_ascenceurs  table table tr td{height:20px;padding:0 10px;border:1px #c1c1c1 solid !important;border-width:1px 0 0 1px !important;}
+		#renovation_ascenceurs  table table tr td.tdasc_sepa{width:100% !important;height:0;border:0 !important;font-size:0;line-height:0;}
+	
+		/*.tableau_ascenseurs table{width:100% !important;}*/
+	
+		/*Tableau Header*/
+		td.titre_station, td.titre_dir, td.titre_dispo{border:1px #c1c1c1 solid !important;border-width:1px 0 0 1px !important;}
+		td.titre_station{width:290px !important;height:25px;padding:0 10px;}
+		td.titre_dir{width:110px !important;height:25px;padding:0 10px;}
+		td.titre_dispo{width:190px !important;height:25px;padding:0 10px;}
+				
+		/*Colonnes*/
+		td.asc_ligne, td.asc_station, td.asc_vers, td.asc_dir, td.asc_date{padding:0 10px !important;}
+		
+		/*Colonne Ligne*/
+		.ligne_vertclair td.asc_ligne, .ligne_vertfonce td.asc_ligne{width:100px !important;}
+		
+		/*Colonne Station*/
+		.ligne_vertclair td.asc_station, .ligne_vertfonce td.asc_station {width:100px !important;}
+		
+		/*Colonne Vers*/
+		.ligne_vertclair td.asc_vers, .ligne_vertfonce td.asc_vers {width:5px !important;padding:0 5px !important;}
+		
+		/*Colonne Direction*/
+		.ligne_vertclair td.asc_dir, .ligne_vertfonce td.asc_dir {width:105px !important;}
+		
+		/*Colonne Date*/
+		.ligne_vertclair td.asc_date, .ligne_vertfonce td.asc_date {width:240px !important;}
+		.ligne01 td.asc_date, .ligne02 td.asc_date {width:240px !important;}
+		
+		tr.ligne01 td.asc_ligne1:before{content:"Ligne 1";}
+		tr.ligne02 td.asc_ligne2:before{content:"Ligne 2";}
+		
+
+/********************************************************************************************
+								MON TRANSPOLE
+********************************************************************************************/
+	/*Elements à ne pas afficher*/
+	.coins_top, .coins_bottom, .elements_monTranspole .bloc_modifierinfosperso a, .elements_monTranspole .bloc_modifierinfosperso input, .sbloc_passpass .ligne_infossup_creacompte input,
+	.bloc_mesinscriptions_nl, .bloc_mescomptes input, .panels_vlsvld, .sblocMT_alertes_passages a.bt_fleche, .sblocMT_stationsVlille a.bt_fleche, .sblocMT_alertes_passages a.bt_fleche, 
+	input.bt_commanderpasspass, .bulle_info{display:none !important;}
+	
+	.ligneform_t01_Top, .ligneform_t01_Bottom, .ligneform_t02_Top, .ligneform_t02_Bottom{display:none !important;}
+	
+	.sbloc_passpass .sbloc_modifcompte .sblocMT_form p{display:none !important;}
+	
+	/*Element à réafficher*/
+	#ctl00_Contenu_PassPass_DivPassPass{display:block;}
+	
+	/*Couleurs*/
+	.elements_monTranspole .bloc_modifierinfosperso .blocMT_bonjour{color:#789F00;text-transform:uppercase;}
+	.stitre_passpass_flecheronde{color:#F0137A;}
+	
+	/*Habillage Blocs*/
+	.sbloc_passpass .ligne_infossup_creacompte{border:1px dotted #cfcfcf;margin:0 0 10px 0;padding:8px;}
+	.ligneform_Inter {margin:0;}
+	.ligneform_Inter input{width:auto !important;height:auto;border:none;font-style:italic;color:#505050;padding:0 0 0 10px;font:12px/15px arial, helvetica, sans-serif;}
+	.ligneform_Inter input[type="checkbox"]{padding:0;margin:0 10px 0 0;}
+	.ligneform_Inter textarea{width:auto !important;height:auto !important;border:none;font-style:italic;color:#505050;padding:0 0 0 10px;font:12px/15px arial, helvetica, sans-serif;}
+	.ligneform_Inter select{width:auto !important;border:none !important;font-style:italic !important;color:#505050 !important;padding:0 0 0 10px !important;font:12px/15px arial !important;}
+	.ligne_para_bouton input.boutonMT, .ligne_para_bouton a.boutonMT{display:inline !important;border:0 !important;text-indent:0 !important;color:#666 !important;font:12px/15px arial, helvetica, sans-serif !important;float:none !important;text-decoration:underline !important;text-transform:capitalize;padding:0 10px 0 0 !important;}
+	
+	#ctl00_Contenu_DivFormulaire textarea{min-height:80px !important;margin:10px 0 0 0;padding:0 !important;width:100% !important;}
+	
+	/*Texte*/
+	.passpass_nomabonne{text-transform:capitalize;font-weight:bold;}
+	.txt_italic{font-style:italic;}
+	.bloc_gestionMT .titre_premier_upcs {padding:0;margin:15px 0;text-transform:none;color:#005e37;}
+	.sblocMT_achatenligne h4, .sblocMT_aboVLS h4, .sblocMT_aboVLD h4{width:100%;padding:0;margin:0;font-size:13px;line-height:16px;font-weight:bold !important;}
+
+	.sblocMT_achatenligne h4{color:#789F00;}
+	.sblocMT_aboVLS h4{color:#811A56;}
+	.sblocMT_aboVLD h4{color:#E4232F;}
+	.sblocMT_achatenligne h4:after, .sblocMT_aboVLS h4:after, .sblocMT_aboVLD h4:after{content:" :";}
+	.sblocMT_achatenligne p, .sblocMT_aboVLS p, .sblocMT_aboVLD p{width:100%;padding:0 !important;margin:0;font-size:12px;line-height:13px;height:13px;font-weight:normal;}
+	
+	.sblocMT_achatenligne h3, .sblocMT_aboVLS h3, .sblocMT_aboVLD h3{font-size:16px;font-weight:bold !important;}
+	.sblocMT_achatenligne h3:before, .sblocMT_aboVLS h3:before, .sblocMT_aboVLD h3:before{content:"> "}
+
+	.sblocMT_aboVLS .sblocMT_table ul li{display:none;}
+	
+	.ligne_infossup{font-style:italic;border:1px solid #949494 !important;padding:8px;margin:20px 0 0 0;}
+	.ligne_infossup p{font-size:11px;color:#949494;}
+	.ligne_infossup p a{font-style:italic;font-size:11px;color:#949494;}
+	
+	p.ligne_para_interform3{color:#CB1F2A !important;font-size:11px !important;font-style:italic !important;}
+	p.ligne_para_interform2 span.oblisspadding_achat{color:#005E37 !important;font-size:11px !important;font-style:italic !important;}
+	
+	a.lien-simple, span.txt_numcommande{color:#729801 !important;}
+	
+	/*Placements/déplacements*/
+	/*
+	.sblocMT_achatenligne, .sblocMT_aboVLS, .sblocMT_aboVLD{position:relative;float:left;width:210px;}
+	.sblocMT_achatenligne{padding:0 10px 0 0;}
+	.sblocMT_aboVLS{padding:0 10px;border:1px solid #cfcfcf;border-width:0 1px;}
+	.sblocMT_aboVLD{padding:0 0 0 10px;}*/
+	
+	.tableMT_propassages{width:800px;border:1px solid #333;border-width:0 1px 1px 0;}
+	.tableMT_propassages table{border:0;width:100%;}
+	.tableMT_propassages tr td{border:1px solid #333;border-width:1px 0 2px 1px;padding:3px 8px;}
+	.tableMT_propassages table tr td{border:0;padding:0;}
+	
+	.blocMT_content table.tableMT_propassages tr td.tPP_col1 {background-color:#78A000 !important;color:#fff;font-weight: bold;}
+	
+	.tableMT_stationsVlille{width:800px;border:1px solid #333;border-width:0 1px 1px 0;}
+	.tableMT_stationsVlille table{border:0;width:100%;}
+	.tableMT_stationsVlille tr td{border:1px solid #333;border-width:1px 0 2px 1px;padding:3px 8px;}
+	.tableMT_stationsVlille tr td.tSVL_col1{background-color:#E4232F !important;font-weight:bold;color:#fff;}
+	.tableMT_stationsVlille span.color_e4232f{color:#E4232F;}
+	
+	table.etatvalidation_carte{margin:0;}
+	table.etatvalidation_carte td[width="8"]{display:none;}
+	table.etatvalidation_carte td[width="142"]{display:none;}
+	table.etatvalidation_carte td[width="10"]{display:none;}
+	table.etatvalidation_carte td[width="500"]{width:810px;}
+
+/********************************************************************************************
+								PANIER
+********************************************************************************************/
+.table_panier{width:100%;border-collapse:collapse;margin:0 0 20px 0;}
+.table_panier .tr_head td{border:1px solid #666 !important;font-weight:bold;}
+.table_panier .tr_item td{border:1px solid #666;padding:1px 5px;}
+.table_panier .tr_recap td{border:1px solid #666;padding:1px 5px;}
+.table_panier .tr_itemCT, .table_panier .tr_itemCB{border:0 !important;}
+
+/*Historique/En cours*/
+.ligneform_Inter p.ligne_para_form_indent{padding:0 0 0 0;}
+.ligneform_Inter p.ligne_para_form_indent:before{content:"- ";}
+
+/********************************************************************************************
+								PASS PASS
+********************************************************************************************/
+.lesetapes_passpass{display:none;}
+.mascotte_passpass{display:none;}
+
+.fond_passpassCiel h3{margin:8px 0 0 0;}
+.content_elementsMT .blocMT_content .fond_passpassCiel .sblocMT_form .ligne_forms {margin:8px 0;width:auto;}
+
+
+.ban_passpass {height:auto;margin:0 0 20px 0;}
+
+.bienvenue_passpass {left:0;position:relative;width: auto;}
+.bienvenue_passpass h2{color:#721F7F;font: bold 24px/24px arial,sans-serif;padding:0 !important;}
+.cartouche_passpass {display: block; margin: 12px 0 0; padding: 13px 18px 9px 0;position: relative;width: auto !important;}
+.cartouche_passpass p {font:normal 14px/16px Arial, sans-serif;padding:5px 0;}
+
+.ban_mascotteordisimple .carte_unique {left:0;top: 0;}
+.carte_unique {display: block;height:auto !important;width:100%;}
+.carte_unique p {background:none;display:block;width: auto;height:auto;font:normal 14px/16px Arial, sans-serif;text-indent:0;}
+.encart_rapide_top {height:auto !important;position:relative;left:0;top:0;width:100%;}
+.encart_rapide_top p {background: none;display: block;width:auto;height:auto;font:normal 14px/16px Arial, sans-serif;text-indent:0;}
+
+.champ_photo_specifique p{padding:0 !important;margin:0 !important;}
+
+.content_elementsMT .blocMT_content .fond_passpassCiel .sblocMT_form p {margin:0;}
+.champ_photo_specifique .para_contentlabel, .champ_photo_specifique .RadUpload {padding:0;}
+
+/********************************************************************************************
+								Points services
+********************************************************************************************/
+.content_elementsMT .blocMT_content .sblocMT_form .ligne_forms {margin:0;width:100%;}
+.pts_service{border:1px solid #DADADA;float: left;margin: 0 10px 10px 0;padding:5px;width:320px;}
+
+/********************************************************************************************
+								Recherche Stations
+********************************************************************************************/
+#ctl00_Contenu_RadTabStripStations, #carte_content{display:none !important;}
+.pageView{border-top:1px solid #898c95 !important;}
+.pageView .txtCarte{padding:20px;}
+.pageView .ligne input[type="image"] {display:none;}
+
+.pageView .liste_stations {border:1px solid #898c95 !important;}
+.pageView .liste_stations th {border-bottom:1px solid #898c95 !important;}
