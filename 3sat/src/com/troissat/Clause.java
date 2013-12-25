@@ -1,6 +1,5 @@
 package com.troissat;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -41,11 +40,21 @@ public class Clause {
 
 	private Map<Litteral, Boolean> mapLitteral = new HashMap<Litteral, Boolean>();
 
+	// constructeur pour 3 sat en special
 	public Clause(Litteral l1, Litteral l2, Litteral l3, boolean not1,
 			boolean not2, boolean not3) {
 		this.mapLitteral.put(l1, not1);
 		this.mapLitteral.put(l2, not2);
 		this.mapLitteral.put(l3, not3);
+	}
+	
+	// constructeur general
+	public Clause(Map<Litteral, Boolean> listClause){
+		this.mapLitteral = listClause;
+	}
+
+	public Map<Litteral, Boolean> getMapLitteral() {
+		return mapLitteral;
 	}
 
 	public boolean calculerVrai() {

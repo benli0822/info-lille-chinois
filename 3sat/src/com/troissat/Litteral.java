@@ -3,13 +3,13 @@ package com.troissat;
 public class Litteral {
 
 	private boolean valeur;
-	private int id;
+	private String id;
 
-	public Litteral(int id) {
+	public Litteral(String id) {
 		this.id = id;
 	}
 
-	public Litteral(int id, boolean valeur) {
+	public Litteral(String id, boolean valeur) {
 		this.id = id;
 		this.valeur = valeur;
 	}
@@ -22,11 +22,11 @@ public class Litteral {
 		this.valeur = valeur;
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

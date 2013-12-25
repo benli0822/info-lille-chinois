@@ -8,8 +8,6 @@ import java.util.List;
 
 public class ListerToutesPoss {
 
-	private static long count = 0;
-
 	/*
 	 * (v[1] || !v[2] || v[4]) && (!v[1] || v[3] || v[4]) && (!v[3] || !v[4] ||
 	 * v[2])
@@ -18,7 +16,7 @@ public class ListerToutesPoss {
 	public void lister(int n) {
 		List<Litteral> l = new ArrayList<Litteral>();
 		for (int i = 1; i <= n; i++) {
-			l.add(new Litteral(i));
+			l.add(new Litteral(Integer.toString(i)));
 		}
 		Clause c1 = new Clause(l.get(0), l.get(1), l.get(3), true, false, true);
 		Clause c2 = new Clause(l.get(0), l.get(2), l.get(3), false, true, true);
@@ -45,7 +43,6 @@ public class ListerToutesPoss {
 			}
 			Boolean res = verification.calculerVrai();
 			System.out.println(res);
-			count++;
 			c.increOne();
 		} while (!c.terminate());
 	}
