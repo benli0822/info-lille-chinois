@@ -18,6 +18,10 @@ public class Formule {
 		this.listClause.add(c);
 	}
 
+	public ArrayList<Clause> getListClause() {
+		return listClause;
+	}
+
 	public boolean calculerVrai() {
 		int n = this.listClause.size();
 		boolean bool = this.listClause.get(0).calculerVrai();

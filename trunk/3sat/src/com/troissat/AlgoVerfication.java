@@ -19,10 +19,10 @@ public class AlgoVerfication {
 		AleatoireCertificats ac = new AleatoireCertificats(4);
 		res = ac.getResultat();
 		
-		Litteral v1 = new Litteral(1, res.get(0));
-		Litteral v2 = new Litteral(2, res.get(1));
-		Litteral v3 = new Litteral(3, res.get(2));
-		Litteral v4 = new Litteral(4, res.get(3));
+		Litteral v1 = new Litteral(Integer.toString(1), res.get(0));
+		Litteral v2 = new Litteral(Integer.toString(2), res.get(1));
+		Litteral v3 = new Litteral(Integer.toString(3), res.get(2));
+		Litteral v4 = new Litteral(Integer.toString(4), res.get(3));
 
 		Clause c1 = new Clause(v1, v2, v4, true, false, true);
 		Clause c2 = new Clause(v1, v3, v4, false, true, true);
