@@ -1,110 +1,73 @@
 package com.troissat;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Vector;
 
 public class Clause {
 
-	// private Litteral[] listeLitteral;
-	//
-	// /*
-	// * pour chaque Litteral, on utilise une boolean pour savoir si il y a un !
-	// * avant le litteral
-	// */
-	// /* Si il y a un ! le valeur de boolean est true */
-	//
-	//
-	// public Clause(Litteral l1, Litteral l2, Litteral l3, boolean lb1,
-	// boolean lb2, boolean lb3) {
-	// this.listeLitteral[0] = l1;
-	// this.listeLitteral[1] = l2;
-	// this.listeLitteral[2] = l3;
-	// if (lb1) {
-	// this.listeLitteral[0].setValeur(!this.listeLitteral[0].isValeur());
-	// }
-	// if (lb2) {
-	// this.listeLitteral[1].setValeur(!this.listeLitteral[1].isValeur());
-	// }
-	// if (lb3) {
-	// this.listeLitteral[2].setValeur(!this.listeLitteral[2].isValeur());
-	// }
-	//
-	// }
-	//
-	// public boolean calculerVrai() {
-	// return (this.listeLitteral[0].isValeur()
-	// || this.listeLitteral[1].isValeur() || this.listeLitteral[2]
-	// .isValeur());
-	// }
+	private Vector<Integer> literals;
 
-	private Map<Litteral, Boolean> mapLitteral = new HashMap<Litteral, Boolean>();
-
-	// constructeur pour 3 sat en special
-	public Clause(Litteral l1, Litteral l2, Litteral l3, boolean not1,
-			boolean not2, boolean not3) {
-		this.mapLitteral.put(l1, not1);
-		this.mapLitteral.put(l2, not2);
-		this.mapLitteral.put(l3, not3);
-	}
-	
-	// constructeur general
-	public Clause(Map<Litteral, Boolean> listClause){
-		this.mapLitteral = listClause;
+	/**
+	 * Constructor for sat problem, using vector to present the clause, positive
+	 * value present the id of literal, negative value present the id and the
+	 * negation of literal
+	 * 
+	 * Using the characteristic of Set to remove all duplicate literal
+	 * 
+	 * @param literals
+	 */
+	public Clause(Vector<Integer> literals) {
+		HashSet<Integer> s = new HashSet<Integer>();
+		s.addAll(literals); // delete all duplicate literals
+		this.literals = new Vector<Integer>();
+		this.literals.addAll(s);
 	}
 
-	public Map<Litteral, Boolean> getMapLitteral() {
-		return mapLitteral;
-	}
-
-	public boolean calculerVrai() {
-		Iterator<Litteral> it = this.mapLitteral.keySet().iterator();
-		Litteral key = (Litteral) it.next(); // key
-		boolean res = key.isValeur();
-		if (this.mapLitteral.get(key))
-			;
-		else
-			res = !res;
-		while (it.hasNext()) {
-			Litteral key1 = (Litteral) it.next(); // key
-			if (this.mapLitteral.get(key1))
-				res = key1.isValeur() || res;
-			else
-				res = (!key1.isValeur()) || res;
+	/**
+	 * Checks whether this clause would be true under any assignment e.x (v[1])
+	 * && (!v[1])
+	 * 
+	 * @return
+	 */
+	public Boolean isTriviallyTrue() {
+		HashSet<Integer> lits = new HashSet<Integer>();
+		lits.addAll(literals);
+		for (int i = 0; i < literals.size(); i++) {
+			Integer literal = literals.elementAt(i);
+			if (lits.contains(-literal.intValue())) {
+				return true;
+			}
 		}
-		return res;
+		return false;
 	}
-	
-//	private ArrayList<Litteral> listeLitteral;
-//	
-//	
-//	/* pour chaque Litteral, on utilise une boolean pour savoir si il y a un ! avant le litteral*/
-//	/* Si il y a un ! le valeur de boolean est true*/
-//	
-//	public Clause(Litteral l1, Litteral l2, Litteral l3,boolean lb1,boolean lb2,boolean lb3)
-//	{
-//		this.listeLitteral = new ArrayList<Litteral>();
-//	
-//
-//		this.listeLitteral.add(l1);
-//		this.listeLitteral.add(l2);
-//		this.listeLitteral.add(l3);
-//		
-//		if(lb1){
-//			this.listeLitteral.get(0).setValeur( !this.listeLitteral.get(0).isValeur());
-//		}
-//		
-//		if(lb2){
-//			this.listeLitteral.get(1).setValeur( !this.listeLitteral.get(1).isValeur());
-//		}
-//		if(lb3){
-//			this.listeLitteral.get(2).setValeur( !this.listeLitteral.get(2).isValeur());
-//		}
-//		
-//	}
-//	
-//	public boolean calculerVrai(){
-//		return (this.listeLitteral.get(0).isValeur() ||this.listeLitteral.get(1).isValeur() ||this.listeLitteral.get(2).isValeur());
-//	}
-	
+
+	/**
+	 * Convienience method for retrieving literals
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public int getLiteral(int index) {
+		return ((Integer) (literals.get(index))).intValue();
+	}
+
+	/**
+	 * Retrieves the vector of Integers representing the literals
+	 * 
+	 * @return
+	 */
+	public Vector<Integer> getLiterals() {
+		// this function just returns the literals that form the clause
+		return literals;
+	}
+
+	public boolean unpureSymbol(int symbol) {
+		for (int i = 0, isize = literals.size(); i < isize; i++) {
+			if (((Integer) literals.elementAt(i)).intValue() == -symbol) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

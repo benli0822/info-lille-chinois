@@ -1,10 +1,11 @@
 package com.troissat;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+//import java.io.BufferedReader;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+import java.util.Vector;
+
+import model.CompleteAssignment;
 
 public class ListerToutesPoss {
 
@@ -14,21 +15,32 @@ public class ListerToutesPoss {
 	 */
 
 	public void lister(int n) {
-		List<Litteral> l = new ArrayList<Litteral>();
-		for (int i = 1; i <= n; i++) {
-			l.add(new Litteral(Integer.toString(i)));
-		}
-		Clause c1 = new Clause(l.get(0), l.get(1), l.get(3), true, false, true);
-		Clause c2 = new Clause(l.get(0), l.get(2), l.get(3), false, true, true);
-		Clause c3 = new Clause(l.get(2), l.get(3), l.get(1), false, false, true);
+		Vector<Integer> clause1 = new Vector<Integer>();
+		clause1.add(1);
+		clause1.add(-2);
+		clause1.add(4);
 
-		ArrayList<Clause> certificat = new ArrayList<Clause>();
+		Vector<Integer> clause2 = new Vector<Integer>();
+		clause2.add(-1);
+		clause2.add(3);
+		clause2.add(4);
+
+		Vector<Integer> clause3 = new Vector<Integer>();
+		clause3.add(-3);
+		clause3.add(-4);
+		clause3.add(2);
+
+		Clause c1 = new Clause(clause1);
+		Clause c2 = new Clause(clause2);
+		Clause c3 = new Clause(clause3);
+
+		Vector<Clause> certificat = new Vector<Clause>();
 
 		certificat.add(c1);
 		certificat.add(c2);
 		certificat.add(c3);
 
-		Formule verification = new Formule(certificat);
+		Formule verification = new Formule(certificat, 4);
 
 		Combination c = new Combination(4);
 
@@ -38,10 +50,9 @@ public class ListerToutesPoss {
 				System.out.print(listB[i] + " ");
 			}
 			System.out.print("=== ");
-			for (int i = 0; i < n; i++) {
-				l.get(i).setValeur(listB[i]);
-			}
-			Boolean res = verification.calculerVrai();
+			CompleteAssignment ca = new CompleteAssignment(verification);
+			ca.compelteAssignment(listB);
+			Boolean res = ca.calculerVrai();
 			System.out.println(res);
 			c.increOne();
 		} while (!c.terminate());
@@ -49,18 +60,17 @@ public class ListerToutesPoss {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BufferedReader stdin = new BufferedReader(new InputStreamReader(
-				System.in));
+		// BufferedReader stdin = new BufferedReader(new InputStreamReader(
+		// System.in));
 		try {
-			String s = null;
-			while ((s = stdin.readLine()).matches("[1-9][0-9]*")) {
-				int n = Integer.parseInt(s);
-				System.out.println("n = " + n);
-				ListerToutesPoss ltp = new ListerToutesPoss();
-				ltp.lister(n);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			// String s = null;
+			// while ((s = stdin.readLine()).matches("[1-9][0-9]*")) {
+			// int n = Integer.parseInt(s);
+			int n = 4;
+			System.out.println("n = " + n);
+			ListerToutesPoss ltp = new ListerToutesPoss();
+			ltp.lister(n);
+			// }
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();

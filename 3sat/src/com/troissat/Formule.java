@@ -1,35 +1,46 @@
 package com.troissat;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Formule {
 
-	private ArrayList<Clause> listClause;
+	public int numVars;
+	public int numClause;
+	public Vector<Clause> listClause;
+	public Vector<Clause> initClause;
 
-	public Formule(ArrayList<Clause> listClause) {
-		this.listClause = listClause;
-	}
-
-	public Formule() {
-		this.listClause = new ArrayList<Clause>();
+	public Formule(Vector<Clause> listClause, int numVars) {
+		this.numVars = numVars;
+		this.listClause = new Vector<Clause>();
+		this.initClause = listClause;
+		for (int i = 0; i < this.initClause.size(); i++) {
+			Clause c = this.initClause.get(i);
+			if (!c.isTriviallyTrue()) {
+				this.listClause.add(c);
+//				System.out.println(c);
+			}
+		}
+		this.numClause = this.listClause.size();
 	}
 
 	public void adjouteDansLeList(Clause c) {
 		this.listClause.add(c);
 	}
 
-	public ArrayList<Clause> getListClause() {
+	public int getNumVars() {
+		return numVars;
+	}
+
+	public int getNumClause() {
+		return numClause;
+	}
+
+	public Clause getClause(int index) {
+		return (Clause) listClause.elementAt(index);
+	}
+
+	public Vector<Clause> getListClause() {
 		return listClause;
 	}
 
-	public boolean calculerVrai() {
-		int n = this.listClause.size();
-		boolean bool = this.listClause.get(0).calculerVrai();
-
-		for (int i = 1; i < n; i++) {
-			bool = (this.listClause.get(i).calculerVrai()) && bool;
-		}
-
-		return bool;
-	}
 }
