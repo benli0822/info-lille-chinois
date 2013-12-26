@@ -1,9 +1,8 @@
 package com.troissat;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Vector;
 
 public class DPLL {
 	/*
@@ -13,55 +12,99 @@ public class DPLL {
 	 * DPLL(F’’ ∧ l) || DPLL(F’’ ∧ ¬l)
 	 */
 
-	private Formule f;
-
-	// le constructeur prend un formule comme l'entree
-	public DPLL(Formule f) {
-		this.f = f;
-	}
-
 	// si'l existe une clause vide, retourne -1
-	public int existeVide(Formule formule) {
-		ArrayList<Clause> listClause = formule.getListClause();
+	public boolean existeVide(Formule formule) {
+		Vector<Clause> listClause = formule.getListClause();
 		for (Clause c : listClause) {
-			if (c.getMapLitteral() == null)
-				return -1;
+			if (c.getLiterals() == null)
+				return true;
 		}
-		return 0;
+		return false;
 	}
 
 	// find all unit litteral
 	public Formule propager_clauses_unitaires(Formule formule) {
-		ArrayList<Clause> listClause = formule.getListClause();
-		ArrayList<Clause> newListClause = new ArrayList<Clause>();
+		Vector<Clause> listClause = formule.getListClause();
+		Vector<Clause> newListClause = new Vector<Clause>();
+		int newNumVar = 0;
 		for (Clause c : listClause) {
-			Map<Litteral, Boolean> newClause = new HashMap<Litteral, Boolean>();
-			if (c.getMapLitteral().size() == 1) {
-				for (Map.Entry<Litteral, Boolean> entry : c.getMapLitteral()
-						.entrySet()) {
-					newClause.put(entry.getKey(), entry.getValue());
-				}
-				Clause newc = new Clause(newClause);
-				newListClause.add(newc);
+			if (c.getLiterals().size() == 1) {
+				newListClause.add(c);
+				newNumVar++;
 			}
 		}
-		Formule newf = new Formule(newListClause);
+		Formule newf = new Formule(newListClause, newNumVar);
 		return newf;
+	}
+
+	public boolean isFormVide(Formule formule) {
+		if (formule.getListClause() == null)
+			return true;
+		else
+			return false;
 	}
 
 	// find all pure litteral
 	public Formule propager_clauses_purs(Formule formule) {
-		ArrayList<Clause> listClause = formule.getListClause();
-		Map<String, Integer> purLitteral = new HashMap<String, Integer>();
+		HashSet<Integer> listLiteral = new HashSet<Integer>();
+		Vector<Clause> listClause = formule.getListClause();
+		Vector<Clause> newClause = new Vector<Clause>();
+
 		for (Clause c : listClause) {
-			for (Map.Entry<Litteral, Boolean> entry : c.getMapLitteral()
-					.entrySet()) {
-				Litteral l = entry.getKey();
-				Boolean not = entry.getValue();
-				// 现在的问题是，要找出pure的litteral，满足的条件必须是，l出现的次数里面，not相互不能抵消
+			listLiteral.addAll(c.getLiterals());
+			// 现在的问题是，要找出pure的litteral，满足的条件必须是，l出现的次数里面，not相互不能抵消
+		}
+
+		int counter = 0;
+		for (Clause c : listClause) {
+			for (Iterator<Integer> iter = listLiteral.iterator(); iter
+					.hasNext();) {
+				int symbol = iter.next();
+				if (!c.unpureSymbol(symbol)) {
+					Vector<Integer> pureLiterals = new Vector<Integer>();
+					pureLiterals.add(symbol);
+					Clause newC = new Clause(pureLiterals);
+					newClause.add(newC);
+					counter++;
+				}
 			}
 		}
-		return null;
+		Formule newf = new Formule(newClause, counter);
+		return newf;
+	}
+
+	public boolean DPLLSolver(Formule formule) {
+		Formule firstFormule = propager_clauses_unitaires(formule);
+		if (existeVide(firstFormule)) {
+			return false;
+		} else {
+			Formule secondFormule = propager_clauses_purs(firstFormule);
+
+			if (isFormVide(secondFormule)) {
+				return true;
+			} else {
+				Vector<Clause> listClause = secondFormule.getListClause();
+				Clause choix = listClause.get(0);
+				Vector<Integer> choixLiteral = choix.getLiterals();
+
+				int choixSymbol = choixLiteral.get(0);
+				Vector<Integer> newLiteral1 = new Vector<Integer>();
+				newLiteral1.add(choixSymbol);
+				Vector<Integer> newLiteral2 = new Vector<Integer>();
+				newLiteral2.add(choixSymbol * (-1));
+				Clause newClause1 = new Clause(newLiteral1);
+				Clause newClause2 = new Clause(newLiteral2);
+				Vector<Clause> newListClause1 = listClause;
+				newListClause1.add(newClause1);
+				Vector<Clause> newListClause2 = listClause;
+				newListClause2.add(newClause2);
+				return DPLLSolver(new Formule(newListClause1,
+						secondFormule.getNumVars() + 1))
+						|| DPLLSolver(new Formule(newListClause2,
+								secondFormule.getNumVars() + 1));
+			}
+
+		}
 	}
 
 	public static void main(String[] args) {

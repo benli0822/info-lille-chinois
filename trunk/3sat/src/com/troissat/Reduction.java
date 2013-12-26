@@ -1,70 +1,138 @@
 package com.troissat;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Vector;
 
 public class Reduction {
 	/* reduciton de sat a 3sat */
-	private ArrayList<Litteral> listeLitteral;
-	private ArrayList<Clause> resClause;
+	public int numVars;
+	private Formule formule;
 
-	public Reduction(ArrayList<Litteral> listeLitteral) {
-		this.listeLitteral = listeLitteral;
+	public Reduction(Formule formule, int numVars) {
+		this.formule = formule;
+		this.numVars = numVars;
 	}
 
 	// sat to 3sat
-	public ArrayList<Clause> reduction() {
-		int size = this.listeLitteral.size();
-		this.resClause = new ArrayList<Clause>();
+	public Formule reduction() {
+		Vector<Clause> newListClause = new Vector<Clause>();
 
-		if (size == 1) {
-			// size = 1, we add two variable 
-			Litteral y1 = new Litteral("i,1", true);
-			Litteral y2 = new Litteral("i,2", true);
-			Litteral z1 = this.listeLitteral.get(0);
-			this.resClause.add(new Clause(z1, y1, y2, true, true, true));
-			this.resClause.add(new Clause(z1, y1, y2, true, true, false));
-			this.resClause.add(new Clause(z1, y1, y2, true, false, true));
-			this.resClause.add(new Clause(z1, y1, y2, true, false, false));
-		} else if (size == 2) {
+		if (this.numVars == 1) {
+			// size = 1, we add two variable
+			HashSet<Integer> literals = new HashSet<Integer>();
+			Vector<Clause> listClause = this.formule.getListClause();
+			// read all clause and put all variable into one
+			for (Clause c : listClause) {
+				literals.addAll(c.getLiterals());
+			}
+
+			Vector<Integer> newLiterals1 = new Vector<Integer>();
+			newLiterals1.addAll(literals);
+			newLiterals1.add(2); // i,1
+			newLiterals1.add(3); // i,2
+			Vector<Integer> newLiterals2 = new Vector<Integer>();
+			newLiterals2.addAll(literals);
+			newLiterals2.add(2);
+			newLiterals2.add(-3);
+			Vector<Integer> newLiterals3 = new Vector<Integer>();
+			newLiterals3.addAll(literals);
+			newLiterals3.add(-2);
+			newLiterals3.add(3);
+			Vector<Integer> newLiterals4 = new Vector<Integer>();
+			newLiterals4.addAll(literals);
+			newLiterals4.add(-2);
+			newLiterals4.add(-3);
+
+			Clause newClause1 = new Clause(newLiterals1);
+			Clause newClause2 = new Clause(newLiterals2);
+			Clause newClause3 = new Clause(newLiterals3);
+			Clause newClause4 = new Clause(newLiterals4);
+
+			newListClause.add(newClause1);
+			newListClause.add(newClause2);
+			newListClause.add(newClause3);
+			newListClause.add(newClause4);
+
+			return new Formule(newListClause, 3);
+		} else if (this.numVars == 2) {
 			// size = 2, we add one
-			Litteral z1 = this.listeLitteral.get(0);
-			Litteral z2 = this.listeLitteral.get(1);
-			Litteral y1 = new Litteral("i,1", true);
-			this.resClause.add(new Clause(z1, z2, y1, true, true, true));
-			this.resClause.add(new Clause(z1, z2, y1, true, true, false));
-		} else if (size == 3) {
+			HashSet<Integer> literals = new HashSet<Integer>();
+			Vector<Clause> listClause = this.formule.getListClause();
+			for (Clause c : listClause) {
+				literals.addAll(c.getLiterals());
+			}
+
+			Vector<Integer> newLiterals1 = new Vector<Integer>();
+			newLiterals1.addAll(literals);
+			newLiterals1.add(3); // i,2
+			Vector<Integer> newLiterals2 = new Vector<Integer>();
+			newLiterals2.addAll(literals);
+			newLiterals2.add(-3);
+
+			Clause newClause1 = new Clause(newLiterals1);
+			Clause newClause2 = new Clause(newLiterals2);
+
+			newListClause.add(newClause1);
+			newListClause.add(newClause2);
+
+			return new Formule(newListClause, 3);
+		} else if (this.numVars == 3) {
 			// size = 3, nothing to add
-			Litteral z1 = this.listeLitteral.get(0);
-			Litteral z2 = this.listeLitteral.get(1);
-			Litteral z3 = this.listeLitteral.get(2);
-			this.resClause.add(new Clause(z1, z2, z3, true, true, true));
-		} else if (size > 3) {
+			HashSet<Integer> literals = new HashSet<Integer>();
+			Vector<Clause> listClause = this.formule.getListClause();
+			for (Clause c : listClause) {
+				literals.addAll(c.getLiterals());
+			}
+			Vector<Integer> newLiterals = new Vector<Integer>();
+			newLiterals.addAll(literals);
+			Clause newClause = new Clause(newLiterals);
+			newListClause.add(newClause);
+			return new Formule(newListClause, 3);
+		} else if (this.numVars > 3) {
 			// size > 3, most difficult situation
-			ArrayList<Litteral> newLitteral = new ArrayList<Litteral>();
-			for (int i = 1; i <= size - 3; i++) {
-				newLitteral.add(new Litteral("i," + i, true));
+			ArrayList<Integer> literals = new ArrayList<Integer>();
+			Vector<Clause> listClause = this.formule.getListClause();
+			for (Clause c : listClause) {
+				literals.addAll(c.getLiterals());
 			}
-			Litteral z1 = this.listeLitteral.get(0);
-			Litteral z2 = this.listeLitteral.get(1);
-			Litteral y1 = newLitteral.get(0);
-			this.resClause.add(new Clause(z1, z2, y1, true, true, true));
-			for (int i = 2; i < size - 2; i++) {
-				Litteral yj = newLitteral.get(i - 2);
-				Litteral zi = this.listeLitteral.get(i);
-				Litteral yk = newLitteral.get(i - 1);
-				this.resClause.add(new Clause(yj, zi, yk, false, true, true));
+			Vector<Integer> newLiterals1 = new Vector<Integer>();
+			newLiterals1.add(literals.get(0));
+			newLiterals1.add(literals.get(1));
+			newLiterals1.add(this.numVars + 1);
+			Clause newClause1 = new Clause(newLiterals1);
+			newListClause.add(newClause1);
+
+			int index = 2;
+			int counter = 2;
+			int indexVariable = this.numVars+1;
+			while (counter < this.numVars - 2) {
+				Vector<Integer> newLiterals = new Vector<Integer>();
+				newLiterals1.add((this.numVars + index) * (-1));
+				newLiterals.add(literals.get(index));
+				newLiterals1.add((this.numVars + index + 1));
+				Clause newClause = new Clause(newLiterals);
+				newListClause.add(newClause);
+				indexVariable = this.numVars + index + 1;
+				index++;
+				counter++;
+				
 			}
-			Litteral yk3 = newLitteral.get(size - 4);
-			Litteral zk1 = this.listeLitteral.get(size - 2);
-			Litteral zk = this.listeLitteral.get(size - 1);
-			this.resClause.add(new Clause(yk3, zk1, zk, false, true, true));
+			
+			Vector<Integer> newLiterals2 = new Vector<Integer>();
+			newLiterals1.add((indexVariable+1)*(-1));
+			newLiterals1.add(literals.get(this.numVars-2));
+			newLiterals1.add(literals.get(this.numVars-1));
+			Clause newClause2 = new Clause(newLiterals2);
+			newListClause.add(newClause2);
+			
+			
+			return new Formule(newListClause, indexVariable+1);
 		} else {
 			// exception
-			System.out.println("unexpected formule of reduction!");
+			throw new IllegalArgumentException(
+					"unexpected formule of reduction!");
 		}
-		
-		return this.resClause;
 	}
-	
-	
+
 }
