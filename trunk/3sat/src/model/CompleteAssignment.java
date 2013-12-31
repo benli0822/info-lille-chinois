@@ -2,8 +2,8 @@ package model;
 
 import java.util.Vector;
 
-import com.troissat.Clause;
-import com.troissat.Formule;
+import sat.Clause;
+import sat.Formule;
 
 public class CompleteAssignment implements Assignment {
 	public boolean[] isAssigned;
