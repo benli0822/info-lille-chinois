@@ -1,5 +1,5 @@
-monday
-tuesday
+lundi
+mardi
 mercredi
 jeudi
 friday
