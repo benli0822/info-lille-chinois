@@ -1,4 +1,4 @@
-monday
+lundi
 tuesday
 friday
 sunday
