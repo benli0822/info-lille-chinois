@@ -1,4 +1,4 @@
 lundi
 tuesday
-friday
+vendredi
 sunday
