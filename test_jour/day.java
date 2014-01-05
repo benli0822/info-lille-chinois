@@ -1,4 +1,7 @@
-lundi
+monday
 tuesday
-vendredi
-sunday
+mercredi
+jeudi
+friday
+samedi
+dimanche
