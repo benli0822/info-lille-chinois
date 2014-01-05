@@ -1,7 +1,7 @@
-lundi
-mardi
+monday
+zhouer
 mercredi
 jeudi
-friday
+vendredi
 samedi
 dimanche
