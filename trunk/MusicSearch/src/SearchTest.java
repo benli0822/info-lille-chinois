@@ -100,11 +100,25 @@ public class SearchTest {
 		}
 		
 		KMP kmp_test = new KMP(test.motif_list,test.text_list);
+		long startTime=System.nanoTime();  
+		
 		kmp_test.KMPMatcher();
+		long endTime=System.nanoTime(); 
+		System.out.println("KMP time: "+(endTime-startTime)+" ns");
+		
+		
 		BM bm_test = new BM(test.motif_list,test.text_list);
+		startTime=System.nanoTime();   
 		bm_test.BMMatcher();
+		endTime=System.nanoTime(); 
+		System.out.println("BM time: "+(endTime-startTime)+" ns");
+		
+		
 		KR kr_test = new KR(test.motif_list,test.text_list);
+		startTime=System.nanoTime();
 		kr_test.KRMatcher();
+		endTime=System.nanoTime();
+		System.out.println("KR time: "+(endTime-startTime)+" ns");
 	}
 
 }
