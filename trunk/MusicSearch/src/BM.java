@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
+ *	Boyer-Moore
+ */
 public class BM {
 	private String text;
 	private String pattern;
@@ -105,7 +108,7 @@ public class BM {
 		int m = this.pattern.length();
 		int n = this.text.length();
 		int i = m - 1;
-		int j = 0;
+		int result_nb = 0;
 		while (i <= n - 1) {
 			int k = 0; // match nb
 			while (k < m
@@ -114,8 +117,8 @@ public class BM {
 				k = k + 1;
 			}
 			if (k == m) {
-				j++;
-				result[j] = i - m + 1;
+				result_nb++;
+				result[result_nb] = i - m + 1;
 				i = i + this.pattern.length();
 			} else {
 				char c = this.text.charAt(i - k);
@@ -124,7 +127,7 @@ public class BM {
 
 		}
 
-		result[0] = j;
+		result[0] = result_nb;
 		return result;
 	}
 
@@ -135,7 +138,7 @@ public class BM {
 		if(result[0]>0){
 		System.out.println("Total match times " + result[0]);
 		for (int i = 1; i < result[0]+1; i++) {
-			System.out.println("position of the " + i + "eme match" + result[i]);
+			System.out.println("position of the " + i + "eme match : " + result[i]);
 		}
 		}
 		else{

@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
+ *	Algorithme de Knuth, Morris et Pratt
+ */
 
 public class KMP {
 	  	private String text;  

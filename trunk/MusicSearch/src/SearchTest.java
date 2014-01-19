@@ -103,6 +103,8 @@ public class SearchTest {
 		kmp_test.KMPMatcher();
 		BM bm_test = new BM(test.motif_list,test.text_list);
 		bm_test.BMMatcher();
+		KR kr_test = new KR(test.motif_list,test.text_list);
+		kr_test.KRMatcher();
 	}
 
 }
