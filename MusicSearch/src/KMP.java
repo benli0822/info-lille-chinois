@@ -22,6 +22,7 @@ public class KMP {
 	    	this.pattern = "";
 	    	for(String pa : motif){
 	    		this.pattern += pa;
+	    		
 	    	}
 	    	
 	    }
@@ -37,7 +38,7 @@ public class KMP {
 	    public void KMPMatcher() {  
 	        int n = text.length();  
 	        int m = pattern.length();  
-	          
+	        
 	        int prefix[] = computePrefix();  
 	        int q = 0;  
 	          
@@ -52,7 +53,7 @@ public class KMP {
 	                q++;  
 	              
 	            if(q == m) {  
-	                System.out.println("Pattern occurs with shift  " + ++count + "times");  
+	                System.out.println("occurs at position "+ (i-m+1) + " and Pattern occurs with shift  " + ++count + " times");  
 	                q = prefix[q - 1];  
 	            }  
 	        }  
