@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class KR {
 	/**
-	 * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening Karp-Rabin
+	 * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening 
+	 * Karp-Rabin
 	 */
 	private String text;
 	private String pattern;
