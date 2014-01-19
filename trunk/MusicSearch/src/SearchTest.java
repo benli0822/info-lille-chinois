@@ -23,7 +23,7 @@ public class SearchTest {
 		this.motif_list = new ArrayList<String>();
 		this.text_list = new ArrayList<String>();
 		
-		debug = true;
+		debug = false;
 		
 	}
 	public void ReadDataFromTxt() throws IOException {
