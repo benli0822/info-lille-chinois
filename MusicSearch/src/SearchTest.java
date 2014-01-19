@@ -101,6 +101,8 @@ public class SearchTest {
 		
 		KMP kmp_test = new KMP(test.motif_list,test.text_list);
 		kmp_test.KMPMatcher();
+		BM bm_test = new BM(test.motif_list,test.text_list);
+		bm_test.BMMatcher();
 	}
 
 }

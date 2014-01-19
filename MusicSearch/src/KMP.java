@@ -36,6 +36,9 @@ public class KMP {
 	    }  
 	      
 	    public void KMPMatcher() {  
+	    	System.out.println("-------------------------------------");
+	    	System.out.println("KMP result");
+
 	        int n = text.length();  
 	        int m = pattern.length();  
 	        
@@ -44,7 +47,6 @@ public class KMP {
 	          
 	        int count = 0;  
 	        for(int i = 0; i < n; i++) {  
-	              
 	            while(q > 0 && pattern.charAt(q)!= text.charAt(i)) {  
 	                q = prefix[q -1];  
 	            }  
@@ -55,11 +57,12 @@ public class KMP {
 	            if(q == m) {  
 	                System.out.println("occurs at position "+ (i-m+1) + " and Pattern occurs with shift  " + ++count + " times");  
 	                q = prefix[q - 1];  
-	            }  
+	            } 
 	        }  
+	        
 	          
 	        if(count == 0) {  
-	            System.out.println("There is no matcher!");  
+	            System.out.println("There is no matcher!"); 
 	        }  
 	    }  
 	      
@@ -82,20 +85,4 @@ public class KMP {
 	        return prefix;  
 	    }  
 	      
-	  /*  public static void main(String[] args) {  
-	          
-	        KMP kmp;  
-	          
-	        if(args.length == 2) {  
-	            kmp = new KMP(args[0] , args[1]);  
-	        }  
-	        else {  
-	            kmp = new KMP();  
-	            kmp.setText("ababacabacbababababacabcbabababaca");  
-	            kmp.setPattern("ababaca");  
-	        }  
-	          
-	        kmp.KMPMatcher();  
-	          
-	    }  */
 }
