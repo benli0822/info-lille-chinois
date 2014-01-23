@@ -19,7 +19,6 @@ public class Naive {
 			this.pattern += pa;
 
 		}
-
 	}
 	public boolean isEqual(int index){
 		for( int i = 0 ; i < this.pattern.length(); i++){
