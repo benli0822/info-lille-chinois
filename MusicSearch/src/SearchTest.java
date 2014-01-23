@@ -99,14 +99,21 @@ public class SearchTest {
 		System.out.println("test total size: "+test.text_list.size());
 		}
 		
-		KMP kmp_test = new KMP(test.motif_list,test.text_list);
-		long startTime=System.nanoTime();  
+		Naive naive_test = new Naive(test.motif_list,test.text_list);
+		long startTime = System.nanoTime();
+		naive_test.NaiveMatcher();
+		long endTime = System.nanoTime();
+		System.out.println("Naive time " + (endTime-startTime)+ "ns");
 		
-		kmp_test.KMPMatcher();
-		long endTime=System.nanoTime(); 
-		System.out.println("KMP time: "+(endTime-startTime)+" ns");
+		
+		KR kr_test = new KR(test.motif_list,test.text_list);
+		startTime=System.nanoTime(); 
+		kr_test.KRMatcher();
+		endTime=System.nanoTime(); 
+		System.out.println("KR time: "+(endTime-startTime)+" ns");
 		
 		
+
 		BM bm_test = new BM(test.motif_list,test.text_list);
 		startTime=System.nanoTime();   
 		bm_test.BMMatcher();
@@ -114,11 +121,17 @@ public class SearchTest {
 		System.out.println("BM time: "+(endTime-startTime)+" ns");
 		
 		
-		KR kr_test = new KR(test.motif_list,test.text_list);
-		startTime=System.nanoTime();
-		kr_test.KRMatcher();
-		endTime=System.nanoTime();
-		System.out.println("KR time: "+(endTime-startTime)+" ns");
+		
+		KMP kmp_test = new KMP(test.motif_list,test.text_list);
+		startTime=System.nanoTime();  
+		
+		kmp_test.KMPMatcher();
+		endTime=System.nanoTime(); 
+		System.out.println("KMP time: "+(endTime-startTime)+" ns");
+		
+		
+		
+	
 	}
 
 }

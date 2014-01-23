@@ -47,9 +47,10 @@ public class KR {
 						break;
 					}
 				}
-				if (flag == true)
+				if (flag == true){
 					result_nb++;
 					result[result_nb] = i;
+				}
 
 			}
 			text_hash = ((text_hash - (this.text.charAt(i) << (this.pattern
