@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShiftOr {
-
+	/**
+	 * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening 
+	 * methode Shift-Or
+	 */
 	private String text;
 	private String pattern;
 
