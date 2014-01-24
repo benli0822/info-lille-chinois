@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
@@ -83,7 +84,36 @@ public class SearchTest {
 		} finally {
 			br.close();
 		}
+	}
 
+	/**
+	 * change motif for given frequence
+	 * @param frequence
+	 *            change the frequence of melody
+	 */
+	public ArrayList<String> setMotifList(int level) {
+		/* construction of ton libray */
+		ArrayList<Character> database = new ArrayList<Character>();
+		for (char letter = 'A'; letter < 'H'; letter++) {
+			database.add(letter);
+		}
+		database.add('r');
+		
+		int i = 0;
+		for (String s : this.motif_list) {
+			char ton = s.charAt(0);
+			if (database.contains(ton)) {
+				int index = database.indexOf(ton);
+				char newTon = database.get((index + level) % (database.size()));
+				String newS = "" + newTon + s.charAt(1);
+				this.motif_list.set(i, newS);
+			} else {
+				throw new IllegalArgumentException("unkown melody format at"
+						+ s);
+			}
+			i++;
+		}
+		return this.motif_list;
 	}
 	public int getMotifDuree(){
 		int minDuree = 1000;
