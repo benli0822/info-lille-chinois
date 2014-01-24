@@ -14,18 +14,21 @@ public class SearchTest {
 
 	// a list to save the orignal text
 	ArrayList<String> text_list;
-
+	
+	// How many times we can divide for this motif
+	int motif_duree;
+	
 	// a variable to decide wherther in debug mode
 	boolean debug;
 
 	public SearchTest() {
 		this.motif_list = new ArrayList<String>();
 		this.text_list = new ArrayList<String>();
-
-		debug = false;
+		
+		debug = true;
 
 	}
-
+	
 	public void ReadDataFromTxt() throws IOException {
 		// read motif.txt
 		BufferedReader br = new BufferedReader(new InputStreamReader(getClass()
@@ -82,19 +85,34 @@ public class SearchTest {
 		}
 
 	}
-
+	public int getMotifDuree(){
+		int minDuree = 1000;
+		for(String line: this.motif_list){
+			char dureeatmotif = line.charAt(1);
+			int duree = Character.getNumericValue(dureeatmotif);
+			if(duree <= minDuree){
+				minDuree = duree;
+			}
+		}
+		if(minDuree <= 0){
+			return -1;
+		}
+		else{
+			minDuree =  (int) (Math.log(minDuree)/Math.log(2));
+		}
+		return minDuree;
+	}
+	/*public ArrayList<String> changeHauteur(){
+		
+	}*/
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		SearchTest test = new SearchTest();
 		test.ReadDataFromTxt();
 
 		if (test.debug) {
-			for (String s : test.text_list) {
-				System.out.println(s);
-
-			}
-
-			System.out.println("test total size: " + test.text_list.size());
+			System.out.println("Min duree: "+test.getMotifDuree());
 		}
 
 		Naive naive_test = new Naive(test.motif_list, test.text_list);
