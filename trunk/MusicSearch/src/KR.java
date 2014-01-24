@@ -2,12 +2,13 @@ import java.util.ArrayList;
 
 public class KR {
 	/**
+	 * Algorithm of Karp-Rabin
 	 * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening 
-	 * Karp-Rabin
 	 */
-	private String text;
-	private String pattern;
+	private String text; // buffer of text to search
+	private String pattern; // buffer of keywords
 
+	/* constructor of Karp-Rabin */
 	public KR(ArrayList<String> motif, ArrayList<String> text) {
 		this.text = "";
 		for (String line : text) {
@@ -16,17 +17,15 @@ public class KR {
 		this.pattern = "";
 		for (String pa : motif) {
 			this.pattern += pa;
-
 		}
-
 	}
 
+	
 	public int[] KR_algo() {
 		int maxnum = this.text.length() / this.pattern.length();
 
 		int[] result = new int[maxnum];
-		
-		
+
 		int text_hash = 0, pattern_hash = 0;
 		for (int i = 0; i < this.pattern.length(); i++) {
 			text_hash = (text_hash << 1) + this.text.charAt(i);
@@ -49,7 +48,7 @@ public class KR {
 				}
 				if (flag == true){
 					result_nb++;
-					result[result_nb] = i;
+				result[result_nb] = i;
 				}
 
 			}
