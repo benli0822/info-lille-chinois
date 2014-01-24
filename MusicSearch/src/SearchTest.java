@@ -99,6 +99,10 @@ public class SearchTest {
 		}
 		database.add('r');
 		
+		/* for each element of motif list, get the first char of element, 
+		 * add the level with index to cycle in the database,
+		 * ex. ABCD BCDF
+		 */
 		int i = 0;
 		for (String s : this.motif_list) {
 			char ton = s.charAt(0);
@@ -108,6 +112,7 @@ public class SearchTest {
 				String newS = "" + newTon + s.charAt(1);
 				this.motif_list.set(i, newS);
 			} else {
+				/* if the format can't be recognized, we treat it as a exception */
 				throw new IllegalArgumentException("unkown melody format at"
 						+ s);
 			}
@@ -115,6 +120,7 @@ public class SearchTest {
 		}
 		return this.motif_list;
 	}
+	
 	public int getMotifDuree(){
 		int minDuree = 1000;
 		for(String line: this.motif_list){
