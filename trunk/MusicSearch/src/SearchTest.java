@@ -32,7 +32,7 @@ public class SearchTest {
 	public void ReadDataFromTxt() throws IOException {
 		// read motif.txt
 		BufferedReader br = new BufferedReader(new InputStreamReader(getClass()
-				.getClassLoader().getResourceAsStream("motif.txt")));
+				.getClassLoader().getResourceAsStream("1-motif")));
 		try {
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
@@ -43,7 +43,7 @@ public class SearchTest {
 				line = br.readLine();
 			}
 			String everything = sb.toString();
-			// Save all the words dans the list
+			// Save all the words in the list
 			// String[] resultat = everything.split("\\s|[\\s]|[^\\S]");
 			String[] resultat = everything.split(" ");
 			for (String s : resultat) {
@@ -59,7 +59,7 @@ public class SearchTest {
 		// br = new BufferedReader(new InputStreamReader(new FileInputStream(
 		// "data/negative.txt"), "Latin1"));
 		br = new BufferedReader(new InputStreamReader(getClass()
-				.getClassLoader().getResourceAsStream("text.txt")));
+				.getClassLoader().getResourceAsStream("1-texte")));
 		try {
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
@@ -84,7 +84,16 @@ public class SearchTest {
 			br.close();
 		}
 	}
-
+	public ArrayList<String> getDureeList(int duree){
+		ArrayList<String> newList = new ArrayList<String>();
+		int duree_old, duree_new;
+		for(String s : this.motif_list){
+			duree_old = Character.getNumericValue(s.charAt(1));
+			duree_new = duree_old / 2;
+			
+		}
+		return newList;
+	}
 	/**
 	 * change motif for given frequence
 	 * @param frequence
@@ -145,22 +154,28 @@ public class SearchTest {
 		// TODO Auto-generated method stub
 		SearchTest test = new SearchTest();
 		test.ReadDataFromTxt();
+		
+		
 
+		
+		
 		if (test.debug) {
 			System.out.println("Min duree: "+test.getMotifDuree());
+			System.out.println("motif size: "+test.motif_list.size());
+			System.out.println("texte size: "+test.text_list.size());
 		}
 
 		Naive naive_test = new Naive(test.motif_list, test.text_list);
 		long startTime = System.nanoTime();
 		naive_test.NaiveMatcher();
 		long endTime = System.nanoTime();
-		System.out.println("Naive time " + (endTime - startTime) + "ns");
+		System.out.println("Naive time " + (endTime - startTime) + " ns");
 
-		ShiftOr shiftOr_test = new ShiftOr(test.motif_list, test.text_list);
+		/*ShiftOr shiftOr_test = new ShiftOr(test.motif_list, test.text_list);
 		startTime = System.nanoTime();
 		shiftOr_test.ShiftOrMatcher();
 		endTime = System.nanoTime();
-		System.out.println("Naive time " + (endTime - startTime) + "ns");
+		System.out.println("shiftOr time " + (endTime - startTime) + "ns");
 
 		KR kr_test = new KR(test.motif_list, test.text_list);
 		startTime = System.nanoTime();
@@ -172,7 +187,7 @@ public class SearchTest {
 		startTime = System.nanoTime();
 		bm_test.BMMatcher();
 		endTime = System.nanoTime();
-		System.out.println("BM time: " + (endTime - startTime) + " ns");
+		System.out.println("BM time: " + (endTime - startTime) + " ns");*/
 
 		KMP kmp_test = new KMP(test.motif_list, test.text_list);
 		startTime = System.nanoTime();

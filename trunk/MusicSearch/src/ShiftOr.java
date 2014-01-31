@@ -14,6 +14,8 @@ public class ShiftOr {
 	private int lim;
 
 	private int patternLen;
+	
+	private ArrayList<Integer> result_liste;
 
 	public ShiftOr(ArrayList<String> motif, ArrayList<String> text) {
 		this.text = "";
@@ -28,6 +30,8 @@ public class ShiftOr {
 		ByteBuffer pat = ByteBuffer.wrap(this.pattern.getBytes());
 		this.patternLen = pat.remaining();
 		this.preprocess(pat);
+		
+		this.result_liste = new ArrayList<Integer>();
 
 	}
 
@@ -46,11 +50,10 @@ public class ShiftOr {
 
 	}
 
-	public int[] ShiftOr_algo() {
+	public void ShiftOr_algo() {
 		int maxnum = this.text.length() / this.pattern.length();
-		int[] result = new int[maxnum];
-		result[0] = 0;
-
+		System.out.println("Max result: "+maxnum);
+		
 		ByteBuffer buffer = ByteBuffer.wrap(this.text.getBytes());
 
 		int bufferLimit = buffer.limit();
@@ -59,20 +62,18 @@ public class ShiftOr {
 			state <<= 1;
 			state |= this.b[(buffer.get(pos)) & 0xFF];
 			if (state < this.lim) {
-				result[0]++;
-				result[result[0]] = pos - this.patternLen + 1;
+				
+				this.result_liste.add(pos - this.patternLen + 1);
 			}
 		}
 
-		return result;
+		
 	}
 
 	public final List<Integer> matchAll(final ByteBuffer buffer) {
 		final List<Integer> matches = new ArrayList<Integer>();
 
-		int maxnum = this.text.length() / this.pattern.length();
-		int[] result = new int[maxnum];
-		result[0] = 0;
+		
 
 		final int bufferLimit = buffer.limit();
 		int state = ~0;
@@ -87,14 +88,14 @@ public class ShiftOr {
 	}
 	
 	public void ShiftOrMatcher() {
-		int[] result = this.ShiftOr_algo();
+		this.ShiftOr_algo();
 		System.out.println("-------------------------------------");
 		System.out.println("ShiftOr result:");
-		if (result[0] > 0) {
-			System.out.println("Total match times " + result[0]);
-			for (int i = 1; i < result[0] + 1; i++) {
+		if (this.result_liste.size() > 0) {
+			System.out.println("Total match times " + this.result_liste.size());
+			for (int i = 1; i <100; i++) {
 				System.out.println("position of the " + i + "eme match : "
-						+ result[i]);
+						+ this.result_liste.get(i));
 			}
 		} else {
 
