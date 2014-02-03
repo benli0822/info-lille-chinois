@@ -119,7 +119,7 @@ public class BM {
 			}
 			if (k == m) {
 				result_nb++;
-				result[result_nb] = i - m + 1;
+				result[result_nb] = (i - m + 1) / 2;
 				i = i + this.pattern.length();
 			} else {
 				char c = this.text.charAt(i - k);
@@ -139,7 +139,8 @@ public class BM {
 		if(result[0]>0){
 		System.out.println("Total match times " + result[0]);
 		for (int i = 1; i < result[0]+1; i++) {
-			System.out.println("position of the " + i + "eme match : " + result[i]);
+			System.out.println("Motif : " + this.pattern
+					+ " occurs at the position " + result[i]);
 		}
 		}
 		else{
