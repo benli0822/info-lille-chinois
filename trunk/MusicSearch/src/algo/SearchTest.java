@@ -264,17 +264,14 @@ public class SearchTest {
 	}
 
 	public void setNewFrequenceAndDureeList() {
-		// add all list of newfrequence and newDuree in the newFrequenceAndDuree
-		// list.
-		// this.differentFrequenceAndDuree_Motif_List.clear();
 
 		for (ArrayList<String> duree : this.differentDureeMotifList) {
 			this.differentFrequenceAndDuree_Motif_List.add(duree);
-			System.out.println("duree: " + duree.toString());
+		
 		}
 		for (ArrayList<String> frequence : this.differentFrequenceMotifList) {
 			this.differentFrequenceAndDuree_Motif_List.add(frequence);
-			System.out.println("frequence: " + frequence.toString());
+			
 		}
 
 		// change the duree for all new frequence list
@@ -300,9 +297,7 @@ public class SearchTest {
 		this.setNewDureeList();
 		this.setNewFrequenceAndDureeList();
 		if (debug) {
-			for (ArrayList<String> newlist : this.differentFrequenceAndDuree_Motif_List) {
-				System.out.println(newlist);
-			}
+			System.out.println("changed motif total nb : "+this.differentFrequenceAndDuree_Motif_List.size());
 		}
 	}
 
