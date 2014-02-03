@@ -1,10 +1,12 @@
 package algo;
+
 import java.util.ArrayList;
 
 public class KR {
 	/**
 	 * Algorithm of Karp-Rabin
-	 * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening 
+	 * 
+	 * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
 	 */
 	private String text; // buffer of text to search
 	private String pattern; // buffer of keywords
@@ -21,7 +23,6 @@ public class KR {
 		}
 	}
 
-	
 	public int[] KR_algo() {
 		int maxnum = this.text.length() / this.pattern.length();
 
@@ -47,9 +48,9 @@ public class KR {
 						break;
 					}
 				}
-				if (flag == true){
+				if (flag == true) {
 					result_nb++;
-				result[result_nb] = i;
+					result[result_nb] = i / 2;
 				}
 
 			}
@@ -69,8 +70,8 @@ public class KR {
 		if (result[0] > 0) {
 			System.out.println("Total match times " + result[0]);
 			for (int i = 1; i < result[0] + 1; i++) {
-				System.out.println("position of the " + i + "eme match : "
-						+ result[i]);
+				System.out.println("Motif : " + this.pattern
+						+ " occurs at the position " + result[i]);
 			}
 		} else {
 

@@ -52,7 +52,7 @@ public class Naive {
 
 			if (isEqual(i) == true) {
 				result[0]++;
-				result[result[0]] = i;
+				result[result[0]] = i/2;
 			}
 		}
 
@@ -66,12 +66,31 @@ public class Naive {
 		if (result[0] > 0) {
 			System.out.println("Total match times " + result[0]);
 			for (int i = 1; i < result[0] + 1; i++) {
-				System.out.println("position of the " + i + "eme match : "
-						+ result[i]);
+				System.out.println("Motif : " + this.pattern
+						+ " occurs at the position " + result[i]);
 			}
 		} else {
 
 			System.out.println("There is no matcher!");
+
+		}
+
+	}
+	public void NaiveMatcher_changed() {
+		int[] result = this.Naive_algo();
+		
+		if (result[0] > 0) {
+			System.out.println("Total match times " + result[0]);
+			for (int i = 1; i < result[0] + 1; i++) {
+				System.out.println("-------------------------------------");
+				System.out.println("Naive result:");
+               
+				System.out.println("Motif : " + this.pattern
+						+ " occurs at the position " + result[i]);
+			}
+		} else {
+
+		
 
 		}
 
