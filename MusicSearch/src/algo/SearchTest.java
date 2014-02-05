@@ -326,7 +326,7 @@ public class SearchTest {
 				System.out
 						.println("Please try to add a argument after commande");
 				System.out
-						.println("Commande exemple : java -jar Exo3.jar maisons.xml");
+						.println("Commande exemple : java -jar MusicSearch.jar 1-motif 1-texte");
 			} else {
 				SearchTest test = new SearchTest(args[0], args[1]);
 				test.ReadDataFromTxt();
