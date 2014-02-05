@@ -1,8 +1,8 @@
 package algo;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -39,21 +39,28 @@ public class SearchTest {
 	// a variable to decide wherther in debug mode
 	public static boolean debug;
 
-	public SearchTest() {
+	private String motif_filename;
+
+	private String texte_filename;
+
+	public SearchTest(String motif_filename, String texte_filename) {
 		this.motif_list = new ArrayList<String>();
 		this.text_list = new ArrayList<String>();
 		this.differentDureeMotifList = new ArrayList<ArrayList<String>>();
 		this.differentFrequenceMotifList = new ArrayList<ArrayList<String>>();
 		this.differentFrequenceAndDuree_Motif_List = new ArrayList<ArrayList<String>>();
-
-		debug = true;
+		this.motif_filename = motif_filename;
+		this.texte_filename = texte_filename;
+		debug = false;
 
 	}
 
 	public void ReadDataFromTxt() throws IOException {
 		// read motif.txt
-		BufferedReader br = new BufferedReader(new InputStreamReader(getClass()
-				.getClassLoader().getResourceAsStream("2-motif3")));
+		FileReader in_motif = new FileReader(this.motif_filename);
+		BufferedReader br = new BufferedReader(in_motif);
+		//BufferedReader br = new BufferedReader(new InputStreamReader(getClass()
+			//	.getClassLoader().getResourceAsStream("1-motif")));
 		try {
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
@@ -75,10 +82,13 @@ public class SearchTest {
 			}
 		} finally {
 			br.close();
+			in_motif.close();
 		}
-
-		br = new BufferedReader(new InputStreamReader(getClass()
-				.getClassLoader().getResourceAsStream("2-texte700000")));
+		FileReader in_texte = new FileReader(this.texte_filename);
+		br = new BufferedReader(in_texte);
+		
+		//br = new BufferedReader(new InputStreamReader(getClass()
+			//	.getClassLoader().getResourceAsStream("1-texte")));
 		try {
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
@@ -101,6 +111,7 @@ public class SearchTest {
 			}
 		} finally {
 			br.close();
+			in_texte.close();
 		}
 	}
 
@@ -205,7 +216,7 @@ public class SearchTest {
 		 * for each element of motif list, get the first char of element, add
 		 * the level with index to cycle in the database, ex. ABCD BCDF
 		 */
-		int i = 0;
+		//int i = 0;
 		ArrayList<String> newlist = new ArrayList<String>();
 		for (String s : this.motif_list) {
 			char ton = s.charAt(0);
@@ -228,7 +239,7 @@ public class SearchTest {
 				throw new IllegalArgumentException("unkown melody format at"
 						+ s);
 			}
-			i++;
+			//i++;
 		}
 		return newlist;
 	}
@@ -267,11 +278,11 @@ public class SearchTest {
 
 		for (ArrayList<String> duree : this.differentDureeMotifList) {
 			this.differentFrequenceAndDuree_Motif_List.add(duree);
-		
+
 		}
 		for (ArrayList<String> frequence : this.differentFrequenceMotifList) {
 			this.differentFrequenceAndDuree_Motif_List.add(frequence);
-			
+
 		}
 
 		// change the duree for all new frequence list
@@ -297,89 +308,112 @@ public class SearchTest {
 		this.setNewDureeList();
 		this.setNewFrequenceAndDureeList();
 		if (debug) {
-			for(ArrayList<String> list : this.differentFrequenceAndDuree_Motif_List)
-			System.out.println("changed motif total nb : "+list.toString());
+			for (ArrayList<String> list : this.differentFrequenceAndDuree_Motif_List)
+				System.out.println("changed motif total nb : "
+						+ list.toString());
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		SearchTest test = new SearchTest();
-		test.ReadDataFromTxt();
-		test.prepareForMotifList();
-		if (test.debug) {
-			//System.out.println("Min duree: " + test.getMotifDureeDown());
-			//System.out.println("Max duree: " + test.getMotifDureeUp());
-			// System.out.print("at the last position:"+test.motif_list.get(test.motif_list.size()-1));
-			// System.out.println("motif size: " + test.motif_list.size());
-			// System.out.println("texte size: " + test.text_list.size());
 
+		try {
+
+			if (args.length != 2) {
+				// input error
+				System.out.println("args input error");
+				System.out.println("args[0] not find");
+				System.out
+						.println("Please try to add a argument after commande");
+				System.out
+						.println("Commande exemple : java -jar Exo3.jar maisons.xml");
+			} else {
+				SearchTest test = new SearchTest(args[0], args[1]);
+				test.ReadDataFromTxt();
+				test.prepareForMotifList();
+				//if (test.debug) {
+					// System.out.println("Min duree: " +
+					// test.getMotifDureeDown());
+					// System.out.println("Max duree: " +
+					// test.getMotifDureeUp());
+					// System.out.print("at the last position:"+test.motif_list.get(test.motif_list.size()-1));
+					// System.out.println("motif size: " +
+					// test.motif_list.size());
+					// System.out.println("texte size: " +
+					// test.text_list.size());
+
+				//}
+				System.out
+						.println("Rechercher la motif orignal ----------------------------");
+				Naive naive_test = new Naive(test.motif_list, test.text_list);
+				long startTime = System.nanoTime();
+				naive_test.NaiveMatcher();
+				long endTime = System.nanoTime();
+				System.out.println("Naive time " + (endTime - startTime)
+						+ " ns");
+
+				/*
+				 * ShiftOr shiftOr_test = new ShiftOr(test.motif_list,
+				 * test.text_list); startTime = System.nanoTime();
+				 * shiftOr_test.ShiftOrMatcher(); endTime = System.nanoTime();
+				 * System.out.println("shiftOr time " + (endTime - startTime) +
+				 * "ns");
+				 */
+				KR kr_test = new KR(test.motif_list, test.text_list);
+				startTime = System.nanoTime();
+				kr_test.KRMatcher();
+				endTime = System.nanoTime();
+				System.out.println("KR time: " + (endTime - startTime) + " ns");
+
+				BM bm_test = new BM(test.motif_list, test.text_list);
+				startTime = System.nanoTime();
+				bm_test.BMMatcher();
+				endTime = System.nanoTime();
+				System.out.println("BM time: " + (endTime - startTime) + " ns");
+
+				KMP kmp_test = new KMP(test.motif_list, test.text_list);
+				startTime = System.nanoTime();
+
+				kmp_test.KMPMatcher();
+				endTime = System.nanoTime();
+				System.out
+						.println("KMP time: " + (endTime - startTime) + " ns");
+				System.out
+						.println("Fin de la rechercher la motif orignal ----------------------------");
+				System.out.println("");
+				System.out.println("");
+
+				// search for the changed motifs in the list of
+				// defferentFreauenceAndDuree_Motif
+				System.out
+						.println(" Rechercher la motif equivalente ----------------------------");
+				startTime = System.nanoTime();
+				for (ArrayList<String> changedmotif : test.differentFrequenceAndDuree_Motif_List) {
+					Naive naive_test_1 = new Naive(changedmotif, test.text_list);
+
+					naive_test_1.NaiveMatcher_changed();
+
+				}
+				endTime = System.nanoTime();
+				System.out.println("Naive time " + (endTime - startTime)
+						+ " ns");
+
+				startTime = System.nanoTime();
+				for (ArrayList<String> changedmotif : test.differentFrequenceAndDuree_Motif_List) {
+					BM BM_test_1 = new BM(changedmotif, test.text_list);
+					BM_test_1.BMMatcher_changed();
+
+				}
+				endTime = System.nanoTime();
+				System.out.println("BM time: " + (endTime - startTime) + " ns");
+
+				System.out
+						.println(" Fin de la rechercher la motif equivalente ----------------------------");
+			}
+
+		} catch (Exception t) {
+			t.printStackTrace();
 		}
-		System.out.println("Rechercher la motif orignal ----------------------------");
-		Naive naive_test = new Naive(test.motif_list, test.text_list);
-		long startTime = System.nanoTime();
-		naive_test.NaiveMatcher();
-		long endTime = System.nanoTime();
-		System.out.println("Naive time " + (endTime - startTime) + " ns");
-
-		/*
-		 * ShiftOr shiftOr_test = new ShiftOr(test.motif_list, test.text_list);
-		 * startTime = System.nanoTime(); shiftOr_test.ShiftOrMatcher(); endTime
-		 * = System.nanoTime(); System.out.println("shiftOr time " + (endTime -
-		 * startTime) + "ns");
-		 */
-		KR kr_test = new KR(test.motif_list, test.text_list);
-		startTime = System.nanoTime();
-		kr_test.KRMatcher();
-		endTime = System.nanoTime();
-		System.out.println("KR time: " + (endTime - startTime) + " ns");
-
-		BM bm_test = new BM(test.motif_list, test.text_list);
-		startTime = System.nanoTime();
-		bm_test.BMMatcher();
-		endTime = System.nanoTime();
-		System.out.println("BM time: " + (endTime - startTime) + " ns");
-
-		KMP kmp_test = new KMP(test.motif_list, test.text_list);
-		startTime = System.nanoTime();
-
-		kmp_test.KMPMatcher();
-		endTime = System.nanoTime();
-		System.out.println("KMP time: " + (endTime - startTime) + " ns");
-		System.out.println("Fin de la rechercher la motif orignal ----------------------------");
-		System.out.println("");
-		System.out.println("");
-
-
-		//search for the changed motifs in the list of defferentFreauenceAndDuree_Motif
-		System.out.println(" Rechercher la motif equivalente ----------------------------");
-		startTime = System.nanoTime();
-		for(ArrayList<String> changedmotif:test.differentFrequenceAndDuree_Motif_List){
-			Naive naive_test_1 = new Naive(changedmotif, test.text_list);
-			
-			naive_test_1.NaiveMatcher_changed();
-			
-		
-			
-		}
-		endTime = System.nanoTime();
-		System.out.println("Naive time " + (endTime - startTime) + " ns");
-		
-		startTime = System.nanoTime();
-		for(ArrayList<String> changedmotif:test.differentFrequenceAndDuree_Motif_List){
-		
-			KMP kmp_test_1 = new KMP(changedmotif, test.text_list);
-			
-
-			kmp_test_1.KMPMatcher_changed();
-			
-			
-			
-		}
-		endTime = System.nanoTime();
-		System.out.println("KMP time: " + (endTime - startTime) + " ns");
-		
-		System.out.println(" Fin de la rechercher la motif equivalente ----------------------------");
 	}
 
 }

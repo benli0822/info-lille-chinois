@@ -150,4 +150,23 @@ public class BM {
 		}
 		
 	}
+	public void BMMatcher_changed() {
+		int[] result = this.BM_algo();
+		
+		if(result[0]>0){
+		System.out.println("Total match times " + result[0]);
+		for (int i = 1; i < result[0]+1; i++) {
+			System.out.println("-------------------------------------");
+			System.out.println("BM result:");
+			System.out.println("Motif : " + this.pattern
+					+ " occurs at the position " + result[i]);
+		}
+		}
+		else{
+			 
+		           // System.out.println("There is no matcher!"); 
+		     
+		}
+		
+	}
 }

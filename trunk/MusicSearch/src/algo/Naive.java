@@ -42,7 +42,7 @@ public class Naive {
 		int[] result = new int[maxnum];
 		
 		if (SearchTest.debug == true) {
-			System.out.println("max result "+maxnum);
+			//System.out.println("max result "+maxnum);
 			
 		}
 		
