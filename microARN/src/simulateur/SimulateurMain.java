@@ -73,116 +73,77 @@ public class SimulateurMain {
 		int nb_point_rest = nb_max_point;
 		int nb_appratiement_gauche_reste = nb_appratiement;
 		int nb_appratiement_droit_reste = nb_appratiement;
-		System.out.println("nb_parathese_gauche : "
-				+ nb_appratiement_gauche_reste);
+		
+		boolean is_first_run = true;
 
-		while (this.nb_nucleotide <= 100) {
+		while (nb_appratiement_gauche_reste > 0) {
+			// get the nb_parathese_ouvert,minimal succesifs : 3, maximal 10
+			if (is_first_run) {
 
-			// la premier avant le boucle terminale ne doit pas etre point donc
-			// c'est un cas particuliere
-			// generate the premiere avant boucle termianle
-			/*
-			 * int nb_parathese_ouvert = getRandomNumber(5, 3);
-			 * 
-			 * for (int i = 1; i < nb_parathese_ouvert; i++) {
-			 * this.list_Symbole.add(0, "("); this.nb_nucleotide++;
-			 * nb_appratiement_gauche_reste--; } int
-			 * nb_premier_paranthese_ouvert = getRandomNumber(5, 3);
-			 */
+				int nb_parathese_ouvert = 3;
 
-			while (nb_appratiement_gauche_reste > 0) {
-				// get the nb_parathese_ouvert,minimal succesifs : 3, maximal 10
-
-				int nb_parathese_ouvert = getRandomNumber(5, 3);
-
-				for (int i = 1; i < nb_parathese_ouvert; i++) {
-					if (this.nb_nucleotide > 100) {
-						return;
-					}
+				for (int i = 0; i < nb_parathese_ouvert; i++) {
 					this.list_Symbole.add(0, "(");
 					this.nb_nucleotide++;
 					nb_appratiement_gauche_reste--;
 				}
-
+				is_first_run = false;
+			}
+			if (nb_point_rest > 0) {
 				int nb_point = getRandomNumber(3, 0);
 				for (int i = 1; i < nb_point; i++) {
-					if (nb_point_rest < 0) {
-						break;
-					}
+
 					this.list_Symbole.add(0, ".");
 					nb_point_rest--;
 					this.nb_nucleotide++;
 				}
-
-				nb_parathese_ouvert = getRandomNumber(5, 3);
-
-				for (int i = 1; i < nb_parathese_ouvert; i++) {
-					if (this.nb_nucleotide > 100) {
-						return;
-					}
-					this.list_Symbole.add(0, "(");
-					this.nb_nucleotide++;
-					nb_appratiement_gauche_reste--;
-				}
 			}
 
-			/*
-			 * for (int i = 1; i < nb_premier_paranthese_ouvert; i++) { if
-			 * (this.nb_nucleotide > 100) { break; } this.list_Symbole.add(0,
-			 * "("); this.nb_nucleotide++; nb_appratiement_gauche_reste--; }
-			 */
+			int nb_parathese_ouvert = 3;
 
-			/*
-			 * //generate la partie droit
-			 * 
-			 * int nb_premier_paranthese_ferme = getRandomNumber(5, 3); int
-			 * nb_dernier_paranthese_ferme = getRandomNumber(5, 3);
-			 * 
-			 * for (int i = 1; i < nb_premier_paranthese_ferme ; i++) { if
-			 * (this.nb_nucleotide > 100) { break; }
-			 * this.list_Symbole.add(this.nb_nucleotide, ")");
-			 * this.nb_nucleotide++; nb_appratiement_droit_reste--; }
-			 */
+			for (int i = 0; i < nb_parathese_ouvert; i++) {
+				this.list_Symbole.add(0, "(");
+				this.nb_nucleotide++;
+				nb_appratiement_gauche_reste--;
+			}
+		}
+		is_first_run = true;
+		
+		
+		//generate droit
+		
+		while (nb_appratiement_droit_reste > 0) {
+			// get the nb_parathese_ferme,minimal succesifs : 3, maximal 10
+			if (is_first_run) {
+				int nb_parathese_ferme = 3;
 
-			while (nb_appratiement_droit_reste > 0) {
-				// get the nb_parathese_ferme,minimal succesifs : 3, maximal 10
-
-				int nb_parathese_ferme = getRandomNumber(5, 3);
-
-				for (int i = 1; i < nb_parathese_ferme; i++) {
-					if (this.nb_nucleotide > 100) {
-						break;
-
-					}
+				for (int i = 0; i < nb_parathese_ferme; i++) {
 					this.list_Symbole.add(this.nb_nucleotide, ")");
 					this.nb_nucleotide++;
 					nb_appratiement_droit_reste--;
 				}
-
+				is_first_run = false;
+			}
+			if (nb_point_rest > 0) {
 				int nb_point = getRandomNumber(3, 0);
-				for (int i = 1; i < nb_point; i++) {
-					if (nb_point_rest < 0) {
-						break;
-					}
+				for (int i = 0; i < nb_point; i++) {
+
 					this.list_Symbole.add(this.nb_nucleotide, ".");
 					nb_point_rest--;
 					this.nb_nucleotide++;
 				}
 
-				 nb_parathese_ferme = getRandomNumber(5, 3);
-
-				for (int i = 1; i < nb_parathese_ferme; i++) {
-					if (this.nb_nucleotide > 100) {
-						break;
-
-					}
-					this.list_Symbole.add(this.nb_nucleotide, ")");
-					this.nb_nucleotide++;
-					nb_appratiement_droit_reste--;
-				}
 			}
 
+			int nb_parathese_ferme = 3;
+			for (int i = 0; i < nb_parathese_ferme; i++) {
+				this.list_Symbole.add(this.nb_nucleotide, ")");
+				this.nb_nucleotide++;
+				nb_appratiement_droit_reste--;
+			}
 		}
+
+
 
 	}
 

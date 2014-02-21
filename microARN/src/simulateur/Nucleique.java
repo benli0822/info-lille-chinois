@@ -17,7 +17,15 @@ public class Nucleique {
 			return "E";
 		}
 	}
-
+	public String getComplementaireNom(String nom){
+		if(nom.equals("A"))
+			return "U";
+		else if(nom.equals("U"))
+			return "A";
+		else
+			return "E";
+		
+	}
 	public int getComplementaireID(int id) {
 		switch (id) {
 		case 1:
