@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
- * Find all Palindrome in gemomics sequences
+ * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening Find all Palindrome in
+ *         gemomics sequences
  */
 public class Palindrome {
 
@@ -30,8 +30,9 @@ public class Palindrome {
 		find(0, this.n - 1);
 	}
 
-	/** 
+	/**
 	 * Check for Palindrome for substring of resource
+	 * 
 	 * @param i
 	 * @param j
 	 * @return
@@ -41,13 +42,35 @@ public class Palindrome {
 		char[] g = toFind.toCharArray();
 		int length = g.length;
 		if (length == 2) {
-			if (g[0] != g[1]) {
-				return false;
+			switch (g[0]) {
+			case 'A':
+				if (g[1] != 'U')
+					return false;
+				break;
+			case 'C':
+				if (g[1] != 'G')
+					return false;
+				break;
+			case 'G':
+				if (g[1] != 'U')
+					return false;
+				break;
 			}
 		} else {
 			for (int count = 0; count < length / 2; count++) {
-				if (g[count] != g[length - count - 1]) {
-					return false;
+				switch (g[count]) {
+				case 'A':
+					if (g[length - count - 1] != 'U')
+						return false;
+					break;
+				case 'C':
+					if (g[length - count - 1] != 'G')
+						return false;
+					break;
+				case 'G':
+					if (g[length - count - 1] != 'U')
+						return false;
+					break;
 				}
 			}
 		}
@@ -55,7 +78,9 @@ public class Palindrome {
 	}
 
 	/**
-	 * Iterator for checking the substring using dynamic programming with matrix of palindrome
+	 * Iterator for checking the substring using dynamic programming with matrix
+	 * of palindrome
+	 * 
 	 * @param i
 	 * @param j
 	 */
@@ -88,6 +113,7 @@ public class Palindrome {
 
 	/**
 	 * Return the Palindrome words libray
+	 * 
 	 * @return
 	 */
 	public ArrayList<String> getLib() {
@@ -96,6 +122,7 @@ public class Palindrome {
 
 	/**
 	 * Print the Palindrome matrix
+	 * 
 	 * @param memo
 	 * @return
 	 */
@@ -104,9 +131,9 @@ public class Palindrome {
 		for (int i = 0; i < memo.length; ++i) {
 			for (int j = 0; j < memo[i].length; ++j) {
 				if (memo[i][j] == -1 || memo[i][j] >= 10)
-					result += memo[i][j] + " ";
-				else
 					result += memo[i][j] + "  ";
+				else
+					result += memo[i][j] + "   ";
 			}
 			result += "\n";
 		}
@@ -116,6 +143,7 @@ public class Palindrome {
 
 	/**
 	 * Get the Palindrome matrix
+	 * 
 	 * @return
 	 */
 	public int[][] getMemo() {
@@ -123,7 +151,7 @@ public class Palindrome {
 	}
 
 	public static void main(String[] args) {
-		Palindrome p = new Palindrome("arewenotdrawnonwardtonewera");
+		Palindrome p = new Palindrome("AGGGACUAUGG");
 		int[][] a = p.getMemo();
 		System.out.println(memoToString(a));
 		p.generateLib();
