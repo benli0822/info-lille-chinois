@@ -106,7 +106,7 @@ public class Palindrome {
 		this.lib = new ArrayList<String>();
 		for (int i = 0; i < this.n; i++) {
 			for (int j = 0; j < this.n; j++)
-				if (this.memo[i][j] > 0)
+				if (this.memo[i][j] > 0 && j - i + 1 >= 3)
 					this.lib.add(res.substring(i, j + 1));
 		}
 	}
