@@ -10,7 +10,7 @@ public class SimulateurMain {
 
 	ArrayList<String> list_Symbole;
 	ArrayList<String> list_nucleque;
-
+	ArrayList<String> list_nucleque_left_part;
 	/**
 	 * nb nucleotide total
 	 */
@@ -22,10 +22,13 @@ public class SimulateurMain {
 	private int nb_appariements;
 	Nucleique nucleique_parser;
 
+	private int nb_boucle_terminale;
+
 	public SimulateurMain() {
 		super();
 		this.list_nucleque = new ArrayList<String>();
 		this.list_Symbole = new ArrayList<String>();
+		this.list_nucleque_left_part = new ArrayList<String>();
 		nucleique_parser = new Nucleique();
 		this.nb_nucleotide = 0;
 
@@ -46,9 +49,13 @@ public class SimulateurMain {
 		 * nb de boucle terminale au plus 8
 		 */
 		int nb_nucleotide_temp = getRandomNumber(8, 1);
+		this.nb_boucle_terminale = nb_nucleotide_temp;
 		this.nb_nucleotide += nb_nucleotide_temp;
 
 		for (int i = 0; i < nb_nucleotide_temp; i++) {
+			/**
+			 * generate nucleque and add in the list nucleque
+			 */
 			this.list_nucleque.add(nucleique_parser
 					.getNucleiqueNom(getRandomNumber(4, 1)));
 			this.list_Symbole.add(".");
@@ -73,9 +80,9 @@ public class SimulateurMain {
 		int nb_point_rest = nb_max_point;
 		int nb_appratiement_gauche_reste = nb_appratiement;
 		int nb_appratiement_droit_reste = nb_appratiement;
-		
-		boolean is_first_run = true;
 
+		boolean is_first_run = true;
+		String temp_nuclique_left = "";
 		while (nb_appratiement_gauche_reste > 0) {
 			// get the nb_parathese_ouvert,minimal succesifs : 3, maximal 10
 			if (is_first_run) {
@@ -84,6 +91,11 @@ public class SimulateurMain {
 
 				for (int i = 0; i < nb_parathese_ouvert; i++) {
 					this.list_Symbole.add(0, "(");
+
+					temp_nuclique_left = nucleique_parser
+							.getNucleiqueNom(getRandomNumber(4, 1));
+					this.list_nucleque.add(0, temp_nuclique_left);
+					this.list_nucleque_left_part.add(0, temp_nuclique_left);
 					this.nb_nucleotide++;
 					nb_appratiement_gauche_reste--;
 				}
@@ -94,6 +106,10 @@ public class SimulateurMain {
 				for (int i = 1; i < nb_point; i++) {
 
 					this.list_Symbole.add(0, ".");
+
+					this.list_nucleque.add(0, nucleique_parser
+							.getNucleiqueNom(getRandomNumber(4, 1)));
+
 					nb_point_rest--;
 					this.nb_nucleotide++;
 				}
@@ -102,22 +118,37 @@ public class SimulateurMain {
 			int nb_parathese_ouvert = 3;
 
 			for (int i = 0; i < nb_parathese_ouvert; i++) {
+
+				temp_nuclique_left = nucleique_parser
+						.getNucleiqueNom(getRandomNumber(4, 1));
+				this.list_nucleque.add(0, temp_nuclique_left);
+				this.list_nucleque_left_part.add(0, temp_nuclique_left);
+
 				this.list_Symbole.add(0, "(");
 				this.nb_nucleotide++;
 				nb_appratiement_gauche_reste--;
 			}
 		}
 		is_first_run = true;
-		
-		
-		//generate droit
-		
+
+		// generate droit
+		String temp_complementaire;
+		int complementaire_position = this.list_nucleque_left_part.size() - 1;
+
 		while (nb_appratiement_droit_reste > 0) {
 			// get the nb_parathese_ferme,minimal succesifs : 3, maximal 10
 			if (is_first_run) {
 				int nb_parathese_ferme = 3;
 
 				for (int i = 0; i < nb_parathese_ferme; i++) {
+
+					String temp_nuclique = list_nucleque_left_part
+							.get(complementaire_position);
+					temp_complementaire = this.nucleique_parser
+							.getComplementaireNom(temp_nuclique);
+					this.list_nucleque.add(temp_complementaire);
+					complementaire_position--;
+
 					this.list_Symbole.add(this.nb_nucleotide, ")");
 					this.nb_nucleotide++;
 					nb_appratiement_droit_reste--;
@@ -127,7 +158,8 @@ public class SimulateurMain {
 			if (nb_point_rest > 0) {
 				int nb_point = getRandomNumber(3, 0);
 				for (int i = 0; i < nb_point; i++) {
-
+					this.list_nucleque.add(nucleique_parser
+							.getNucleiqueNom(getRandomNumber(4, 1)));
 					this.list_Symbole.add(this.nb_nucleotide, ".");
 					nb_point_rest--;
 					this.nb_nucleotide++;
@@ -137,16 +169,34 @@ public class SimulateurMain {
 
 			int nb_parathese_ferme = 3;
 			for (int i = 0; i < nb_parathese_ferme; i++) {
+
+				String temp_nuclique = list_nucleque_left_part
+						.get(complementaire_position);
+				temp_complementaire = this.nucleique_parser
+						.getComplementaireNom(temp_nuclique);
+				this.list_nucleque.add(temp_complementaire);
+				complementaire_position--;
+
 				this.list_Symbole.add(this.nb_nucleotide, ")");
 				this.nb_nucleotide++;
 				nb_appratiement_droit_reste--;
 			}
 		}
 
-
-
 	}
 
+	public void generateSequence() {
+		this.generateBoucleTerminale();
+		this.generateAppariements();
+		this.printARN();
+	}
+
+	public ArrayList<String> getNucliqueList() {
+		return this.list_nucleque;
+	}
+	public ArrayList<String> getSymboleList(){
+		return list_Symbole;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

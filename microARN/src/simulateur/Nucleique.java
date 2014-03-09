@@ -22,6 +22,10 @@ public class Nucleique {
 			return "U";
 		else if(nom.equals("U"))
 			return "A";
+		else if(nom.equals("G"))
+			return "C";
+		else if(nom.equals("C"))
+			return "G";
 		else
 			return "E";
 		
