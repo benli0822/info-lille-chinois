@@ -3,31 +3,55 @@ package recherche;
 import java.util.ArrayList;
 import java.util.List;
 
+import simulateur.SimulateurMain;
+
 /**
  * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening Find all Palindrome in
  *         gemomics sequences
  */
-public class Palindrome {
+public class Palindrome
+{
 
 	private String res; // Resource sequence
 	private ArrayList<String> lib; // Palindrome words
 	private int n; // Length of res
-	int memo[][]; // Matrix of Palindrome
+	boolean check[][];
+	boolean value[][];
+	boolean find[][];
 
-	public Palindrome(String res) {
+	public Palindrome(String res)
+	{
 		this.res = res;
 		this.n = res.length();
-		memo = new int[n][n];
-		for (int i = 0; i < this.n; i++) {
-			for (int j = 0; j < this.n; j++) {
-				memo[i][j] = -1;
+		check = new boolean[n][n];
+		for (int i = 0; i < this.n; i++)
+		{
+			for (int j = 0; j < this.n; j++)
+			{
+				check[i][j] = false;
 			}
 		}
-		// all word is the Palindrome of itself
-		for (int i = 0; i < this.n; i++) {
-			memo[i][i] = 1;
+		value = new boolean[n][n];
+		for (int i = 0; i < this.n; i++)
+		{
+			for (int j = 0; j < this.n; j++)
+			{
+				value[i][j] = false;
+			}
 		}
-		find(0, this.n - 1);
+
+		find = new boolean[n][n];
+		for (int i = 0; i < this.n; i++)
+		{
+			for (int j = 0; j < this.n; j++)
+			{
+				if (i > j)
+					find[i][j] = true;
+				else
+					find[i][j] = false;
+			}
+		}
+		fingAndGenerate(res);
 	}
 
 	/**
@@ -37,78 +61,93 @@ public class Palindrome {
 	 * @param j
 	 * @return
 	 */
-	public boolean check(int i, int j) {
-		String toFind = res.substring(i, j + 1);
-		char[] g = toFind.toCharArray();
-		int length = g.length;
-		if (length == 2) {
-			switch (g[0]) {
-			case 'A':
-				if (g[1] != 'U')
-					return false;
-				break;
-			case 'C':
-				if (g[1] != 'G')
-					return false;
-				break;
-			case 'G':
-				if (g[1] != 'U')
-					return false;
-				break;
+	public boolean check(String toFind, int i, int j)
+	{
+		int length = toFind.length();
+		System.out.println("Now checking for string: " + toFind + ", length = "
+				+ length);
+
+		if (!check[i][j])
+		{
+			System.out.println("Not yet checked, now begin to check for i = "
+					+ i + ", j = " + j);
+			check[i][j] = true;
+			if (length == 0 || length == 1)
+			{
+				// if length =0 OR 1 then it is
+				value[i][j] = true;
+				System.out.println("Success with [" + i + "][" + j + "]");
+				return true;
 			}
-		} else {
-			for (int count = 0; count < length / 2; count++) {
-				switch (g[count]) {
-				case 'A':
-					if (g[length - count - 1] != 'U')
-						return false;
-					break;
-				case 'C':
-					if (g[length - count - 1] != 'G')
-						return false;
-					break;
-				case 'G':
-					if (g[length - count - 1] != 'U')
-						return false;
-					break;
+
+			char beginChar = toFind.charAt(0);
+			char endChar = toFind.charAt(length - 1);
+
+			if ((beginChar == 'A' && endChar == 'U')
+					|| (beginChar == 'U' && endChar == 'A')
+					|| (beginChar == 'C' && endChar == 'G')
+					|| (beginChar == 'G' && endChar == 'C')
+					|| (beginChar == 'G' && endChar == 'U')
+					|| (beginChar == 'U' && endChar == 'G')
+					|| (beginChar == endChar))
+			{
+				// check for first and last char of String:
+				// if they are same then do the same thing for a substring
+				// with first and last char removed. and carry on this
+				// until you string completes or condition fails
+				System.out.println("Success with [" + i + "][" + j
+						+ "], Entering next section");
+				value[i][j] = true;
+				return check(toFind.substring(1, length - 1), i + 1, j - 1);
+			}
+
+			value[i][j] = false;
+			System.out.println("Failure with [" + i + "][" + j + "]");
+			// if its not the case than string is not.
+			return false;
+		}
+		else
+		{
+			System.out.println("Already checked for i = " + i + ", j = " + j);
+			if (value[i][j])
+			{
+				if (length == 0 || length == 1)
+				{
+					// if length =0 OR 1 then it is
+					System.out.println("Success with [" + i + "][" + j + "]");
+					return true;
 				}
+				else
+					return check(toFind.substring(1, length - 1), i + 1, j - 1);
+			}
+			else
+			{
+				return false;
 			}
 		}
-		return true;
+
 	}
 
-	/**
-	 * Iterator for checking the substring using dynamic programming with matrix
-	 * of palindrome
-	 * 
-	 * @param i
-	 * @param j
-	 */
-	public void find(int i, int j) {
-		if (i <= j) {
-			if (memo[i][j] == -1)
-				if (check(i, j)) {
-					memo[i][j] = j - i + 1;
-				} else {
-					memo[i][j] = 0;
-				}
-			if (i + 1 < this.n && j - 1 >= 0) {
-				find(i + 1, j); // left tree
-				find(i, j - 1); // right tree
-			}
-		}
-	}
-
-	/**
-	 * Generate Palindrome words library from Palindrome matrix
-	 */
-	public void generateLib() {
+	public void fingAndGenerate(String f)
+	{
 		this.lib = new ArrayList<String>();
-		for (int i = 0; i < this.n; i++) {
+		for (int i = 0; i < this.n; i++)
+		{
 			for (int j = 0; j < this.n; j++)
-				if (this.memo[i][j] > 0 && j - i + 1 >= 3)
-					this.lib.add(res.substring(i, j + 1));
+			{
+				if (i <= j && !find[i][j])
+				{
+					String toFind = res.substring(i, j + 1);
+					if (check(toFind, i, j))
+					{
+						if (!this.lib.contains(toFind) && toFind.length() >= 3)
+							this.lib.add(toFind);
+					}
+					find[i][j] = true;
+				}
+			}
 		}
+
 	}
 
 	/**
@@ -116,24 +155,19 @@ public class Palindrome {
 	 * 
 	 * @return
 	 */
-	public ArrayList<String> getLib() {
+	public ArrayList<String> getLib()
+	{
 		return lib;
 	}
 
-	/**
-	 * Print the Palindrome matrix
-	 * 
-	 * @param memo
-	 * @return
-	 */
-	public static String memoToString(int[][] memo) {
+	public static String memoToString(boolean[][] memo)
+	{
 		String result = "";
-		for (int i = 0; i < memo.length; ++i) {
-			for (int j = 0; j < memo[i].length; ++j) {
-				if (memo[i][j] == -1 || memo[i][j] >= 10)
-					result += memo[i][j] + "  ";
-				else
-					result += memo[i][j] + "   ";
+		for (int i = 0; i < memo.length; ++i)
+		{
+			for (int j = 0; j < memo[i].length; ++j)
+			{
+				result += memo[i][j] + "  ";
 			}
 			result += "\n";
 		}
@@ -141,24 +175,51 @@ public class Palindrome {
 		return result;
 	}
 
-	/**
-	 * Get the Palindrome matrix
-	 * 
-	 * @return
-	 */
-	public int[][] getMemo() {
-		return memo;
+	public static void main(String[] args)
+	{
+		long start = System.nanoTime();
+		SimulateurMain res = new SimulateurMain();
+		res.generateBoucleTerminale();
+		res.generateAppariements();
+		ArrayList<String> nucleique = res.getNucliqueList();
+		String nuc = "";
+
+		for (String s : nucleique)
+		{
+			nuc += s;
+		}
+
+		System.out.println(nuc);
+
+		Palindrome p = new Palindrome(nuc);
+		// boolean[][] c = p.getCheck();
+		// System.out.println(memoToString(c));
+		// boolean[][] v = p.getValue();
+		// System.out.println(memoToString(v));
+		// boolean[][] f = p.getFind();
+		// System.out.println(memoToString(f));
+
+		List<String> l = p.getLib();
+		System.out.println(l.size());
+
+		long elapsedTime = System.nanoTime() - start;
+		double seconds = (double) elapsedTime / 1000000000.0;
+		System.out.println("Taking " + seconds + " to build the library");
 	}
 
-	public static void main(String[] args) {
-		Palindrome p = new Palindrome("AGGGACUAUGG");
-		int[][] a = p.getMemo();
-		System.out.println(memoToString(a));
-		p.generateLib();
-		List<String> l = p.getLib();
-		for (String s : l) {
-			System.out.println(s);
-		}
+	public boolean[][] getFind()
+	{
+		return find;
+	}
+
+	public boolean[][] getCheck()
+	{
+		return check;
+	}
+
+	public boolean[][] getValue()
+	{
+		return value;
 	}
 
 }
