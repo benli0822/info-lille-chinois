@@ -6,8 +6,9 @@ import java.util.List;
 import simulateur.SimulateurMain;
 
 /**
- * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening Find all Palindrome in
- *         gemomics sequences
+ * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
+ * 
+ *         Find all Palindrome in gemomics sequences
  */
 public class Palindrome
 {
@@ -16,13 +17,20 @@ public class Palindrome
 	private ArrayList<String> lib; // Palindrome words
 	private int n; // Length of res
 	boolean check[][];
+	// register array for checked or not the correspondence of index i and j
 	boolean value[][];
+	// register array for the checked value of correspondence index i and j
 	boolean find[][];
+	private boolean debug = false;
 
-	public Palindrome(String res)
+	// register array for all substring view in the check and generate method
+
+	public Palindrome(String res, boolean debug)
 	{
 		this.res = res;
 		this.n = res.length();
+		this.debug = debug;
+		// initialize all check value as false
 		check = new boolean[n][n];
 		for (int i = 0; i < this.n; i++)
 		{
@@ -31,6 +39,7 @@ public class Palindrome
 				check[i][j] = false;
 			}
 		}
+		// initialize all value as false
 		value = new boolean[n][n];
 		for (int i = 0; i < this.n; i++)
 		{
@@ -40,6 +49,8 @@ public class Palindrome
 			}
 		}
 
+		// initialize the upper case find value as false, becausse it's
+		// not necessary to check for substring(i, j) when i > j
 		find = new boolean[n][n];
 		for (int i = 0; i < this.n; i++)
 		{
@@ -51,11 +62,17 @@ public class Palindrome
 					find[i][j] = false;
 			}
 		}
+		// begin the process
 		fingAndGenerate(res);
 	}
 
 	/**
-	 * Check for Palindrome for substring of resource
+	 * Check for Palindrome for substring of resource Algorithm: check the first
+	 * character and the last character for certain rules If correct, pass to
+	 * the next section, which means the substring of current string who has
+	 * removed the first and the last correspond letter, recursively call the
+	 * function itself and when the length of substring become 0 or 1, stop and
+	 * give the right answer
 	 * 
 	 * @param i
 	 * @param j
@@ -64,19 +81,23 @@ public class Palindrome
 	public boolean check(String toFind, int i, int j)
 	{
 		int length = toFind.length();
-		System.out.println("Now checking for string: " + toFind + ", length = "
-				+ length);
+		if (this.debug)
+			System.out.println("Now checking for string: " + toFind
+					+ ", length = " + length);
 
 		if (!check[i][j])
 		{
-			System.out.println("Not yet checked, now begin to check for i = "
-					+ i + ", j = " + j);
+			if (this.debug)
+				System.out
+						.println("Not yet checked, now begin to check for i = "
+								+ i + ", j = " + j);
 			check[i][j] = true;
 			if (length == 0 || length == 1)
 			{
 				// if length =0 OR 1 then it is
 				value[i][j] = true;
-				System.out.println("Success with [" + i + "][" + j + "]");
+				if (this.debug)
+					System.out.println("Success with [" + i + "][" + j + "]");
 				return true;
 			}
 
@@ -88,33 +109,41 @@ public class Palindrome
 					|| (beginChar == 'C' && endChar == 'G')
 					|| (beginChar == 'G' && endChar == 'C')
 					|| (beginChar == 'G' && endChar == 'U')
-					|| (beginChar == 'U' && endChar == 'G')
-					|| (beginChar == endChar))
+					|| (beginChar == 'U' && endChar == 'G'))
 			{
 				// check for first and last char of String:
 				// if they are same then do the same thing for a substring
 				// with first and last char removed. and carry on this
 				// until you string completes or condition fails
-				System.out.println("Success with [" + i + "][" + j
-						+ "], Entering next section");
+				if (this.debug)
+					System.out.println("Success with [" + i + "][" + j
+							+ "], Entering next section");
 				value[i][j] = true;
-				return check(toFind.substring(1, length - 1), i + 1, j - 1);
+				if (length >= 3 && length <= 8)
+					return true;
+				else
+					return check(toFind.substring(1, length - 1), i + 1, j - 1);
 			}
 
 			value[i][j] = false;
-			System.out.println("Failure with [" + i + "][" + j + "]");
+			if (this.debug)
+				System.out.println("Failure with [" + i + "][" + j + "]");
 			// if its not the case than string is not.
 			return false;
 		}
 		else
 		{
-			System.out.println("Already checked for i = " + i + ", j = " + j);
+			if (this.debug)
+				System.out.println("Already checked for i = " + i + ", j = "
+						+ j);
 			if (value[i][j])
 			{
 				if (length == 0 || length == 1)
 				{
-					// if length =0 OR 1 then it is
-					System.out.println("Success with [" + i + "][" + j + "]");
+					if (this.debug)
+						// if length =0 OR 1 then it is
+						System.out.println("Success with [" + i + "][" + j
+								+ "]");
 					return true;
 				}
 				else
@@ -128,6 +157,14 @@ public class Palindrome
 
 	}
 
+	/**
+	 * Find and generate the stem-loop library in the memory Algorithm: for the
+	 * give string as enter, check for all possible substring with the
+	 * Palindrome algorithm and using the dynamic programming, which represent
+	 * by the find array
+	 * 
+	 * @param f
+	 */
 	public void fingAndGenerate(String f)
 	{
 		this.lib = new ArrayList<String>();
@@ -141,13 +178,24 @@ public class Palindrome
 					if (check(toFind, i, j))
 					{
 						if (!this.lib.contains(toFind) && toFind.length() >= 3)
-							this.lib.add(toFind);
+						{
+							boolean include = false;
+							for (String s : this.lib)
+							{
+								if (s.toUpperCase().contains(
+										toFind.toUpperCase())
+										|| toFind.toUpperCase().contains(
+												s.toUpperCase()))
+									include = true;
+							}
+							if (!include)
+								this.lib.add(toFind);
+						}
 					}
 					find[i][j] = true;
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -160,6 +208,42 @@ public class Palindrome
 		return lib;
 	}
 
+	/**
+	 * Return the register array Find
+	 * 
+	 * @return
+	 */
+	public boolean[][] getFind()
+	{
+		return find;
+	}
+
+	/**
+	 * Return the register array Check
+	 * 
+	 * @return
+	 */
+	public boolean[][] getCheck()
+	{
+		return check;
+	}
+
+	/**
+	 * Return the register array Value
+	 * 
+	 * @return
+	 */
+	public boolean[][] getValue()
+	{
+		return value;
+	}
+
+	/**
+	 * Printing method for display the boolean array
+	 * 
+	 * @param memo
+	 * @return
+	 */
 	public static String memoToString(boolean[][] memo)
 	{
 		String result = "";
@@ -182,16 +266,37 @@ public class Palindrome
 		res.generateBoucleTerminale();
 		res.generateAppariements();
 		ArrayList<String> nucleique = res.getNucliqueList();
+		// System.out.println(nucleique.size());
+		int nucSize = nucleique.size();
 		String nuc = "";
 
-		for (String s : nucleique)
+		if (nucSize >= 100)
 		{
-			nuc += s;
+			for (int i = 0; i < 100; i++)
+			{
+				nuc += nucleique.get(i);
+			}
+		}
+		else
+		{
+			for (String s : nucleique)
+			{
+				nuc += s;
+			}
 		}
 
 		System.out.println(nuc);
+		System.out.println(nuc.length());
 
-		Palindrome p = new Palindrome(nuc);
+		Palindrome p = null;
+		if (args.length != 0 && args[0].equals("-debug"))
+		{
+			p = new Palindrome(nuc, true);
+		}
+		else
+		{
+			p = new Palindrome(nuc, false);
+		}
 		// boolean[][] c = p.getCheck();
 		// System.out.println(memoToString(c));
 		// boolean[][] v = p.getValue();
@@ -201,25 +306,13 @@ public class Palindrome
 
 		List<String> l = p.getLib();
 		System.out.println(l.size());
+		for (String s : l)
+		{
+			System.out.println(s);
+		}
 
 		long elapsedTime = System.nanoTime() - start;
 		double seconds = (double) elapsedTime / 1000000000.0;
 		System.out.println("Taking " + seconds + " to build the library");
 	}
-
-	public boolean[][] getFind()
-	{
-		return find;
-	}
-
-	public boolean[][] getCheck()
-	{
-		return check;
-	}
-
-	public boolean[][] getValue()
-	{
-		return value;
-	}
-
 }
