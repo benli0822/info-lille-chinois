@@ -1,6 +1,10 @@
 package recherche;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+
 import simulateur.SimulateurMain;
 
 /**
@@ -224,7 +228,7 @@ public class Nussinov
 		this.result = result;
 	}
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		long start = System.nanoTime();
 		SimulateurMain res = new SimulateurMain();
@@ -259,13 +263,14 @@ public class Nussinov
 
 		System.out.println(nuc);
 		System.out.println(nuc.length());
-
+	
 		Nussinov n = new Nussinov();
 		n.execute(nuc);
 		n.printMatrix();
 		System.out.println();
 		n.printMatrix2();
 
+	
 		String res1 = n.getResult();
 		System.out.println(res1);
 		System.out.println(symbole);
