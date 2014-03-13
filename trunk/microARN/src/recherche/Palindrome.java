@@ -180,14 +180,14 @@ public class Palindrome
 						if (!this.lib.contains(toFind) && toFind.length() >= 3)
 						{
 							boolean include = false;
-							for (String s : this.lib)
-							{
-								if (s.toUpperCase().contains(
-										toFind.toUpperCase())
-										|| toFind.toUpperCase().contains(
-												s.toUpperCase()))
-									include = true;
-							}
+							// for (String s : this.lib)
+							// {
+							// if (s.toUpperCase().contains(
+							// toFind.toUpperCase())
+							// || toFind.toUpperCase().contains(
+							// s.toUpperCase()))
+							// include = true;
+							// }
 							if (!include)
 								this.lib.add(toFind);
 						}
