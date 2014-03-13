@@ -3,18 +3,23 @@ package recherche;
 /**
  * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
  * 
- *         Find the secondary structure in gemomics sequences using Nussinov
- *         Jacobson algorithm
+ *         Global Alignment using Needleman and Wunsch algorithm
  */
 public class NeedlemanWunsch
 {
-	char[] mSeqA;
-	char[] mSeqB;
-	int[][] mD;
+	char[] mSeqA; // 1st sequence
+	char[] mSeqB; // 2nd sequence
+	int[][] mD; // dynamic part matrix
 	int mScore;
-	String mAlignmentSeqA = "";
+	String mAlignmentSeqA = ""; // for result
 	String mAlignmentSeqB = "";
 
+	/**
+	 * Initializer the matrix
+	 * 
+	 * @param seqA
+	 * @param seqB
+	 */
 	void init(char[] seqA, char[] seqB)
 	{
 		mSeqA = seqA;
@@ -40,6 +45,9 @@ public class NeedlemanWunsch
 		}
 	}
 
+	/**
+	 * Process the method using Sim(i,j) = max(...)
+	 */
 	void process()
 	{
 		for (int i = 1; i <= mSeqA.length; i++)
@@ -54,6 +62,9 @@ public class NeedlemanWunsch
 		}
 	}
 
+	/**
+	 * Track back for finding the correct alignment
+	 */
 	void backtrack()
 	{
 		int i = mSeqA.length;
@@ -119,7 +130,6 @@ public class NeedlemanWunsch
 		System.out.println("Score: " + mScore);
 		System.out.println("Sequence A: " + mAlignmentSeqA);
 		System.out.println("Sequence B: " + mAlignmentSeqB);
-		System.out.println();
 	}
 
 	public static void main(String[] args)
