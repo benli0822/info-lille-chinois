@@ -1,14 +1,25 @@
 package recherche;
 
+/**
+ * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
+ * 
+ *         Local Alignment using Smith Waterman algorithm
+ */
 public class SmithWaterman
 {
-	char[] mSeqA;
-	char[] mSeqB;
-	int[][] mD;
+	char[] mSeqA; // 1st sequence
+	char[] mSeqB; // 2nd sequence
+	int[][] mD; // dynamic part matrix
 	int mScore;
-	String mAlignmentSeqA = "";
+	String mAlignmentSeqA = ""; // for result
 	String mAlignmentSeqB = "";
 
+	/**
+	 * Initializer the matrix
+	 * 
+	 * @param seqA
+	 * @param seqB
+	 */
 	void init(char[] seqA, char[] seqB)
 	{
 		mSeqA = seqA;
@@ -24,6 +35,9 @@ public class SmithWaterman
 		}
 	}
 
+	/**
+	 * Process the method using Loc(i,j) = max(...)
+	 */
 	void process()
 	{
 		for (int i = 1; i <= mSeqA.length; i++)
@@ -39,6 +53,9 @@ public class SmithWaterman
 		}
 	}
 
+	/**
+	 * Track back for finding the correct alignment
+	 */
 	void backtrack()
 	{
 		int i = 1;
@@ -163,7 +180,6 @@ public class SmithWaterman
 		System.out.println("Score: " + mScore);
 		System.out.println("Sequence A: " + mAlignmentSeqA);
 		System.out.println("Sequence B: " + mAlignmentSeqB);
-		System.out.println();
 	}
 
 	public static void main(String[] args)

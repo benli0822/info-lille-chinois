@@ -3,18 +3,26 @@ package recherche;
 /**
  * @author CHENG Xiaojun, JIN Benli et ZHAO Xuening
  * 
- *         Find the secondary structure in gemomics sequences using Nussinov
- *         Jacobson algorithm
+ *         Find the longest common character using Hirschberg algorithm
  */
 public class Hirschberg
 {
+	/**
+	 * Function of getting the longest common charcter
+	 * 
+	 * @param m
+	 * @param n
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public String getLCS(int m, int n, String a, String b)
 	{
 		String lcs = "";
 
 		if (n == 0)
 		{
-			lcs = "-";
+			lcs = "-"; // no match then replace with -
 		}
 		else if (m == 1)
 		{
@@ -22,17 +30,18 @@ public class Hirschberg
 			{
 				if (a.charAt(0) == b.charAt(j))
 				{
-					lcs = "-" + a.charAt(0);
+					lcs = "-" + a.charAt(0); // match
 					break;
 				}
 				else
 				{
-					lcs = "-";
+					lcs = "-"; // no match then replace with -
 				}
 			}
 		}
 		else
 		{
+			// Divide and conquer function part
 			int i = m / 2;
 			final int[] l1 = populateRow(i, n, a.substring(0, i), b);
 			final int[] l2 = populateRow(m - i, n,
@@ -46,6 +55,15 @@ public class Hirschberg
 		return lcs;
 	}
 
+	/**
+	 * update matrix information with Divide and conquer
+	 * 
+	 * @param m
+	 * @param n
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	private int[] populateRow(int m, int n, String a, String b)
 	{
 
@@ -79,11 +97,24 @@ public class Hirschberg
 
 	}
 
+	/**
+	 * Max function
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	private int max(int x, int y)
 	{
 		return (x > y) ? x : y;
 	}
 
+	/**
+	 * Reverse the given String
+	 * 
+	 * @param source
+	 * @return
+	 */
 	private static String reverseString(String source)
 	{
 		int len = source.length();
@@ -93,6 +124,14 @@ public class Hirschberg
 		return dest.toString();
 	}
 
+	/**
+	 * Find the next reference point in Divide and conquer
+	 * 
+	 * @param l1
+	 * @param l2
+	 * @param n
+	 * @return
+	 */
 	private int findR(int[] l1, int[] l2, int n)
 	{
 		int m = 0;
