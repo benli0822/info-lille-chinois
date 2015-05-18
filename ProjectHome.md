@@ -1,0 +1,1 @@
+Nous allons développer un projet individuel.
